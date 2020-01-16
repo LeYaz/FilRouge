@@ -35,4 +35,46 @@ public class CommandeVehicule {
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_cloture")
 	private Date datecloture;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Devis getDevis() {
+		return devis;
+	}
+
+	public void setDevis(Devis devis) {
+		this.devis = devis;
+	}
+
+	public Boolean getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Boolean etat) {
+		this.etat = etat;
+	}
+
+	public Date getDatecreation() {
+		return datecreation;
+	}
+
+	public void setDatecreation(Date datecreation) {
+		this.datecreation = datecreation;
+	}
+
+	public Date getDatecloture() {
+		return datecloture;
+	}
+
+	public void setDatecloture(Date datecloture) {
+		this.datecloture = datecloture;
+	}
+	
+	
 }
