@@ -26,7 +26,7 @@ public class Vehicule {
 	@Column(name="quantite", nullable = false)
 	private Integer quantite;
 	
-	@Column(name="prixHT", columnDefinition = "0.0")
+	@Column(name="prixHT", columnDefinition = "float")
 	private Float prixht;
 	
 	@Temporal(TemporalType.DATE)
