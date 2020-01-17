@@ -27,7 +27,7 @@
 			<tbody>
 				<tr th:each="client : ${listeclient}">
 					<td><a
-						th:href="@{/afficherModifierEleve/{id}(id=${client.id})}"
+						th:href="@{/afficherModifierClient/{id}(id=${client.id})}"
 						th:text="${client.id}"></a></td>
 					<td th:text="${client.name}" />
 					<td th:text="${client.firstname}" />
