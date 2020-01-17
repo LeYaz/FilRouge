@@ -42,6 +42,7 @@ public class ServiceClient implements IServiceClient {
 	@Transactional
 	@Override
 	public void desactiverClient(Client pclient) {
+		//daoclient.delete(pclient);
 	}
 
 }

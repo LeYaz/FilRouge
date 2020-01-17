@@ -78,7 +78,7 @@ public class ClientController {
 		return this.getAffiche(pmodel);
 	}
 	
-	/*
+	
 	@GetMapping("/DesactiverClient/{id}")
 	public String getSupprimer(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);
@@ -86,7 +86,7 @@ public class ClientController {
 			serviceclient.desactiverClient(pclient);;
 		}
 		return this.getAffiche(pmodel);
-	}*/
+	}
 	
 	
 	@GetMapping("/afficherModifierClient/{id}")
@@ -99,6 +99,11 @@ public class ClientController {
 			clientform.setId(pclient.getId());
 			clientform.setName(pclient.getName());
 			clientform.setFirstname(pclient.getFirstname());
+			clientform.setAdresse(pclient.getAdresse());
+			clientform.setCodepostal(pclient.getCodepostal());
+			clientform.setVille(pclient.getVille());
+			clientform.setTel(pclient.getTel());
+			clientform.setPortable(pclient.getPortable());
 			pmodel.addAttribute("clientform", clientform);
 		}
 		return "clients";
