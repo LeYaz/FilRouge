@@ -26,7 +26,7 @@ public class VehiculeController {
 	private IServiceVehicule serviceVehicule;
 
 	private Vehicule convertForm(VehiculeForm vehiculeform) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date madate = sdf.parse(vehiculeform.getDatecreation());
 		Vehicule pvehicule= new Vehicule();
@@ -62,7 +62,7 @@ public class VehiculeController {
 			vehiculeform.setModele(vehicule.getModele());
 			vehiculeform.setQuantite(String.valueOf(vehicule.getQuantite()));
 			vehiculeform.setPrixht(String.valueOf(vehicule.getQuantite()));
-			vehiculeform.setDatecreation(new SimpleDateFormat("dd/MM/yyyy").format(vehicule.getDatecreation()));
+			vehiculeform.setDatecreation(new SimpleDateFormat("yyyy-MM-dd").format(vehicule.getDatecreation()));
 			pmodel.addAttribute("vehiculeform", vehiculeform);
 		}
 		return "vehicules";
