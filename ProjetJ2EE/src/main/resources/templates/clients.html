@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion Des Elèves'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container">
+		<table th:unless="${action == 'ModifierClient'}">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Code Postal</th>
+					<th>Ville</th>
+					<th>Telephone</th>
+					<th>Mobile</th>
+					<th>Désactiver</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client : ${listeclient}">
+					<td><a
+						th:href="@{/afficherModifierEleve/{id}(id=${client.id})}"
+						th:text="${client.id}"></a></td>
+					<td th:text="${client.name}" />
+					<td th:text="${client.firstname}" />
+					<td th:text="${client.adresse}" />
+					<td th:text="${client.codepostal}" />
+					<td th:text="${client.ville}" />
+					<td th:text="${client.tel}" />
+					<td th:text="${client.portable}" />
+					<td><a th:href="@{/DesactiverClient/{id}(id=${client.id})}"
+						th:text="'Desactiver'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2 th:if="${action == 'ModifierClient'}">
+			<a th:href="@{/afficherCreerClient}"
+				th:text="'Formulaire de Modification'"></a>
+		</h2>
+		<h2 th:unless="${action == 'ModifierClient'}">Formulaire d'Ajout</h2>
+
+		<div>
+			<form action="#" th:action="@{/{action}(action=${action})}"
+				th:object="${clientform}" method="post">
+
+				<input type="hidden" th:field="*{id}" th:value="*{id}" />
+				
+				 <label for="name">Nom</label> 
+				 <input type="text" th:field="*{name}" id="name" placeholder="nom" />
+					
+				 <label for="firstname">Prénom</label>
+				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" />
+					
+				 <label for="adresse">Adresse</label>
+				  <input type="text" th:field="*{adresse}" id="adresse" 
+				  placeholder="Adresse" />
+				 
+				 <label for="codepostal">Code Postal</label> 
+				  <input type="text" th:field="*{codepostal}" id="codepostal"
+				   placeholder="code postal" />
+					
+				 <label for="ville">Ville</label>
+				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" />
+					
+				 <label for="tel">Téléphone</label>
+				  <input type="text" th:field="*{tel}" id="tel" 
+				  placeholder="Téléphone" /> 
+
+				 <label for="portable">Mobile</label>
+				  <input type="text" th:field="*{portable}" id="portable" 
+				  placeholder="Mobile" /> 
+
+				<button type="submit">Valider</button>
+			</form>
+		</div>
+
+
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+
+
+</body>
+</html>
