@@ -1,16 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 12 déc. 2019 à 22:01
--- Version du serveur :  10.3.16-MariaDB
--- Version de PHP :  7.1.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+﻿-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SET AUTOCOMMIT = 0;
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -38,22 +29,23 @@ CREATE TABLE `client` (
   `code_postal` varchar(50) NOT NULL,
   `ville` varchar(50) NOT NULL,
   `telephone` varchar(50) NOT NULL,
-  `mobile` varchar(50) NOT NULL
+  `mobile` varchar(50) NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `mobile`) VALUES 
-(1, 'RUPPIN', 'Teddy', '1 rue jean', '73000', 'Chambery', '0479548454', '0688545465'),
-(2, 'LINCOLN', 'Abraham', 'rue 1','01000', 'Paris', '0611111111', '0411111111'),
-(3, 'WASHINGTON', 'George', 'rue 2','02000', 'New York', '0622222222', '0422222222'),
-(4, 'KENNEDY', 'John Fidgerald', 'rue 3','03000', 'Chicago', '0633333333', '0433333333'),
-(5, 'TSE TUNG', 'Mao', '1 rue ying', '25', 'Pekin', '0479988454', '0686345465'),
-(6, 'MACRON', 'Emmanuel', 'rue4','01000', 'Paris', '0611511111', '0411115111'),
-(7, 'CHIRAC', 'Jacques', 'rue 5','02000', 'New York', '0622222232', '0422422222'),
-(8, 'SARKOZY', 'Nicolas', 'rue 6','03000', 'Chicago', '0633933333', '0433334533');
+INSERT INTO `client` (`id`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `mobile`, `desactiver`) VALUES 
+(1, 'RUPPIN', 'Teddy', '1 rue jean', '73000', 'Chambery', '0479548454', '0688545465', b'0'),
+(2, 'LINCOLN', 'Abraham', 'rue 1','01000', 'Paris', '0611111111', '0411111111', b'0'),
+(3, 'WASHINGTON', 'George', 'rue 2','02000', 'New York', '0622222222', '0422222222', b'0'),
+(4, 'KENNEDY', 'John Fidgerald', 'rue 3','03000', 'Chicago', '0633333333', '0433333333', b'0'),
+(5, 'TSE TUNG', 'Mao', '1 rue ying', '25', 'Pekin', '0479988454', '0686345465', b'0'),
+(6, 'MACRON', 'Emmanuel', 'rue4','01000', 'Paris', '0611511111', '0411115111', b'0'),
+(7, 'CHIRAC', 'Jacques', 'rue 5','02000', 'New York', '0622222232', '0422422222', b'0'),
+(8, 'SARKOZY', 'Nicolas', 'rue 6','03000', 'Chicago', '0633933333', '0433334533', b'0');
 
 -- --------------------------------------------------------
 
@@ -67,14 +59,15 @@ CREATE TABLE `commande_piece` (
   `id_piece` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
   `date_creation` date NOT NULL,
-  `date_cloture` date DEFAULT NULL
+  `date_cloture` date DEFAULT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `commande_piece` (`id`, `id_user`, `id_piece`, `quantite`, `date_creation`, `date_cloture`) VALUES
-(1, '1', '4', '5', '', NULL),
-(2, '2', '3', '25', '', NULL),
-(3, '3', '2', '45', '', NULL),
-(4, '4', '1', '235', '', NULL);
+INSERT INTO `commande_piece` (`id`, `id_user`, `id_piece`, `quantite`, `date_creation`, `date_cloture`, `desactiver`) VALUES
+(1, '1', '4', '5', '', NULL, b'0'),
+(2, '2', '3', '25', '', NULL, b'0'),
+(3, '3', '2', '45', '', NULL, b'0'),
+(4, '4', '1', '235', '', NULL, b'0');
 
 -- --------------------------------------------------------
 
@@ -87,14 +80,15 @@ CREATE TABLE `commande_vehicule` (
   `id_devis` int(11) DEFAULT NULL,
   `etat` bit(1) DEFAULT b'0',
   `date_creation` date DEFAULT NULL,
-  `date_cloture` date DEFAULT NULL
+  `date_cloture` date DEFAULT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `commande_vehicule` (`id`, `id_devis`, `etat`, `date_creation`, `date_cloture`) VALUES
-(1, '1', b'0', '2020-01-29', NULL),
-(2, '2', b'0', '2020-02-21', NULL),
-(3, '3', b'0', '2020-03-29', NULL),
-(4, '4', b'0', '2020-04-29', NULL);
+INSERT INTO `commande_vehicule` (`id`, `id_devis`, `etat`, `date_creation`, `date_cloture`, `desactiver`) VALUES
+(1, '1', b'0', '2020-01-29', NULL, b'0'),
+(2, '2', b'0', '2020-02-21', NULL, b'0'),
+(3, '3', b'0', '2020-03-29', NULL, b'0'),
+(4, '4', b'0', '2020-04-29', NULL, b'0');
 
 -- --------------------------------------------------------
 
@@ -108,15 +102,16 @@ CREATE TABLE `devis` (
   `id_vehicule` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `date_creation` date NOT NULL,
-  `etatdevis` bit(1) DEFAULT b'0'
+  `etatdevis` bit(1) DEFAULT b'0',
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `devis` (`id`, `id_client`, `id_vehicule`, `id_user`, `date_creation`, `etatdevis`) VALUES
-(1, '1', '1', '1', '2020-01-01', b'0'),
-(2, '2', '2', '2', '2020-01-02', b'0'),
-(3, '3', '3', '3', '2020-01-03', b'1'),
-(4, '4', '4', '4', '2020-01-04', b'1');
+INSERT INTO `devis` (`id`, `id_client`, `id_vehicule`, `id_user`, `date_creation`, `etatdevis`, `desactiver`) VALUES
+(1, '1', '1', '1', '2020-01-01', b'0', b'0'),
+(2, '2', '2', '2', '2020-01-02', b'0', b'0'),
+(3, '3', '3', '3', '2020-01-03', b'1', b'0'),
+(4, '4', '4', '4', '2020-01-04', b'1', b'0');
 
 -- --------------------------------------------------------
 
@@ -129,15 +124,16 @@ CREATE TABLE `facture_devis` (
   `id_devis` int(11) NOT NULL,
   `prixHT` float DEFAULT 0,
   `tauxTVA` float DEFAULT 0.2,
-  `date_creation` date NOT NULL
+  `date_creation` date NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `facture_devis` (`id`, `id_devis`, `prixHT`, `tauxTVA`, `date_creation`) VALUES
-(1, '1', '1000', '0.2', '2020-01-08'),
-(2, '2', '50', '0.2', '2020-01-05'),
-(3, '3', '250', '0.2', '2020-01-04'),
-(4, '4', '680', '0.2', '2020-05-22');
+INSERT INTO `facture_devis` (`id`, `id_devis`, `prixHT`, `tauxTVA`, `date_creation`, `desactiver`) VALUES
+(1, '1', '1000', '0.2', '2020-01-08', b'0'),
+(2, '2', '50', '0.2', '2020-01-05', b'0'),
+(3, '3', '250', '0.2', '2020-01-04', b'0'),
+(4, '4', '680', '0.2', '2020-05-22', b'0');
 
 -- --------------------------------------------------------
 
@@ -149,16 +145,17 @@ CREATE TABLE `facture_fiche` (
   `id` int(11) NOT NULL,
   `id_fiche` int(11) NOT NULL,
   `prixHT` float DEFAULT 0,
-  `tauxTVA` float DEFAULT 0.2
+  `tauxTVA` float DEFAULT 0.2,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
-INSERT INTO `facture_fiche` (`id`, `id_fiche`, `prixHT`, `tauxTVA`) VALUES
-(1, '1', '45', '0.2'),
-(2, '2', '58', '0.2'),
-(3, '3', '15', '0.2'),
-(4, '4', '23', '0.2');
+INSERT INTO `facture_fiche` (`id`, `id_fiche`, `prixHT`, `tauxTVA`, `desactiver`) VALUES
+(1, '1', '45', '0.2', b'0'),
+(2, '2', '58', '0.2', b'0'),
+(3, '3', '15', '0.2', b'0'),
+(4, '4', '23', '0.2', b'0');
 
 -- --------------------------------------------------------
 
@@ -173,15 +170,17 @@ CREATE TABLE `fiche` (
   `etatfiche` bit(1) DEFAULT b'0',
   `id_priorite` int(11) NOT NULL,
   `Date_creation` date NOT NULL,
-  `Date_cloture` date DEFAULT NULL
+  `Date_cloture` date DEFAULT NULL,
+`description`   varchar(200),
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `fiche` (`id`, `id_client`, `id_user`, `etatfiche`, `id_priorite`, `Date_creation`, `Date_cloture`) VALUES
-(1, '5', '1', b'0', '1', '2020-01-15', NULL),
-(2, '6', '2', b'0', '2', '2020-01-16', NULL),
-(3, '7', '3', b'0', '3', '2020-01-17', '2020-01-25'),
-(4, '8', '4', b'0', '4', '2020-01-18', '2020-01-26');
+INSERT INTO `fiche` (`id`, `id_client`, `id_user`, `etatfiche`, `id_priorite`, `Date_creation`, `Date_cloture`, `desactiver`) VALUES
+(1, '5', '1', b'0', '1', '2020-01-15', NULL, b'0'),
+(2, '6', '2', b'0', '2', '2020-01-16', NULL, b'0'),
+(3, '7', '3', b'0', '3', '2020-01-17', '2020-01-25', b'0'),
+(4, '8', '4', b'0', '4', '2020-01-18', '2020-01-26', b'0');
 
 -- --------------------------------------------------------
 
@@ -193,17 +192,19 @@ CREATE TABLE `pieces` (
   `id` int(11) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `quantite` int(11) DEFAULT NULL,
-  `date_saisie` date DEFAULT NULL
+  `date_saisie` date DEFAULT NULL,
+ `desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `pieces` (`id`, `libelle`,`quantite`,`date_saisie`) VALUES
-(1, 'moteurM1', '10', '2020-01-04'),
-(2, 'pneuP1 ', '20', '2020-01-05'),
-(3, 'siegeS1 ', '30', '2020-01-14'),
-(4, 'couroieC1', '10', '2020-01-24'),
-(5, 'vitreVi1 ', '20', '2020-01-16'),
-(6, 'volantVo1 ', '30', '2020-01-08');
+INSERT INTO `pieces` (`id`, `libelle`,`quantite`,`date_saisie`, `desactiver`) VALUES
+(1, 'moteurM1', '10', '2020-01-04', b'0'),
+(2, 'pneuP1 ', '20', '2020-01-05', b'0'),
+(3, 'siegeS1 ', '30', '2020-01-14', b'0'),
+(4, 'couroieC1', '10', '2020-01-24', b'0'),
+(5, 'vitreVi1 ', '20', '2020-01-16', b'0'),
+(6, 'volantVo1 ', '30', '2020-01-08', b'0');
+
 
 
 -- --------------------------------------------------------
@@ -214,14 +215,15 @@ INSERT INTO `pieces` (`id`, `libelle`,`quantite`,`date_saisie`) VALUES
 
 CREATE TABLE `priorite` (
   `id` int(11) NOT NULL,
-  `libelle` varchar(50) NOT NULL
+  `libelle` varchar(50) NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `priorite` (`id`, `libelle`) VALUES
-(1, 'tres urgent'),
-(2, 'urgent'),
-(3, 'normal'),
-(4, 'non prioritaire');
+INSERT INTO `priorite` (`id`, `libelle`, `desactiver`) VALUES
+(1, 'tres urgent', b'0'),
+(2, 'urgent', b'0'),
+(3, 'normal', b'0'),
+(4, 'non prioritaire', b'0');
 
 -- --------------------------------------------------------
 
@@ -231,19 +233,20 @@ INSERT INTO `priorite` (`id`, `libelle`) VALUES
 
 CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `profil`
 --
 
-INSERT INTO `profil` (`id`, `name`) VALUES
-(1, 'admin'),
-(2, 'chef d atelier'),
-(3, 'mecanicien'),
-(4, 'magasinier'),
-(5, 'commercial');
+INSERT INTO `profil` (`id`, `name`, `desactiver`) VALUES
+(1, 'admin', b'0'),
+(2, 'chef d atelier', b'0'),
+(3, 'mecanicien', b'0'),
+(4, 'magasinier', b'0'),
+(5, 'commercial', b'0');
 
 -- --------------------------------------------------------
 
@@ -254,6 +257,7 @@ INSERT INTO `profil` (`id`, `name`) VALUES
 CREATE TABLE `profil_user` (
   `id_user` int(11) NOT NULL,
   `id_profil` int(11) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -280,15 +284,16 @@ CREATE TABLE `tache` (
   `id_priorite` int(11) NOT NULL,
   `id_piece` int(11) NOT NULL,
   `qte` int(11) DEFAULT 0,
-  `etattache` bit(1) DEFAULT b'0'
+  `etattache` bit(1) DEFAULT b'0',
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `tache` (`id`, `commentaire`, `id_user`, `id_fiche`, `id_priorite`, `id_piece`, `qte`, `etattache`) VALUES 
-(1, 'changer le moteur', '1', '1', '1', '1', '5', b'0'),
-(2, 'changer les sieges', '2', '2', '1', '1', '25', b'0'),
-(3, 'changer les vitres', '3', '3', '1', '1', '15', b'1'),
-(4, 'passer l\'aspirateur', '4', '4', '1', '1', '85', b'1');
+INSERT INTO `tache` (`id`, `commentaire`, `id_user`, `id_fiche`, `id_priorite`, `id_piece`, `qte`, `etattache`, `desactiver`) VALUES 
+(1, 'changer le moteur', '1', '1', '1', '1', '5', b'0', b'0'),
+(2, 'changer les sieges', '2', '2', '1', '1', '25', b'0', b'0'),
+(3, 'changer les vitres', '3', '3', '1', '1', '15', b'1', b'0'),
+(4, 'passer l\'aspirateur', '4', '4', '1', '1', '85', b'1', b'0');
 
 -- --------------------------------------------------------
 
@@ -301,18 +306,19 @@ CREATE TABLE `users` (
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `login` varchar(15) NOT NULL,
-  `pwd` varchar(10) NOT NULL
+  `pwd` varchar(10) NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `lastname`, `firstname`, `login`, `pwd`) VALUES
-(1, 'DURAND', 'Jean', 'JDURAND', '1234'),
-(2, 'MARTIN', 'Jeanne', 'JMARTIN', '1234'),
-(3, 'RASTA', 'Maxime', 'MRASTA', '5678'),
-(4, 'MIRTE', 'Manon', 'MMIRTE', '5678');
+INSERT INTO `users` (`id`, `lastname`, `firstname`, `login`, `pwd`, `desactiver`) VALUES
+(1, 'DURAND', 'Jean', 'JDURAND', '1234', b'0'),
+(2, 'MARTIN', 'Jeanne', 'JMARTIN', '1234', b'0'),
+(3, 'RASTA', 'Maxime', 'MRASTA', '5678', b'0'),
+(4, 'MIRTE', 'Manon', 'MMIRTE', '5678', b'0');
 
 -- --------------------------------------------------------
 
@@ -326,18 +332,19 @@ CREATE TABLE `vehicule` (
   `modele` varchar(50) NOT NULL,
   `quantite` int(11) NOT NULL,
   `prixHT` float DEFAULT 0,
-  `date_creation` date NOT NULL
+  `date_creation` date NOT NULL,
+`desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
-INSERT INTO `vehicule` (`id`, `marque`, `modele`,`quantite`,  `prixHT`, `date_creation`) VALUES
-(1, 'renault','megane', '10', '15000', '2020-01-04'),
-(2, 'renault','scenic', '20', '23500', '2020-01-05'),
-(3, 'renault','laguna', '30', '38000', '2020-01-06'),
-(4, 'peugeot','208', '10', '12000', '2020-01-07'),
-(5, 'peugeot','308', '20', '21500', '2020-01-08'),
-(6, 'peugeot','508', '10', '48000', '2020-01-09');
+INSERT INTO `vehicule` (`id`, `marque`, `modele`,`quantite`,  `prixHT`, `date_creation`, `desactiver`) VALUES
+(1, 'renault','megane', '10', '15000', '2020-01-04', b'0'),
+(2, 'renault','scenic', '20', '23500', '2020-01-05', b'0'),
+(3, 'renault','laguna', '30', '38000', '2020-01-06', b'0'),
+(4, 'peugeot','208', '10', '12000', '2020-01-07', b'0'),
+(5, 'peugeot','308', '20', '21500', '2020-01-08', b'0'),
+(6, 'peugeot','508', '10', '48000', '2020-01-09', b'0');
 
 
 
