@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion De Mon Ecole'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container">
+		<table border="1" th:unless="${action == 'ModifierUser'}">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Login</th>
+					<th>Password</th>
+					<th>Profils</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${listeuser}">
+					<td><a
+						th:href="@{/afficherModifierUser/{id}(id=${user.id})}"
+						th:text="${user.id}"></a></td>
+					<td th:text="${user.nom}" />
+					<td th:text="${user.prenom}" />
+					<td th:text="${user.login}" />
+					<td th:text="${user.pwd}" />
+					<td >
+						<ul th:each=" profil : ${user.profils}">
+							<li th:text="${profil.name}"></li>
+						</ul>
+						
+					</td>
+					
+
+
+				<td><a th:href="@{/DesactiverUser/{id}(id=${user.id})}"
+					th:text="'Desactiver'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 th:if="${action == 'ModifierUser'}">
+ <a	th:href="@{/afficherCreerUser}" th:text="'Formulaire de Modification'"></a>
+ </h2>
+ <h2 th:unless="${action == 'ModifierUser'}">Formulaire d'Ajout</h2>
+ 
+ <div>
+	  <form action="#" th:action="@{/{action}(action=${action})}" 
+	  th:object="${userform}"   method="post">
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+	    	
+	    	<label for="nom">Nom</label>
+	   		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom"/>
+	   		<label for="prenom">Prénom</label>
+	   		<input type="text" th:field="*{prenom}" id="prenom" 
+	   		placeholder="Prenom"/>
+	   		<label for="login">Login</label>
+	   		<input type="text" th:field="*{login}" id="login" 
+	   		placeholder="Login"/>
+	   		
+	   		<label for="pwd">Password HT</label>
+	   		<input type="text" th:field="*{pwd}" id="pwd" 
+	   		placeholder="Password"/>
+	   		<ul>
+       			<li th:each="profil : ${listeprofil}">
+            		<input th:checked="true" type="checkbox" name="profil" th:value="${profil.name}"/>
+            		<label th:text="${profil.name}"></label>
+       			 </li>
+    		</ul>
+
+	   	
+	   <button  type="submit">Valider</button>
+	</form>
+ </div>
+
+
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</body>
+</html>
