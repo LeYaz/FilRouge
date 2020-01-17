@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+ <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+          
+            <a	class="navbar-brand" th:href="@{/afficherCreerProf}" 
+            th:text="'Gestion des Professeurs'"></a>
+            
+             <a	class="navbar-brand" th:href="@{/afficherCreerClasse}" 
+            th:text="'Gestion des Classes'"></a>
+            
+             <a	class="navbar-brand" th:href="@{/afficherCreerEleve}" 
+            th:text="'Gestion des Elèves'"></a>
+            
+             <a	class="navbar-brand" th:href="@{/afficherCreerMatiere}" 
+            th:text="'Gestion des Matieres'"></a>
+            
+             <a	class="navbar-brand" th:href="@{/afficherCreerNote}" 
+            th:text="'Gestion des Notes'"></a>
+ 
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active">
+              
+              <a	class="navbar-brand" th:href="@{/afficherCreerProf}" 
+            th:text="'Gestion des Professeurs'"></a></li>
+            <li class="active">
+            
+              <a	class="navbar-brand" th:href="@{/afficherCreerClasse}" 
+            th:text="'Gestion des Classes'"></a></li> 
+            <li class="active">
+            
+              <a	class="navbar-brand" th:href="@{/afficherCreerEleve}" 
+            th:text="'Gestion des Elèves'"></a></li>
+            <li class="active"></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+       
+ </div>
+ </body>
+
+ 
