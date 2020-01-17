@@ -78,7 +78,7 @@ public class ClientController {
 		return this.getAffiche(pmodel);
 	}
 	
-	
+	/*
 	@GetMapping("/DesactiverClient/{id}")
 	public String getSupprimer(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);
@@ -86,7 +86,7 @@ public class ClientController {
 			serviceclient.desactiverClient(pclient);;
 		}
 		return this.getAffiche(pmodel);
-	}
+	}*/
 	
 	
 	@GetMapping("/afficherModifierClient/{id}")
