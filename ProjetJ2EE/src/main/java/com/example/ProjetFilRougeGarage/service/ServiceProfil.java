@@ -55,6 +55,7 @@ public class ServiceProfil implements iServiceProfil {
 		
 	}
 
+	@Transactional 
 	@Override
 	public Profil rechercherParNom(String pname) {
 		// TODO Auto-generated method stub
