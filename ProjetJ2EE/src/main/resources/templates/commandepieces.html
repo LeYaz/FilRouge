@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion De Mon Ecole'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container">
+		<table border="1" th:unless="${action == 'ModifierUser'}">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Quantite</th>
+					<th>Date de création</th>
+					<th>Date de cloture</th>
+					<th>User</th>
+					<th>Piece</th>
+					<th></th>	
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="commande : ${listecommandepiece}">
+					<td><a
+						th:href="@{/afficherModifierCommandePiece/{id}(id=${commande.id})}"
+						th:text="${commande.id}"></a></td>
+					<td th:text="${commande.quantite}" />
+					<td th:text="${commande.date_creation}" />
+					<td th:text="${commande.date_cloture}" />
+					<td th:text="${commande.user.nom}" />
+					<td th:text="${commande.piece.libelle}" />
+					
+
+
+				<td><a th:href="@{/DesactiverCommandePiece/{id}(id=${commande.id})}"
+					th:text="'Desactiver'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 th:if="${action == 'ModifierCommandePiece'}">
+ <a	th:href="@{/afficherCreerCommandePiece}" th:text="'Formulaire de Modification'"></a>
+ </h2>
+ <h2 th:unless="${action == 'ModifierCommandePiece'}">Formulaire d'Ajout</h2>
+ 
+ <div>
+	  <form action="#" th:action="@{/{action}(action=${action})}" 
+	  th:object="${commandepieceform}"   method="post">
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+	    	
+	    	<label for="quantite">Quantité</label>
+	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="Quantité"/>
+	   		<label for="date_creation">Date de création</label>
+	   		<input type="text" th:field="*{date_creation}" id="date_creation" 
+	   		placeholder="Date de création"/>
+	   		<label for="date_cloture">Date de cloture</label>
+	   		<input type="text" th:field="*{date_cloture}" id="date_cloture" 
+	   		placeholder="Date de cloture"/>
+	   		
+	   		<select th:field="*{user}">
+			    <option th:each="puser :${listeuser}" 
+			    	th:value="${puser.id}" th:utext="${puser.nom}"/>
+			</select>
+			
+			<select th:field="*{piece}">
+			    <option th:each="ppiece :${listepiece}" 
+			    	th:value="${ppiece.id}" th:utext="${ppiece.libelle}"/>
+			</select>
+
+	   	
+	   <button  type="submit">Valider</button>
+	</form>
+ </div>
+
+
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</body>
+</html>
