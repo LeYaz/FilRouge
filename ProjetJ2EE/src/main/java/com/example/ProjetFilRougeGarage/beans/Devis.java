@@ -50,6 +50,9 @@ public class Devis {
 	@Column(name="etatdevis", nullable=true)
 	private Boolean etatdevis;
 
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -102,6 +105,14 @@ public class Devis {
 	public String toString() {
 		return "Devis [id=" + id + ", client=" + client + ", vehicule=" + vehicule + ", user=" + user
 				+ ", datecreation=" + datecreation + ", etatdevis=" + etatdevis + "]";
+	}
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
 	}
 
 	

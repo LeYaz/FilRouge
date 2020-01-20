@@ -43,7 +43,7 @@ public class ServiceVehicule implements IServiceVehicule {
 	@Transactional
 	@Override
 	public void desactiverVehicule(Vehicule vehicule) {
-		// TODO Auto-generated method stub
+		daoVehicule.save(vehicule);
 		
 	}
 
