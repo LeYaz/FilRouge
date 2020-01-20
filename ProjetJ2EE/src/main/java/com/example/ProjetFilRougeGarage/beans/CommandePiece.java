@@ -29,6 +29,19 @@ public class CommandePiece {
 	@ManyToOne
 	@JoinColumn(name = "id_piece", nullable = false)
 	private Piece piece;
+	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
+	
+	
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
 
 	public Integer getId() {
 		return id;
