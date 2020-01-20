@@ -2,6 +2,7 @@ package com.example.ProjetFilRougeGarage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
@@ -119,7 +120,10 @@ class TestServiceUser {
 	
 	@Test
 	void testDesactiverUser() {
-		fail("Not yet implemented");
+		User user = serviceuser.rechercherUserId(pId);
+		user.setDesactiver(false);
+		serviceuser.desactiverUser(user);
+		assertTrue(serviceuser.rechercherUserId(pId).getDesactiver());
 	}
 
 
