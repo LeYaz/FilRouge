@@ -27,10 +27,10 @@
 	 	<tr th:each="fiche : ${listefiche}">
 	 		<td >
 	 		<a	th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
-	 		<td th:text="${fiche.client.id}"/>
-	 		<td th:text="${fiche.user.id}"/>
+	 		<td th:text="${fiche.client.name}"/>
+	 		<td th:text="${fiche.user.nom}"/>
 	 		<td th:text="${fiche.etatfiche}"/>
-	 		<td th:text="${fiche.priorite.id}"/>
+	 		<td th:text="${fiche.priorite.libelle}"/>
 	 		<td th:text="${fiche.datecreation}"/>
 	 		<td th:text="${fiche.datecloture}"/>
 	 		<td th:text="${fiche.description}"/>
@@ -41,7 +41,8 @@
  </table>
  
  <h2 th:if="${action == 'ModifierFiche'}">
- <a	th:href="@{/afficherCreerFiche}" th:text="'Formulaire de Modification'"></a>
+ <a	th:href="@{/afficherCreerFiche}" 
+ th:text="'Formulaire de Modification'"></a>
  </h2>
  <h2 th:unless="${action == 'ModifierFiche'}">Formulaire d'Ajout</h2>
  
@@ -51,19 +52,22 @@
 	  
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	  		
+	  		<label for="select">Client</label>
 	  		<select th:field="*{client}">
 			    <option th:each="pclient :${listeclient}" 
-			    	th:value="${pclient.id}" th:utext="${pclient.id}"/>
+			    	th:value="${pclient.name}" th:utext="${pclient.name}"/>
 			</select>
 			
+			<label for="select">Utilisateur</label>
 			<select th:field="*{user}">
 			    <option th:each="puser :${listeuser}" 
-			    	th:value="${puser.id}" th:utext="${puser.id}"/>
+			    	th:value="${puser.nom}" th:utext="${puser.nom}"/>
 			</select>
 			
+			<label for="select">Priorite</label>
 			<select th:field="*{priorite}">
 			    <option th:each="ppriorite :${listepriorite}" 
-			    	th:value="${ppriorite.id}" th:utext="${ppriorite.id}"/>
+			    	th:value="${ppriorite.libelle}" th:utext="${ppriorite.libelle}"/>
 			</select>
 	    	
 	   		

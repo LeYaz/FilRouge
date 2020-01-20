@@ -79,8 +79,8 @@ public class FicheController {
 	@GetMapping("/afficherCreerFiche")
 	public String getAffiche(Model pmodel) {
 		List<Fiche> lfiche = servicefiche.rechercherFicheActive();
-		List<Client> lclient = serviceclient.rechercheClient();
-		List<User> luser = serviceuser.rechercherUser();
+		List<Client> lclient = serviceclient.rechercheClientActive();
+		List<User> luser = serviceuser.rechercherUserActive();
 		List<Priorite> lpriorite = servicepriorite.rechercherPriorite();
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("listeuser", luser);

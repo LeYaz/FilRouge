@@ -22,10 +22,11 @@ public class FicheForm {
 		@NotEmpty
 		private String datecreation;
 
-		@NotEmpty
+		
 		private String datecloture;
 		
 		private String description;
+		
 		
 		private String desactiver;
 

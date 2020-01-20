@@ -1,7 +1,6 @@
 package com.example.ProjetFilRougeGarage.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.beans.Devis;
-import com.example.ProjetFilRougeGarage.beans.Piece;
 import com.example.ProjetFilRougeGarage.beans.User;
 import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.DevisForm;

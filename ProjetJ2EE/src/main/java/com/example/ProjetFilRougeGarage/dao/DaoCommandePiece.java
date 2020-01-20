@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.example.ProjetFilRougeGarage.beans.CommandePiece;
-import com.example.ProjetFilRougeGarage.beans.User;
 
 public interface DaoCommandePiece extends JpaRepository<CommandePiece, Integer> {
 	@Query("select c from CommandePiece c where c.desactiver = false")
