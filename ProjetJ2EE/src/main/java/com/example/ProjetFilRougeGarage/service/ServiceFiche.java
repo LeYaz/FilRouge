@@ -10,7 +10,7 @@ import com.example.ProjetFilRougeGarage.beans.Fiche;
 import com.example.ProjetFilRougeGarage.dao.DaoFiche;
 
 @Service
-public class ServiceTache implements iServiceFiche {
+public class ServiceFiche implements iServiceFiche {
 
 	
 	@Autowired
