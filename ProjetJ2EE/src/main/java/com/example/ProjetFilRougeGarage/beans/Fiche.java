@@ -42,6 +42,9 @@ public class Fiche {
 	@Temporal(TemporalType.DATE)
 	@Column(name="Date_cloture", nullable=false)
 	private Date datecloture;
+	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
 
 	public Integer getId() {
 		return id;
