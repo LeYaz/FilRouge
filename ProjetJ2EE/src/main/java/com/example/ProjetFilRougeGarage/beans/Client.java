@@ -1,24 +1,14 @@
 package com.example.ProjetFilRougeGarage.beans;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.NamedQueries;
-//import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-/*@NamedQueries({
-		@NamedQuery( name = "Client.findAll", query = "SELECT c FROM Client AS c" ),
-		@NamedQuery(name="Client.findByName", query="SELECT c FROM Client AS c WHERE c.name like ?1")
-})*/
 
 public class Client {
 	@Id 
@@ -46,18 +36,8 @@ public class Client {
 	@Column(name="mobile", length=50, nullable=false)
 	private String portable;
 	
-	/*@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-	private List<Devis> listedevis;
-	
-
-	
-	public List<Devis> getListedevis() {
-		return listedevis;
-	}
-
-	public void setListedevis(List<Devis> listedevis) {
-		this.listedevis = listedevis;
-	}*/
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
 
 	public Integer getId() {
 		return id;
@@ -121,6 +101,14 @@ public class Client {
 
 	public void setPortable(String portable) {
 		this.portable = portable;
+	}
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
 	}
 
 

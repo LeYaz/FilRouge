@@ -1,5 +1,6 @@
 package com.example.ProjetFilRougeGarage.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class Priorite {
 	private Integer id;
 	
 	private String libelle;
+	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
 
 	public Integer getId() {
 		return id;
@@ -32,8 +36,13 @@ public class Priorite {
 		this.libelle = libelle;
 	}
 
-	@Override
-	public String toString() {
-		return "Priorite [id=" + id + ", libelle=" + libelle + "]";
+	public Boolean getDesactiver() {
+		return desactiver;
 	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
+	
 }

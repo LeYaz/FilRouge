@@ -17,7 +17,18 @@ public class Profil {
 	@Column(name="name", length = 50, nullable = false)
 	private String name;
 	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
 	
+	
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
 	public Integer getId() {
 		return id;
 	}
