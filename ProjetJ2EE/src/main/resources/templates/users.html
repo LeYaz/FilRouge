@@ -67,7 +67,7 @@
 	   		placeholder="Password"/>
 	   		<ul>
        			<li th:each="profil : ${listeprofil} ">
-            		<input th:checked="true" type="checkbox" th:name="profils" th:value="${profil.id}"/>
+            		<input type="checkbox" th:name="profils" th:value="${profil.id}"/>
             		<label th:text="${profil.name}"></label>
        			 </li>
     		</ul>
