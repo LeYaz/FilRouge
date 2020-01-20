@@ -49,13 +49,14 @@ public class UserController {
 		puser.setNom(userform.getNom());
 		puser.setPrenom(userform.getPrenom());
 		puser.setPwd(userform.getPwd());
+		puser.setDesactiver(false);
 
 		return puser;
 	}
 
 	@GetMapping("/afficherCreerUser")
 	public String getAffiche(Model pmodel) {
-		List<User> luser = serviceuser.rechercherUser();
+		List<User> luser = serviceuser.rechercherUserActive();
 		List<Profil> lprofil = serviceprofil.rechercherProfil();
 
 		pmodel.addAttribute("listeuser", luser);

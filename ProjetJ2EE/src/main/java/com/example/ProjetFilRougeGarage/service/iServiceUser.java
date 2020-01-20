@@ -11,4 +11,5 @@ public interface iServiceUser {
 	public void creerUser(final User puser);
 	public void modifierUser(final User puser);
 	public void desactiverUser(final User puser);
+	public List<User> rechercherUserActive();
 }

@@ -39,6 +39,17 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="ID_PROFIL")  ) 
 	private List<Profil> profils;
 	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
+	
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
 	public List<Profil> getProfils() {
 		return profils;
 	}
