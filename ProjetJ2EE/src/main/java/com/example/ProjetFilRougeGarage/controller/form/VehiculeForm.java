@@ -10,17 +10,13 @@ public class VehiculeForm {
 
 	
 	private Integer id;
-	
 	@NotEmpty
 	private String modele;
 	@NotEmpty
-
 	private String quantite;
 	@NotEmpty
-
 	private String prixht;
 	@NotEmpty
-
 	private String datecreation;
 	public Integer getId() {
 		return id;
