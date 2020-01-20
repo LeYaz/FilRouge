@@ -1,6 +1,6 @@
 package com.example.ProjetFilRougeGarage.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -34,13 +34,6 @@ public class ServicePiece implements iServicePiece {
 	@Transactional
 	@Override
 	public List<Piece> recherchePiece() {
-//		List<Piece> lpiece = daopiece.findAll();
-//		
-//		for(Piece p : lpiece) {
-//			if(p.getDesactiver()){
-//			lpiece.remove(p);
-//			}
-//		}
 		return daopiece.findAll();
 	}
 
@@ -64,7 +57,7 @@ public class ServicePiece implements iServicePiece {
 		// TODO Auto-generated method stub
 		daopiece.save(ppiece);
 	}
-
+	@Transactional
 	@Override
 	public void desactiverPiece(Piece piece) {
 	

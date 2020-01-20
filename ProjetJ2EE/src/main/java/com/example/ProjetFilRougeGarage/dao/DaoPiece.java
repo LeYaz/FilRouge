@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.ProjetFilRougeGarage.beans.Piece;
 
 public interface DaoPiece extends JpaRepository<Piece, Integer> {
-	@Query("select p from Piece p where desactiver = true")
+	@Query("select p from Piece p where p.desactiver = false")
 	public List<Piece> listActive();
 
 }

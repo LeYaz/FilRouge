@@ -39,7 +39,7 @@ private iServicePiece servicepiece;
 	
 	@GetMapping("/afficherCreerPiece")
 	public String getAffiche(Model pmodel) {
-		List<Piece> lpiece = servicepiece.recherchePiece();
+		List<Piece> lpiece = servicepiece.recherchePieceActive();
 		
 		pmodel.addAttribute("listepiece", lpiece);
 		
