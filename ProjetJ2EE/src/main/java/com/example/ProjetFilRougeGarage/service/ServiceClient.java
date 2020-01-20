@@ -17,6 +17,12 @@ public class ServiceClient implements IServiceClient {
 	
 	@Transactional
 	@Override
+	public List<Client> rechercheClientActive() {
+		return daoclient.listActive();
+	}
+	
+	@Transactional
+	@Override
 	public List<Client> rechercheClient() {
 		return daoclient.findAll();
 	}
@@ -42,7 +48,7 @@ public class ServiceClient implements IServiceClient {
 	@Transactional
 	@Override
 	public void desactiverClient(Client pclient) {
-		//daoclient.delete(pclient);
+		daoclient.save(pclient);
 	}
 
 }
