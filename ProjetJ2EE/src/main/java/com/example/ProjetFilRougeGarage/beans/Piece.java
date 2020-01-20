@@ -23,6 +23,8 @@ public class Piece {
 	private Integer quantite;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_saisie;
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
 	public Integer getId() {
 		return id;
 	}
@@ -46,6 +48,12 @@ public class Piece {
 	}
 	public void setDate_saisie(Date date_saisie) {
 		this.date_saisie = date_saisie;
+	}
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
 	}
 	
 }
