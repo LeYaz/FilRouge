@@ -23,6 +23,10 @@ public class Vehicule {
 	@Column(name="modele", length = 50, nullable = false)
 	private String modele;
 	
+	@Column(name="marque", length = 50, nullable = false)
+	private String marque;
+	
+	
 	@Column(name="quantite", nullable = false)
 	private Integer quantite;
 	
@@ -33,6 +37,9 @@ public class Vehicule {
 	@Column(name="date_creation", nullable=false)
 	private Date datecreation;
 	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
+
 
 	public Integer getId() {
 		return id;
@@ -74,10 +81,28 @@ public class Vehicule {
 		this.datecreation = datecreation;
 	}
 
+
+
+	public String getMarque() {
+		return marque;
+	}
+
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
 	@Override
 	public String toString() {
-		return "Vehicule [id=" + id + ", modele=" + modele + ", quantite=" + quantite + ", prixht=" + prixht
-				+ ", datecreation=" + datecreation + "]";
+		return "Vehicule [id=" + id + ", modele=" + modele + ", marque=" + marque + ", quantite=" + quantite
+				+ ", prixht=" + prixht + ", datecreation=" + datecreation + ", desactiver=" + desactiver + "]";
 	}
 	
 }

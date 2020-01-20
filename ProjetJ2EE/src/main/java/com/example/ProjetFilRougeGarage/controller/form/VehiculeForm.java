@@ -18,6 +18,12 @@ public class VehiculeForm {
 	private String prixht;
 	@NotEmpty
 	private String datecreation;
+	@NotEmpty
+	private String marque;
+	
+	private String desactiver;
+
+	
 	public Integer getId() {
 		return id;
 	}
@@ -47,6 +53,18 @@ public class VehiculeForm {
 	}
 	public void setDatecreation(String datecreation) {
 		this.datecreation = datecreation;
+	}
+	public String getMarque() {
+		return marque;
+	}
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+	public String getDesactiver() {
+		return desactiver;
+	}
+	public void setDesactiver(String desactiver) {
+		this.desactiver = desactiver;
 	}
 	
 }
