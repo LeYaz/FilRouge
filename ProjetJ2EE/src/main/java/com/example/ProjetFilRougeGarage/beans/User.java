@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class User {
 	@Column(name="pwd", length=10, nullable=false)
 	private String pwd;
 	
-	@ManyToMany 
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable( name="PROFIL_USER",  
 	joinColumns=@JoinColumn(name="ID_USER"), 
 	inverseJoinColumns=@JoinColumn(name="ID_PROFIL")  ) 
