@@ -5,27 +5,29 @@ import javax.validation.constraints.NotEmpty;
 public class ClientForm {
 
 	private Integer id;
-	
+
 	@NotEmpty
 	private String name;
-	
+
 	@NotEmpty
 	private String firstname;
-	
+
 	@NotEmpty
 	private String adresse;
-	
+
 	@NotEmpty
 	private String codepostal;
-	
+
 	@NotEmpty
 	private String ville;
-	
+
 	@NotEmpty
 	private String tel;
-	
+
 	@NotEmpty
 	private String portable;
+
+	private String desactiver;
 
 	public Integer getId() {
 		return id;
@@ -90,7 +92,13 @@ public class ClientForm {
 	public void setPortable(String portable) {
 		this.portable = portable;
 	}
-	
-	
-	
+
+	public String getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(String desactiver) {
+		this.desactiver = desactiver;
+	}
+
 }

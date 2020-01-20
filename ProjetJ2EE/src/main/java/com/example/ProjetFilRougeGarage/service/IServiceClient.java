@@ -10,4 +10,5 @@ public interface IServiceClient {
 	public void creerClient(final Client pclient);
 	public void modifierClient(final Client pclient);
 	public void desactiverClient(final Client pclient);
+	List<Client> rechercheClientActive();
 }

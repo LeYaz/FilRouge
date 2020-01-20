@@ -34,6 +34,7 @@ public class ClientController {
 		cl.setVille(clientform.getVille());
 		cl.setTel(clientform.getTel());
 		cl.setPortable(clientform.getPortable());
+		cl.setDesactiver(Boolean.valueOf(clientform.getDesactiver()));
 		
 		return cl;
 	}
@@ -41,7 +42,7 @@ public class ClientController {
 	
 	@GetMapping("/afficherCreerClient")
 	public String getAffiche(Model pmodel) {
-		List<Client> lclient = serviceclient.rechercheClient();
+		List<Client> lclient = serviceclient.rechercheClientActive();
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("action", "CreerClient");
 		if(pmodel.containsAttribute("clientform") == false) {
@@ -80,11 +81,10 @@ public class ClientController {
 	
 	
 	@GetMapping("/DesactiverClient/{id}")
-	public String getSupprimer(@PathVariable final Integer id,Model pmodel) {
+	public String getDesativer(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);
-		if(pclient  != null) {
-			serviceclient.desactiverClient(pclient);;
-		}
+		pclient.setDesactiver(true);
+		serviceclient.desactiverClient(pclient);
 		return this.getAffiche(pmodel);
 	}
 	

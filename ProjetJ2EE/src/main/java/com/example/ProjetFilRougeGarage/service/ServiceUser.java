@@ -18,7 +18,6 @@ public class ServiceUser implements iServiceUser {
 	@Transactional
 	@Override
 	public List<User> rechercherUser() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 
@@ -47,7 +46,15 @@ public class ServiceUser implements iServiceUser {
 	@Override
 	public void desactiverUser(User puser) {
 		// TODO Auto-generated method stub
+		puser.setDesactiver(true);
+		dao.save(puser);
 
+	}
+
+	@Override
+	public List<User> rechercherUserActive() {
+		// TODO Auto-generated method stub
+		return dao.listActive();
 	}
 
 }
