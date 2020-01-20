@@ -29,13 +29,16 @@ class TestClient {
 
 	@Test
 	void testRechercheClient() {
-		fail("Not yet implemented");
+		IServiceClient service = new ServiceClient();
+		System.out.println(service.rechercheClient());
+		System.out.println(service.rechercheClient().size());
 	}
 
 	@Test
 	void testRechercheClientId() {
 		IServiceClient service = new ServiceClient();
 		System.out.println(service.rechercheClientId(1));
+
 }
 
 	@Test
@@ -57,7 +60,9 @@ class TestClient {
 
 	@Test
 	void testModifierClient() {
-		fail("Not yet implemented");
+		Client client = serviceclient.rechercheClientId(1);
+		client.setCodepostal("12000");
+		serviceclient.modifierClient(client);
 	}
 
 	@Test
