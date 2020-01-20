@@ -18,7 +18,7 @@ public class ServiceFiche implements iServiceFiche {
 
 	@Transactional
 	@Override
-	public List<Fiche> rechercherFiche() {
+	public List<Fiche> rechercherFicheActive() {
 		return dao.findAll();
 	}
 

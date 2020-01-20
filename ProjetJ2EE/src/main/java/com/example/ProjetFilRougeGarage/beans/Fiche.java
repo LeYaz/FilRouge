@@ -43,6 +43,9 @@ public class Fiche {
 	@Column(name="Date_cloture", nullable=false)
 	private Date datecloture;
 	
+	@Column(name="description", nullable=true)
+	private String description;
+	
 	@Column(name="desactiver" , columnDefinition ="bit(1)")
 	private Boolean desactiver;
 
@@ -102,9 +105,21 @@ public class Fiche {
 		this.datecloture = datecloture;
 	}
 
-	@Override
-	public String toString() {
-		return "Fiche [id=" + id + ", client=" + client + ", user=" + user + ", etatfiche=" + etatfiche + ", priorite="
-				+ priorite + ", datecreation=" + datecreation + ", datecloture=" + datecloture + "]";
+	public String getDescription() {
+		return description;
 	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
+	
 }

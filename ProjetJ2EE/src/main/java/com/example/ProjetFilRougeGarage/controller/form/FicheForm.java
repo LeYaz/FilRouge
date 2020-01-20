@@ -13,7 +13,7 @@ public class FicheForm {
 		@NotEmpty
 		private String user;
 		
-		@NotEmpty
+		
 		private String etatfiche;
 		
 		@NotEmpty
@@ -25,6 +25,7 @@ public class FicheForm {
 		@NotEmpty
 		private String datecloture;
 		
+		private String description;
 		
 		private String desactiver;
 
@@ -96,6 +97,16 @@ public class FicheForm {
 
 		public void setDatecloture(String datecloture) {
 			this.datecloture = datecloture;
+		}
+
+
+		public String getDescription() {
+			return description;
+		}
+
+
+		public void setDescription(String description) {
+			this.description = description;
 		}
 
 

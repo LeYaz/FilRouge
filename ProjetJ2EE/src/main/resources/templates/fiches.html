@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+  	<title th:text="'Gestion Des Fiches'"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+  </head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+ 
+    <div class="container">
+	 <table th:unless="${action == 'ModifierFiche'}">
+	 <thead>
+	 	<tr>
+	 	<th>Id</th>
+	 	<th>Client</th>
+	 	<th>User</th>
+	 	<th>Etat fiche</th>
+	 	<th>Priorite</th>
+	 	<th>Date de creation</th>
+	 	<th>Date de cloture</th>
+	 	<th>Description</th>
+	 	<th>Desactiver</th>
+	 	</tr>
+	 </thead>
+	 <tbody>
+	 	<tr th:each="fiche : ${listefiche}">
+	 		<td >
+	 		<a	th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
+	 		<td th:text="${fiche.client.id}"/>
+	 		<td th:text="${fiche.user.id}"/>
+	 		<td th:text="${fiche.etatfiche}"/>
+	 		<td th:text="${fiche.priorite.id}"/>
+	 		<td th:text="${fiche.datecreation}"/>
+	 		<td th:text="${fiche.datecloture}"/>
+	 		<td th:text="${fiche.description}"/>
+	 		<td><a th:href="@{/DesactiverFiche/{id}(id=${fiche.id})}"
+						th:text="'Desactiver'"></a></td>
+	 	</tr>
+	 </tbody>
+ </table>
+ 
+ <h2 th:if="${action == 'ModifierFiche'}">
+ <a	th:href="@{/afficherCreerFiche}" th:text="'Formulaire de Modification'"></a>
+ </h2>
+ <h2 th:unless="${action == 'ModifierFiche'}">Formulaire d'Ajout</h2>
+ 
+ <div>
+	  <form action="#" th:action="@{/{action}(action=${action})}" 
+	  th:object="${ficheform}"   method="post">
+	  
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+	  		
+	  		<select th:field="*{client}">
+			    <option th:each="pclient :${listeclient}" 
+			    	th:value="${pclient.id}" th:utext="${pclient.id}"/>
+			</select>
+			
+			<select th:field="*{user}">
+			    <option th:each="puser :${listeuser}" 
+			    	th:value="${puser.id}" th:utext="${puser.id}"/>
+			</select>
+			
+			<select th:field="*{priorite}">
+			    <option th:each="ppriorite :${listepriorite}" 
+			    	th:value="${ppriorite.id}" th:utext="${ppriorite.id}"/>
+			</select>
+	    	
+	   		
+	   		<label for="date">Date de Creation</label>
+	   		<input type="date" th:field="*{datecreation}" id="date" 
+	   		placeholder="Date de Creation"/>
+	   		
+	   		<label for="date">Date de Cloture</label>
+	   		<input type="date" th:field="*{datecloture}" id="date" 
+	   		placeholder="Date de Cloture"/>
+	   					
+	   		
+	   <button  type="submit">Valider</button>
+	</form>
+ </div>
+ <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </body>
+</html>
