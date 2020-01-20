@@ -18,7 +18,6 @@ public class ServiceUser implements iServiceUser {
 	@Transactional
 	@Override
 	public List<User> rechercherUser() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 
