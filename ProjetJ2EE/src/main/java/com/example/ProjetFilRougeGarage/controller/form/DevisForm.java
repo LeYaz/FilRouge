@@ -2,49 +2,49 @@ package com.example.ProjetFilRougeGarage.controller.form;
 
 import javax.validation.constraints.NotEmpty;
 
-
-public class VehiculeForm {
-
-
-	
+public class DevisForm {
 	private Integer id;
 	@NotEmpty
-	private String modele;
+
+	private String client;
 	@NotEmpty
-	private String quantite;
+
+	private String vehicule;
 	@NotEmpty
-	private String prixht;
+
+	private String user;
 	@NotEmpty
+
 	private String datecreation;
 	@NotEmpty
-	private String marque;
-	
-	private String desactiver;
 
-	
+	private String etatdevis;
+	@NotEmpty
+
+	private String desactiver;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getModele() {
-		return modele;
+	public String getClient() {
+		return client;
 	}
-	public void setModele(String modele) {
-		this.modele = modele;
+	public void setClient(String client) {
+		this.client = client;
 	}
-	public String getQuantite() {
-		return quantite;
+	public String getVehicule() {
+		return vehicule;
 	}
-	public void setQuantite(String quantite) {
-		this.quantite = quantite;
+	public void setVehicule(String vehicule) {
+		this.vehicule = vehicule;
 	}
-	public String getPrixht() {
-		return prixht;
+	public String getUser() {
+		return user;
 	}
-	public void setPrixht(String prixht) {
-		this.prixht = prixht;
+	public void setUser(String user) {
+		this.user = user;
 	}
 	public String getDatecreation() {
 		return datecreation;
@@ -52,11 +52,11 @@ public class VehiculeForm {
 	public void setDatecreation(String datecreation) {
 		this.datecreation = datecreation;
 	}
-	public String getMarque() {
-		return marque;
+	public String getEtatdevis() {
+		return etatdevis;
 	}
-	public void setMarque(String marque) {
-		this.marque = marque;
+	public void setEtatdevis(String etatdevis) {
+		this.etatdevis = etatdevis;
 	}
 	public String getDesactiver() {
 		return desactiver;

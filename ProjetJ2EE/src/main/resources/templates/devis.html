@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head th:replace="fragments/headerload :: load">
+  	<title th:text="'Gestion des devis'"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+ 
+    <div class="container">
+	 <table th:unless="${action == 'ModifierDevis'}">
+	 <thead>
+	 	<tr>
+	 	<th>Id</th>
+	 	<th>Client</th>
+	 	<th>Vehicule</th>
+	 
+	 	<th>Utilisateur</th>
+	 	<th>Date de création</th>
+	 	<th>Etat du devis</th>
+	 	
+	 	</tr>
+	 </thead>
+	 <tbody>
+	 	<tr th:each="devis : ${listedevis}">
+	 		<td >
+	 		<a	th:href="@{/afficherModifierDevis/{id}(id=${devis.id})}" th:text="${devis.id}"></a></td>
+	 		<td th:text="${devis.client.id}"/>
+	 		<td th:text="${devis.vehicule.id}"/>
+	 		 		<td th:text="${devis.user.id}"/>
+	 	
+	 		<td th:text="${devis.datecreation}"/>
+	 		<td th:text="${devis.etatdevis}"/>
+	 		
+	 		<td>
+	 		<a th:href="@{/DesactiverDevis/{id}(id=${devis.id})}" th:text="'Desactiver'"></a></td>
+	 	</tr>
+	 </tbody>
+ </table>
+ 
+ <h2 th:if="${action == 'ModifierDevis'}">
+ <a	th:href="@{/afficherCreerDevis}" th:text="'Formulaire de Mofication'"></a>
+ </h2>
+ <h2 th:unless="${action == 'ModifierDevis'}">Formulaire d'Ajout</h2>
+ 
+ <div>
+	  <form action="#" th:action="@{/{action}(action=${action})}" 
+	  th:object="${devisform}"   method="post">
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+
+<label for="client">Client</label> <select th:field="*{client}">
+					<option th:each="pclient :${listeclient}" th:value="${pclient.id}"
+						th:utext="${pclient.id}" />
+						</select>
+					<label for="vehicule">Vehicule</label> <select th:field="*{vehicule}">
+					<option th:each="pvehicule :${listevehicule}" th:value="${pvehicule.id}"
+						th:utext="${pvehicule.id}" />
+						</select>
+						<label for="user">User</label> 
+						<select th:field="*{user}">
+					<option th:each="puser :${listeuser}" th:value="${puser.id}"
+						th:utext="${puser.id}" />
+</select>
+<label for="date">Date de creation</label> <input type="date" th:field="*{datecreation}" id="datecreation" placeholder="date de creation" />
+					
+	   <label for="etatdevis">Reglé ?</label> 
+	   <input type="text" th:field="*{etatdevis}" id="etatdevis" placeholder="etat du devis" />
+					
+	   
+	   	
+	   <button  type="submit">Valider</button>
+	</form>
+ </div>
+ <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </body>
+</html>

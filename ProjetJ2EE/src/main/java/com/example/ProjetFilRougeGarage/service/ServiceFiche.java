@@ -12,14 +12,13 @@ import com.example.ProjetFilRougeGarage.dao.DaoFiche;
 @Service
 public class ServiceFiche implements iServiceFiche {
 
-	
 	@Autowired
 	DaoFiche dao;
 
 	@Transactional
 	@Override
-	public List<Fiche> rechercherFiche() {
-		return dao.findAll();
+	public List<Fiche> rechercherFicheActive() {
+		return dao.listActive();
 	}
 
 	@Transactional
@@ -44,6 +43,11 @@ public class ServiceFiche implements iServiceFiche {
 	@Override
 	public void desactiverFiche(Fiche pfiche) {
 		dao.save(pfiche);
+	}
+
+	@Override
+	public List<Fiche> rechercherFiche() {
+		return dao.findAll();
 	}
 
 }

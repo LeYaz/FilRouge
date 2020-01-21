@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.ProjetFilRougeGarage.beans.Piece;
 import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.VehiculeForm;
 import com.example.ProjetFilRougeGarage.service.IServiceVehicule;
@@ -32,6 +33,7 @@ public class VehiculeController {
 		Vehicule pvehicule= new Vehicule();
 		pvehicule.setId(vehiculeform.getId());
 		pvehicule.setModele(vehiculeform.getModele());
+		pvehicule.setMarque(vehiculeform.getMarque());
 		pvehicule.setQuantite(Integer.valueOf(vehiculeform.getQuantite()));
 		pvehicule.setPrixht(Float.valueOf(vehiculeform.getPrixht()));
 		pvehicule.setDatecreation(madate);
@@ -60,6 +62,7 @@ public class VehiculeController {
 			VehiculeForm vehiculeform = new VehiculeForm();
 			vehiculeform.setId(vehicule.getId());
 			vehiculeform.setModele(vehicule.getModele());
+			vehiculeform.setMarque(vehicule.getMarque());
 			vehiculeform.setQuantite(String.valueOf(vehicule.getQuantite()));
 			vehiculeform.setPrixht(String.valueOf(vehicule.getQuantite()));
 			vehiculeform.setDatecreation(new SimpleDateFormat("yyyy-MM-dd").format(vehicule.getDatecreation()));
@@ -68,10 +71,14 @@ public class VehiculeController {
 		return "vehicules";
 	}
 	@GetMapping("/DesactiverVehicule/{id}")
-	public String getSupprimer(@PathVariable final Integer id, Model pmodel) {
-		// On fait quoi ?
-		return null;
+	public String getDesactiver(@PathVariable final Integer id,Model pmodel) {
+		Vehicule pvehicule = serviceVehicule.rechercheVehiculeId(id);
+		pvehicule.setDesactiver(true);
+		serviceVehicule.desactiverVehicule(pvehicule);
+		
+		return this.getAffiche(pmodel);
 	}
+	
 	
 	@PostMapping("/CreerVehicule")
 	public String ajoutProf(@Valid @ModelAttribute VehiculeForm vehiculeform, BindingResult presult, Model pmodel) {
