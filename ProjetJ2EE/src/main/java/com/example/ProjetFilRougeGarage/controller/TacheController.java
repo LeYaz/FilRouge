@@ -81,9 +81,15 @@ public class TacheController {
 	@GetMapping("/afficherModifierTache/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		Tache tache = servicetache.rechercherTacheId(id);
-
+		List<Fiche> lfiches = servicefiche.rechercherFicheActive();
+		List<User> luser = serviceuser.rechercherUser();
+		List<Piece> lpiece = servicepiece.recherchePiece();
+		List<Priorite> lpriorite =servicepriorite.rechercherPriorite();
 		pmodel.addAttribute("listetache", null);
-
+		pmodel.addAttribute("listefiches", lfiches);
+		pmodel.addAttribute("listepriorite", lpriorite);
+		pmodel.addAttribute("listeuser", luser);
+		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "ModifierTache");
 		if (pmodel.containsAttribute("tacheform") == false) {
 			TacheForm tacheform = new TacheForm();
