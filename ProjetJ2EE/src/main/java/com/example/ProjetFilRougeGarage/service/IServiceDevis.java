@@ -11,4 +11,5 @@ public interface IServiceDevis {
 	public void creerDevis(final Devis devis);
 	public void modifierDevis(final Devis devis);
 	public void desactiverDevis(final Devis devis);
+	List<Devis> rechercherDevisActive();
 }
