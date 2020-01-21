@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion Des Classes'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container">
+		<table border="1" th:unless="${action == 'ModifierTache'}">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Commentaire</th>
+					<th>User</th>
+					<th>Fiche</th>
+					<th>Priorite</th>
+					<th>Piece</th>
+					<th>Quantité</th>
+					<th>Etat tâche</th>
+					<th>Desactiver</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tache : ${listetache}">
+					<td><a
+						th:href="@{/afficherModifierTache/{id}(id=${tache.id})}"
+						th:text="${tache.id}"></a></td>
+					<td th:text="${tache.commentaire}" />
+					<td th:text="${tache.user.nom}" />
+					<td th:text="${tache.fiche.id}" />
+					<td th:text="${tache.priorite.libelle}" />
+					<td th:text="${tache.piece.libelle}" />
+					<td th:text="${tache.qte}" />
+					<td th:text="${tache.etattache}" />
+					<!-- <td th:text="${tache.desactiver}"/> -->
+					<td><a th:href="@{/DesactiverTache/{id}(id=${tache.id})}"
+						th:text="'Desactiver'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2 th:if="${action == 'ModifierTache'}">
+			<a th:href="@{/afficherCreerTache}"
+				th:text="'Formulaire de Modification'"></a>
+		</h2>
+		<h2 th:unless="${action == 'ModifierTache'}">Formulaire d'Ajout</h2>
+
+		<div>
+			<form action="#" th:action="@{/{action}(action=${action})}"
+				th:object="${tacheform}" method="post">
+				<input type="hidden" th:field="*{id}" th:value="*{id}" /> <label
+					for="commentaire">Commentaire</label> <input type="text"
+					th:field="*{commentaire}" id="commentaire"
+					placeholder="commentaire" /> <label for="user">Utilisateur</label>
+				<select th:field="*{user}">
+					<option th:each="puser :${listeuser}" th:value="${puser.id}"
+						th:utext="${puser.nom}" />
+				</select> <label for="fiche">Fiche</label> <select th:field="*{fiche}">
+					<option th:each="fiche :${listefiches}" th:value="${fiche.id}"
+						th:utext="${fiche.id}" />
+				</select> <label for="priorite">Priorite</label> <select
+					th:field="*{priorite}">
+					<option th:each="ppriorite :${listepriorite}"
+						th:value="${ppriorite.id}" th:utext="${ppriorite.libelle}" />
+				</select> <label for="piece">Piece</label> <select th:field="*{piece}">
+					<option th:each="ppiece :${listepiece}" th:value="${ppiece.id}"
+						th:utext="${ppiece.libelle}" />
+				</select> <label for="etattache">Etattache</label> <select
+					th:field="*{etattache}">
+
+					<option th:value="true">Vrai</option>
+					<option th:value="false">Faux</option>
+				</select> <label for="qte">Quantite</label> <input type="text"
+					th:field="*{qte}" id="qte" placeholder="qte" /> <input
+					type="hidden" th:field="*{desactiver}" id="desactiver"
+					placeholder="desactiver" />
+
+
+				<button type="submit">Valider</button>
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</body>
+</html>

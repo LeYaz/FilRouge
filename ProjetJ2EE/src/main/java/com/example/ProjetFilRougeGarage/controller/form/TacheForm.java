@@ -23,6 +23,8 @@ public class TacheForm {
 	
 	private String etattache;
 
+	private String desactiver;
+
 	public Integer getId() {
 		return id;
 	}
@@ -85,6 +87,14 @@ public class TacheForm {
 
 	public void setEtattache(String etattache) {
 		this.etattache = etattache;
+	}
+
+	public String getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(String desactiver) {
+		this.desactiver = desactiver;
 	}
 
 	

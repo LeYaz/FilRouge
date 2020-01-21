@@ -3,7 +3,6 @@ package com.example.ProjetFilRougeGarage.service;
 import java.util.List;
 
 import com.example.ProjetFilRougeGarage.beans.Tache;
-import com.example.ProjetFilRougeGarage.beans.User;
 
 public interface iServiceTache {
 	

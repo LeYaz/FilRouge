@@ -3,6 +3,7 @@ package com.example.ProjetFilRougeGarage;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.ProjetFilRougeGarage.beans.Piece;
 import com.example.ProjetFilRougeGarage.service.iServicePiece;
+
 @SpringBootTest
 class TestServicePiece {
 
@@ -39,13 +41,14 @@ class TestServicePiece {
 
 	@Test
 	void testRecherchePieceActive() {
+		List<Piece> lp = pservice.recherchePieceActive();
+		assertNotNull(lp);
 
-	
 	}
 
 	@Test
 	void testRecherchePiece() {
-		
+
 	}
 
 	@Test
@@ -65,21 +68,20 @@ class TestServicePiece {
 
 	@Test
 	void testModifierPiece() {
-	Piece p = pservice.recherchePieceId(5);
-	p.setLibelle("moteur de test");
-	pservice.modifierPiece(p);
-	assertEquals(p.getLibelle(), "moteur de test");
+		Piece p = pservice.recherchePieceId(5);
+		p.setLibelle("moteur de test");
+		pservice.modifierPiece(p);
+		assertEquals(p.getLibelle(), "moteur de test");
 	}
 
 	@Test
 	void testDesactiverPiece() {
-		
-	Piece p = pservice.recherchePieceId(16);
-	p.setDesactiver(true);
-	pservice.desactiverPiece(p);
-	Piece pa=pservice.recherchePieceId(16);
-	assertTrue(pa.getDesactiver());
+
+		Piece p = pservice.recherchePieceId(16);
+		p.setDesactiver(true);
+		pservice.desactiverPiece(p);
+		Piece pa = pservice.recherchePieceId(16);
+		assertTrue(pa.getDesactiver());
 	}
-	
 
 }
