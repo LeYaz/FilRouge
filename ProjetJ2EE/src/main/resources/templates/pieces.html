@@ -25,6 +25,7 @@ th:replace="fragments/headerload :: load">
 	 		<td >
 	 		<a	th:href="@{/afficherModifierPiece/{id}(id=${piece.id})}" 
 	 		th:text="${piece.id}"></a></td>
+	 		<spring:message code="NotEmpty.creation.libelle" />
 	 		<td th:text="${piece.libelle}"/>
 	 		<td th:text="${piece.quantite}"/>
 	 		<td th:text="${piece.date_saisie}"/>
