@@ -8,7 +8,7 @@
 <div th:replace="fragments/header :: header"></div>
  
     <div class="container">
-	 <table th:unless="${action == 'ModifierDevis'}">
+	 <table border = "1" th:unless="${action == 'ModifierDevis'}">
 	 <thead>
 	 	<tr>
 	 	<th>Id</th>
@@ -79,8 +79,8 @@
 													<label for="regle">Reglé ?</label>
 								
 								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis">
-<OPTION value="true">Regle
-<OPTION value="false">Non regle
+<OPTION value="true">Accepté
+<OPTION value="false">Refusé
 
 </SELECT>
 	   

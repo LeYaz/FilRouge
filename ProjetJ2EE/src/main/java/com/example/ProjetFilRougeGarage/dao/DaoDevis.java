@@ -9,6 +9,6 @@ import com.example.ProjetFilRougeGarage.beans.Devis;
 
 
 public interface DaoDevis extends JpaRepository<Devis, Integer> {
-	@Query("select c from Devis c where c.desactiver =false")
+	@Query("select d from Devis d where d.desactiver =false")
 	public List<Devis> listActive();
 }
