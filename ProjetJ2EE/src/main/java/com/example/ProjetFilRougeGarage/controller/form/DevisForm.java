@@ -4,22 +4,20 @@ import javax.validation.constraints.NotEmpty;
 
 public class DevisForm {
 	private Integer id;
-	@NotEmpty
 
+	@NotEmpty
 	private String client;
-	@NotEmpty
 
+	@NotEmpty
 	private String vehicule;
-	@NotEmpty
 
+	@NotEmpty
 	private String user;
-	@NotEmpty
 
-	private String datecreation;
 	@NotEmpty
+	private String datecreation;
 
 	private String etatdevis;
-	@NotEmpty
 
 	private String desactiver;
 	public Integer getId() {

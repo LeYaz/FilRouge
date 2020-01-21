@@ -47,6 +47,11 @@ public class ServiceDevis implements IServiceDevis {
 		daoDevis.save(pdevis);
 		
 	}
+	@Override
+	public List<Devis> rechercherDevisActive() {
+		// TODO Auto-generated method stub
+		return daoDevis.listActive();
+	}
 
 
 

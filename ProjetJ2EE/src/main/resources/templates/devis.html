@@ -25,12 +25,18 @@
 	 	<tr th:each="devis : ${listedevis}">
 	 		<td >
 	 		<a	th:href="@{/afficherModifierDevis/{id}(id=${devis.id})}" th:text="${devis.id}"></a></td>
-	 		<td th:text="${devis.client.id}"/>
-	 		<td th:text="${devis.vehicule.id}"/>
-	 		 		<td th:text="${devis.user.id}"/>
-	 	
-	 		<td th:text="${devis.datecreation}"/>
+	 		<td th:text="${devis.client.name}"/>
+	 		<td th:text="${devis.vehicule.modele}"/>
+	 		 		<td th:text="${devis.user.nom}"/>
+	 
+	 	 	<td th:text="${devis.datecreation}"/> 
+	 		
+	
 	 		<td th:text="${devis.etatdevis}"/>
+	 		
+	 		
+	 
+	 		
 	 		
 	 		<td>
 	 		<a th:href="@{/DesactiverDevis/{id}(id=${devis.id})}" th:text="'Desactiver'"></a></td>
@@ -48,24 +54,35 @@
 	  th:object="${devisform}"   method="post">
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 
-<label for="client">Client</label> <select th:field="*{client}">
+				<label for="client">Client</label> <select th:field="*{client}">
 					<option th:each="pclient :${listeclient}" th:value="${pclient.id}"
-						th:utext="${pclient.id}" />
+						th:utext="${pclient.name}" />
 						</select>
+						
 					<label for="vehicule">Vehicule</label> <select th:field="*{vehicule}">
 					<option th:each="pvehicule :${listevehicule}" th:value="${pvehicule.id}"
-						th:utext="${pvehicule.id}" />
+						th:utext="${pvehicule.modele}" />
 						</select>
+						
 						<label for="user">User</label> 
 						<select th:field="*{user}">
 					<option th:each="puser :${listeuser}" th:value="${puser.id}"
-						th:utext="${puser.id}" />
-</select>
-<label for="date">Date de creation</label> <input type="date" th:field="*{datecreation}" id="datecreation" placeholder="date de creation" />
+						th:utext="${puser.nom}"  />
+							</select>
+							
+					<label for="date">Date de creation</label>
+ 						<input type="date" th:field="*{datecreation}" id="datecreation" placeholder="aaaa-mm-jj" />
 					
-	   <label for="etatdevis">Reglé ?</label> 
-	   <input type="text" th:field="*{etatdevis}" id="etatdevis" placeholder="etat du devis" />
-					
+		<!--  <label for="etatdevis">Reglé ?</label> 
+				   <input type="text" th:field="*{etatdevis}" id="etatdevis" placeholder="true/false" />  -->		  
+								
+													<label for="regle">Reglé ?</label>
+								
+								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis">
+<OPTION value="true">Regle
+<OPTION value="false">Non regle
+
+</SELECT>
 	   
 	   	
 	   <button  type="submit">Valider</button>

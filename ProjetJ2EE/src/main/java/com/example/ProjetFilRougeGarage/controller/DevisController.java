@@ -40,12 +40,16 @@ public class DevisController {
 	
 	private Devis convertForm(DevisForm devisform) throws Exception {
 		Devis pdevis = new Devis();
-
+		//System.err.println(devisform.getClient());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date madate = sdf.parse(devisform.getDatecreation());
-		Client idClient= serviceClient.rechercheClientId(Integer.valueOf(devisform.getId()));
-		Vehicule idVehicule= serviceVehicule.rechercheVehiculeId(Integer.valueOf(devisform.getId()));
-		User idUser= serviceUser.rechercherUserId(Integer.valueOf(devisform.getId()));
+		System.err.println("devisform"+devisform.getId());
+		/**
+		 * Récupérer les bons ID des clients des vehicules et des User
+		 */
+		Client idClient= serviceClient.rechercheClientId(Integer.valueOf(devisform.getClient()));
+		Vehicule idVehicule= serviceVehicule.rechercheVehiculeId(Integer.valueOf(devisform.getVehicule()));
+		User idUser= serviceUser.rechercherUserId(Integer.valueOf(devisform.getUser()));
 
 		pdevis.setId(devisform.getId());
 		pdevis.setClient(idClient);
@@ -96,7 +100,7 @@ public class DevisController {
 		if (pmodel.containsAttribute("devisform") == false) {
 			DevisForm devisform = new DevisForm();
 			devisform.setId(pdevis.getId());
-			devisform.setDatecreation(new SimpleDateFormat("yyyy-MM-dd").format(pdevis.getDatecreation()));
+			devisform.setDatecreation(pdevis.getDatecreation().toString());
 			devisform.setClient(String.valueOf(pdevis.getClient().getId()));
 			devisform.setVehicule(String.valueOf(pdevis.getVehicule().getId()));
 			devisform.setUser(String.valueOf(pdevis.getUser().getId()));
@@ -110,12 +114,15 @@ public class DevisController {
 	@PostMapping("/CreerDevis")
 	public String ajoutNote(@Valid @ModelAttribute(name = "devisform") DevisForm devisform, BindingResult presult,
 			Model pmodel) {
+		System.err.println(presult);
 		if (!presult.hasErrors()) {
 			try {
 				Devis pdevis = convertForm(devisform);
+				System.err.println("convert");
 				serviceDevis.creerDevis(pdevis);
+				
 			} catch (Exception e) {
-				System.err.println(e.getMessage());
+				System.err.println("CRDeVis :"+e.getMessage());
 			}
 		}
 		return this.getAffiche(pmodel);
@@ -132,7 +139,7 @@ public class DevisController {
 				serviceDevis.modifierDevis(pdevis);
 
 			} catch (Exception e) {
-				System.err.println(e.getMessage());
+				System.err.println("MODDeVis :"+e.getMessage());
 			}
 		}
 		return this.getAffiche(pmodel);
