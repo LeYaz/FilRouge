@@ -55,29 +55,33 @@
 	  		<label for="select">Client</label>
 	  		<select th:field="*{client}">
 			    <option th:each="pclient :${listeclient}" 
-			    	th:value="${pclient.name}" th:utext="${pclient.name}"/>
+			    	th:value="${pclient.id}" th:utext="${pclient.name}"/>
 			</select>
 			
 			<label for="select">Utilisateur</label>
 			<select th:field="*{user}">
 			    <option th:each="puser :${listeuser}" 
-			    	th:value="${puser.nom}" th:utext="${puser.nom}"/>
+			    	th:value="${puser.id}" th:utext="${puser.nom}"/>
 			</select>
 			
 			<label for="select">Priorite</label>
 			<select th:field="*{priorite}">
 			    <option th:each="ppriorite :${listepriorite}" 
-			    	th:value="${ppriorite.libelle}" th:utext="${ppriorite.libelle}"/>
+			    	th:value="${ppriorite.id}" th:utext="${ppriorite.libelle}"/>
 			</select>
+			
+			<label for="description">Description Fiche</label>
+	   		<input type="text" th:field="*{description}" id="description" 
+	   		placeholder="Description Fiche"/>
 	    	
 	   		
-	   		<label for="date">Date de Creation</label>
-	   		<input type="date" th:field="*{datecreation}" id="date" 
-	   		placeholder="Date de Creation"/>
+	   		<label for="datecreation">Date de Creation</label>
+	   		<input type="text" th:field="*{datecreation}" id="datecreation" 
+	   		placeholder="aaaa-mm-jj"/>
 	   		
-	   		<label for="date">Date de Cloture</label>
-	   		<input type="date" th:field="*{datecloture}" id="date" 
-	   		placeholder="Date de Cloture"/>
+	   		<label for="datecloture">Date de Cloture</label>
+	   		<input type="text" th:field="*{datecloture}" id="datecloture" 
+	   		placeholder="aaaa-mm-jj"/>
 	   					
 	   		
 	   <button  type="submit">Valider</button>
