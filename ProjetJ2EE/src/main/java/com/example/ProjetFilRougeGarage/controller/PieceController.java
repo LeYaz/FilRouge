@@ -25,7 +25,7 @@ public class PieceController {
 private iServicePiece servicepiece;
 	
 	private Piece convertForm(PieceForm pieceform) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Piece ppiece = new Piece();
 		Date date = sdf.parse(pieceform.getDate_saisie()); 
 		ppiece.setId(pieceform.getId());
@@ -44,11 +44,11 @@ private iServicePiece servicepiece;
 		pmodel.addAttribute("listepiece", lpiece);
 		
 		pmodel.addAttribute("action", "CreerPiece");
-		if(pmodel.containsAttribute("pieceform") == false) {
+		
 			PieceForm pieceform = new PieceForm();
 			pieceform.setId(0);
 			pmodel.addAttribute("pieceform",pieceform);
-		}
+		
 		return "pieces";
 	}
 	

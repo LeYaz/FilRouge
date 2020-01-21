@@ -26,6 +26,16 @@ public class FactureFiche {
 	@Column(name="tauxTVA", columnDefinition = "float")
 	private Float tauxTVA;
 
+	private Boolean desactiver;
+	
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
 	public Integer getId() {
 		return id;
 	}
