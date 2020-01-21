@@ -41,10 +41,16 @@ public class FicheController {
 	private iServiceUser serviceuser;
 	
 	private Fiche convertForm(FicheForm ficheform) throws Exception {
+		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Date madate1 = sdf.parse(ficheform.getDatecreation());
-		Date madate2 = sdf.parse(ficheform.getDatecloture());
+		Date madate2 = null;
+		if (ficheform.getDatecloture().length() > 1) {
+		
+			madate2 = sdf.parse(ficheform.getDatecloture());
+		}
 		
 		Fiche pfiche = new Fiche();
 		
@@ -68,8 +74,7 @@ public class FicheController {
 		pfiche.setEtatfiche(Boolean.valueOf(ficheform.getEtatfiche()));
 		pfiche.setDescription(ficheform.getDescription());
 		pfiche.setDesactiver(Boolean.valueOf(ficheform.getDesactiver()));
-		
-		
+
 		return pfiche;
 	}
 	
@@ -134,28 +139,39 @@ public class FicheController {
 	
 	@GetMapping("/afficherModifierFiche/{id}")
 	public String getAfficheMod(@PathVariable final Integer id,Model pmodel) {
+		
 		Fiche pfiche = servicefiche.rechercherFicheId(id);
 		List<Client> lclient = serviceclient.rechercheClient();
 		List<User> luser = serviceuser.rechercherUser();
 		List<Priorite> lpriorite = servicepriorite.rechercherPriorite();
+		
 		pmodel.addAttribute("listefiche", null);
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepriorite", lpriorite);
 		pmodel.addAttribute("action", "ModifierFiche");
+		
+		
 		if(pmodel.containsAttribute("ficheform") == false) {
-			FicheForm ficheform = new FicheForm();
+			FicheForm ficheform = new FicheForm();			
 			ficheform.setId(pfiche.getId());
 			ficheform.setClient(String.valueOf(pfiche.getClient().getId()));
 			ficheform.setUser(String.valueOf(pfiche.getUser().getId()));
 			ficheform.setEtatfiche(String.valueOf(pfiche.getEtatfiche()));
 			ficheform.setPriorite(String.valueOf(pfiche.getPriorite().getId()));
-			ficheform.setDatecreation(new 
-					SimpleDateFormat("yyyy-MM-dd").format(
-							pfiche.getDatecreation()));
-			ficheform.setDatecloture(new 
-					SimpleDateFormat("yyyy-MM-dd").format(
-							pfiche.getDatecloture()));
+			
+			/*
+			ficheform.setDatecreation(new SimpleDateFormat("yyyy-MM-dd")
+					.format(pfiche.getDatecreation()));
+			ficheform.setDatecloture(new SimpleDateFormat("yyyy-MM-dd")
+					.format(pfiche.getDatecloture()));
+			*/			
+			
+			if(pfiche.getDatecloture()!=null) {
+				ficheform.setDatecloture(pfiche.getDatecloture().toString());
+			}
+			ficheform.setDatecreation(pfiche.getDatecreation().toString());
+			
 			ficheform.setDescription(pfiche.getDescription());
 			
 			pmodel.addAttribute("ficheform", ficheform);
