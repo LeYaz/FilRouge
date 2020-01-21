@@ -64,10 +64,10 @@ CREATE TABLE `commande_piece` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `commande_piece` (`id`, `id_user`, `id_piece`, `quantite`, `date_creation`, `date_cloture`, `desactiver`) VALUES
-(1, '1', '4', '5', '', NULL, b'0'),
-(2, '2', '3', '25', '', NULL, b'0'),
-(3, '3', '2', '45', '', NULL, b'0'),
-(4, '4', '1', '235', '', NULL, b'0');
+(1, '1', '4', '5', '2020-02-12', NULL, b'0'),
+(2, '2', '3', '25', '2020-02-13', NULL, b'0'),
+(3, '3', '2', '45', '2020-02-14', NULL, b'0'),
+(4, '4', '1', '235', '2020-02-15', NULL, b'0');
 
 -- --------------------------------------------------------
 
