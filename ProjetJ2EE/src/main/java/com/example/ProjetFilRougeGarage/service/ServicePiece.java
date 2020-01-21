@@ -21,13 +21,6 @@ public class ServicePiece implements iServicePiece {
 	@Transactional
 	@Override
 	public List<Piece> recherchePieceActive() {
-//		List<Piece> lpiece = daopiece.findAll();
-//		
-//		for(Piece p : lpiece) {
-//			if(p.getDesactiver()){
-//			lpiece.remove(p);
-//			}
-//		}
 		return daopiece.listActive();
 	}
 	
