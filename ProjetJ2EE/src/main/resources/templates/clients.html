@@ -9,9 +9,11 @@
 
 	<div th:replace="fragments/header :: header"></div>
 
-	<div class="container">
-		<table border = "1" th:unless="${action == 'ModifierClient'}">
-			<thead>
+	<div class="showcase1">
+  
+      <div class="container showcase-inner">
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Nom</th>
@@ -26,7 +28,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="client : ${listeclient}">
-					<td><a
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{/afficherModifierClient/{id}(id=${client.id})}"
 						th:text="${client.id}"></a></td>
 					<td th:text="${client.name}" />
@@ -36,57 +38,95 @@
 					<td th:text="${client.ville}" />
 					<td th:text="${client.tel}" />
 					<td th:text="${client.portable}" />
-					<td><a th:href="@{/DesactiverClient/{id}(id=${client.id})}"
+					<td><a  class="btn btn-outline-secondary"
+					 th:href="@{/DesactiverClient/{id}(id=${client.id})}"
 						th:text="'Desactiver'"></a></td>
 				</tr>
 			</tbody>
 		</table>
 
+	<div id="cookies">
 		<h2 th:if="${action == 'ModifierClient'}">
 			<a th:href="@{/afficherCreerClient}"
 				th:text="'Formulaire de Modification'"></a>
 		</h2>
-		<h2 th:unless="${action == 'ModifierClient'}">Formulaire d'Ajout</h2>
-
-		<div>
+		<h2  th:unless="${action == 'ModifierClient'}">Formulaire d'Ajout</h2>
+				 <br/>
+				 
+		<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
+		
+		
+		</div>
+		
+		<br/><br/>
+		<div class="form">
 			<form action="#" th:action="@{/{action}(action=${action})}"
 				th:object="${clientform}" method="post">
 
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
 				
+				<div>
 				 <label for="name">Nom</label> 
-				 <input type="text" th:field="*{name}" id="name" placeholder="nom" />
+				 <input type="text" th:field="*{name}" id="name" placeholder="nom" required/>
+				 <span id="tag" class="w3-tag w3- w3-black"> Renseignez votre nom </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="firstname">Prénom</label>
-				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" />
+				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre prénom </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="adresse">Adresse</label>
 				  <input type="text" th:field="*{adresse}" id="adresse" 
-				  placeholder="Adresse" />
+				  placeholder="Adresse" required/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre adresse </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="codepostal">Code Postal</label> 
 				  <input type="text" th:field="*{codepostal}" id="codepostal"
-				   placeholder="code postal" />
+				   placeholder="code postal" required/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre code postal </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="ville">Ville</label>
-				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" />
+				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre ville </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="tel">Téléphone</label>
 				  <input type="text" th:field="*{tel}" id="tel" 
-				  placeholder="Téléphone" /> 
+				  placeholder="Téléphone" required/> 
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de téléphone </span>
+				 <br/><br/><br/>
+				</div>
 				
+				<div>
 				 <label for="portable">Mobile</label>
 				  <input type="text" th:field="*{portable}" id="portable" 
-				  placeholder="Mobile" /> 
-
+				  placeholder="Mobile" required/> 
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de portable </span>
+				 <br/><br/><br/>
+				</div>
+				
 				<button type="submit">Valider</button>
+				<br/><br/>
 			</form>
 		</div>
 
 
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
-
+</div>
 
 </body>
 </html>
