@@ -1,5 +1,6 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
@@ -21,7 +22,7 @@ public class UserForm {
 	private String pwd;
 	
 	@NotEmpty
-	private List<String> profils;
+	private List<String> profils = new ArrayList<String>();
 
 	public Integer getId() {
 		return id;

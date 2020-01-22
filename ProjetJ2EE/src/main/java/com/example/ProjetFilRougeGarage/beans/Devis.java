@@ -115,15 +115,6 @@ public class Devis {
 		this.desactiver = desactiver;
 	}
 
-	public String devisEtat()
-	{
-		String resultat="";
-		if (etatdevis==true)
-		{
-			resultat="Regle";
-		}
-		return resultat;
-	}
 	
 	
 }

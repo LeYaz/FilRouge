@@ -28,23 +28,23 @@ public class CommandePieceController {
 
 	@Autowired
 	private IServiceCommandePiece servicecommandepiece;
-	
+
 	@Autowired
 	private iServiceUser serviceuser;
-	
+
 	@Autowired
 	private iServicePiece servicepiece;
-	
-	private CommandePiece convertForm(CommandePieceForm commandepieceform) throws Exception{
+
+	private CommandePiece convertForm(CommandePieceForm commandepieceform) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date datecreation = sdf.parse(commandepieceform.getDate_creation());
 		Date datecloture = null;
-		if(commandepieceform.getDate_cloture().length()>1) {
-			datecloture= sdf.parse(commandepieceform.getDate_cloture());
+		if (commandepieceform.getDate_cloture().length() > 1) {
+			datecloture = sdf.parse(commandepieceform.getDate_cloture());
 		}
-		 
+
 		CommandePiece comp = new CommandePiece();
-		
+
 		comp.setId(commandepieceform.getId());
 		comp.setDate_cloture(datecloture);
 		comp.setDate_creation(datecreation);
@@ -52,38 +52,35 @@ public class CommandePieceController {
 		comp.setPiece(servicepiece.recherchePieceId(Integer.valueOf(commandepieceform.getPiece())));
 		comp.setQuantite(Integer.valueOf(commandepieceform.getQuantite()));
 		comp.setUser(serviceuser.rechercherUserId(Integer.valueOf(commandepieceform.getUser())));
-		
-		
+
 		return comp;
-		
+
 	}
-	
+
 	@GetMapping("/afficherCreerCommandePiece")
 	public String getAffiche(Model pmodel) {
 		List<CommandePiece> lcommandepiece = servicecommandepiece.rechercherCommandePieceActive();
 		List<User> luser = serviceuser.rechercherUser();
 		List<Piece> lpiece = servicepiece.recherchePiece();
-		
+
 		pmodel.addAttribute("listecommandepiece", lcommandepiece);
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "CreerCommandePiece");
-		
-		if (pmodel.containsAttribute("commandepieceform") == false) {
-			CommandePiece commandepieceform = new CommandePiece();
-			commandepieceform.setId(0);
-			pmodel.addAttribute("commandepieceform", commandepieceform);
-		}
-		
+
+		CommandePiece commandepieceform = new CommandePiece();
+		commandepieceform.setId(0);
+		pmodel.addAttribute("commandepieceform", commandepieceform);
+
 		return "commandepieces";
 	}
-	
+
 	@GetMapping("/afficherModifierCommandePiece/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		CommandePiece pcommande = servicecommandepiece.rechercherCommandePieceId(id);
 		List<User> luser = serviceuser.rechercherUser();
 		List<Piece> lpiece = servicepiece.recherchePiece();
-		
+
 		pmodel.addAttribute("listecommandepiece", null);
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepiece", lpiece);
@@ -91,11 +88,11 @@ public class CommandePieceController {
 		if (pmodel.containsAttribute("commandepieceform") == false) {
 			CommandePieceForm commandepieceform = new CommandePieceForm();
 			commandepieceform.setId(pcommande.getId());
-			
-			if(commandepieceform.getDate_cloture()!=null) {
+
+			if (commandepieceform.getDate_cloture() != null) {
 				commandepieceform.setDate_cloture(pcommande.getDate_cloture().toString());
 			}
-			
+
 			commandepieceform.setDate_creation(pcommande.getDate_creation().toString());
 			commandepieceform.setDesactiver(pcommande.getDesactiver().toString());
 			commandepieceform.setPiece(pcommande.getPiece().getId().toString());
@@ -106,7 +103,7 @@ public class CommandePieceController {
 		}
 		return "commandepieces";
 	}
-	
+
 	@GetMapping("/DesactiverCommandePiece/{id}")
 	public String getDesactiver(@PathVariable final Integer id, Model pmodel) {
 		CommandePiece pcommande = servicecommandepiece.rechercherCommandePieceId(id);
@@ -115,15 +112,15 @@ public class CommandePieceController {
 		}
 		return this.getAffiche(pmodel);
 	}
-	
+
 	@PostMapping("/CreerCommandePiece")
-	public String ajoutUser(@Valid @ModelAttribute(name = "commandepieceform") CommandePieceForm commandepieceform, BindingResult presult,
-			Model pmodel) {
+	public String ajoutUser(@Valid @ModelAttribute(name = "commandepieceform") CommandePieceForm commandepieceform,
+			BindingResult presult, Model pmodel) {
 		System.err.println(presult);
 		if (!presult.hasErrors()) {
 			try {
 				CommandePiece commande = convertForm(commandepieceform);
-				
+
 				servicecommandepiece.creerCommandePiece(commande);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
@@ -133,7 +130,8 @@ public class CommandePieceController {
 	}
 
 	@PostMapping("/ModifierCommandePiece")
-	public String modifieUser(@Valid @ModelAttribute CommandePieceForm commandepieceform, BindingResult presult, Model pmodel) {
+	public String modifieUser(@Valid @ModelAttribute CommandePieceForm commandepieceform, BindingResult presult,
+			Model pmodel) {
 		if (!presult.hasErrors()) {
 			try {
 				CommandePiece commande = convertForm(commandepieceform);
@@ -144,5 +142,5 @@ public class CommandePieceController {
 		}
 		return this.getAffiche(pmodel);
 	}
-	
+
 }
