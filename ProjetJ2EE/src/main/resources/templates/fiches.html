@@ -83,7 +83,13 @@
 	   		<input type="text" th:field="*{datecloture}" id="datecloture" 
 	   		placeholder="aaaa-mm-jj"/>
 	   					
-	   		
+	   		<label for="etat">Etat fiche ?</label>
+								
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
+<OPTION value="true">Accepté
+<OPTION value="false">Refusé
+
+</SELECT>
 	   <button  type="submit">Valider</button>
 	</form>
  </div>

@@ -17,7 +17,6 @@ th:replace="fragments/headerload :: load">
 	 	<th>Fiche</th>
 	 	<th>PrixHT</th>
 	 	<th>TauxTVA</th>
-	 	<th>Desactiver</th>
 	 	</tr>
 	 </thead>
 	 <tbody>
@@ -30,9 +29,7 @@ th:replace="fragments/headerload :: load">
 	 		<td th:text="${facturefiche.prixht}"/>
 	 		<td th:text="${facturefiche.tauxTVA}"/>
 	 		
-	 		<td >
-	 		<a th:href="@{/DesactiverFactureFiche/{id}(id=${facturefiche.id})}" 
-	 		th:text="'Desactiver'"></a></td>
+	
 	 	</tr>
 	 </tbody>
  </table>
