@@ -28,7 +28,7 @@
 					<td th:text="${user.nom}" />
 					<td th:text="${user.prenom}" />
 					<td th:text="${user.login}" />
-					<td th:text="${user.pwd}" />
+					<td>******</td>
 					<td >
 						<ul th:each=" profil : ${user.profils}">
 							<li th:text="${profil.name}"></li>
@@ -62,14 +62,16 @@
 	   		<input type="text" th:field="*{login}" id="login" 
 	   		placeholder="Login"/>
 	   		
-	   		<label for="pwd">Password HT</label>
-	   		<input type="text" th:field="*{pwd}" id="pwd" 
+	   		<label for="pwd">Password</label>
+	   		<input type="password" th:field="*{pwd}" id="pwd" 
 	   		placeholder="Password"/>
 	   		<ul>
-       			<li th:each="profil : ${listeprofil} ">
-            		<input type="checkbox" th:name="profils" th:value="${profil.id}"/>
-            		<label th:text="${profil.name}"></label>
+      			<li th:each="profil : ${listeprofil} ">
+            			<input type="checkbox" th:name="profils" th:value="${profil.id}"
+            			 th:checked="${userform.profils.contains(profil.name)} ? 'true' : 'false'" />
+		          		<label th:text="${profil.name}"></label>
        			 </li>
+
     		</ul>
 
 	   	

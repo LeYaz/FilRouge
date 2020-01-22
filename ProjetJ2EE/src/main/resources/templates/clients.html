@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/headerload :: load">
-<title th:text="'Gestion Des Elèves'"></title>
+<title th:text="'Gestion Des Clients'"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
 
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerentretien :: headerentretien"></div>
 
 	<div class="showcase1">
-  
+  		<div id="cookies">
+  		<h1> Clientèle du garage </h1>
+  		</div>
       <div class="container showcase-inner">
+      
 		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
 			<thead class="thead-dark">
 				<tr>
@@ -73,26 +78,31 @@
 					th:field="*{firstname}" id="firstname" placeholder="Prénom" /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></label>
 				
-				<label for="adresse">Adresse</label> <input type="text"
+<div class="form-group">				
+<label for="adresse">Adresse</label> <input type="text"
 					th:field="*{adresse}" id="adresse" placeholder="Adresse" /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></label>
-
+				</div>
+					<div class="form-group">
 					<label for="codepostal">Code postal</label> <input type="text"
-					th:field="*{codepostal}" id="codepostal" placeholder="codepostal" /> <label class="btn btn-danger"
+					th:field="*{codepostal}" id="codepostal" placeholder="codepostal" class="form-control" /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('codepostal')}" th:errors="*{codepostal}"></label>
-				
+				</div>
+					<div class="form-group">
 				<label for="ville">Ville</label> <input type="text"
-					th:field="*{ville}" id="ville" placeholder="ville" /> <label class="btn btn-danger"
+					th:field="*{ville}" id="ville" placeholder="ville" class="form-control"  /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></label>
-							
+				</div>	
+					<div class="form-group">
 				<label for="tel">Téléphone</label> <input type="text"
-					th:field="*{tel}" id="tel" placeholder="tel" /> <label class="btn btn-danger"
+					th:field="*{tel}" id="tel" placeholder="tel" class="form-control"  /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></label>
-				
+				</div>
+					<div class="form-group">
 				<label for="portable">Mobile</label> <input type="text"
-					th:field="*{portable}" id="portable" placeholder="portable" /> <label class="btn btn-danger"
+					th:field="*{portable}" id="portable" placeholder="portable" class="form-control" /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('portable')}" th:errors="*{portable}"></label>
-
+				</div>
 				<button type="submit">Valider</button>
 				<br/><br/>
 			</form>

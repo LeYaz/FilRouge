@@ -53,10 +53,12 @@ body {
 
 .showcase h1{
     font-size: 4rem;
+    color: white;
 }
 
 .showcase p {
     font-size: 1.3rem;
+    color: white;
 }
 
 
@@ -122,11 +124,14 @@ form div:hover span{
     font-size: 0.8em;
     border-radius: 20px;
     box-shadow: 10px 10px 10px 10px rgba(0,0,0,1);
-    text-shadow: 2px 2px 2px #3729FF;
-    /*transform: skewX(5deg) skewY(5deg);*/
+    text-shadow: 1px 1px 1px #3729FF;
     transition: min-height 1s, background 1s;
     animation: anim1 1s;
 
+}
+
+.table{
+	margin: 20px;
 }
 
 
@@ -135,7 +140,7 @@ form div:hover span{
     background: white;
 }
 
-#cookies>h2 {
+#cookies>h2,h1 {
     font-family: 'Ma Shan Zheng', sans-serif;
     font-size: 1.8em;
     font-style: italic;
@@ -143,12 +148,15 @@ form div:hover span{
     text-align: center;
 }
 
-.form{
- 	align-items: center;
-    justify-content: center;
-    text-align: center;	
-}
 
+
+.headerhome{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;}
 
 
 

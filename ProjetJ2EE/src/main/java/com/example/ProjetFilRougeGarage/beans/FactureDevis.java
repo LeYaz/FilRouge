@@ -34,7 +34,10 @@ public class FactureDevis {
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_creation", nullable=false)
 	private Date datecreation;
-
+	
+	@Column(name="desactiver" , columnDefinition ="bit(1)")
+	private Boolean desactiver;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +76,14 @@ public class FactureDevis {
 
 	public void setDatecreation(Date datecreation) {
 		this.datecreation = datecreation;
+	}
+
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
 	}
 	
 	

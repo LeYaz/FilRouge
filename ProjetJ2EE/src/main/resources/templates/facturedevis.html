@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head th:replace="fragments/headerload :: load">
+  	<title th:text="'Gestion des devis'"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+ 
+    <div class="container">
+	 <table border = "1" th:unless="${action == 'ModifierDevis'}">
+	 <thead>
+	 	<tr>
+	 	<th>Id</th>
+	 	<th>ID Devis</th>
+	 	<th>Prix Hors Taxe</th>
+	 
+	 	<th>Taux TVA</th>
+	 	<th>Date de création</th>
+	 	
+	 	</tr>
+	 </thead>
+	 <tbody>
+	 	<tr th:each="facturedevis : ${listefacturedevis}">
+	 		<td >
+	 		<a  th:text="${facturedevis.id}"></a></td>
+	 		<td th:text="${facturedevis.devis.id}"/>
+	 		<td th:text="${facturedevis.prixht}"/>
+	 		 		<td th:text="${facturedevis.tauxtva}"/>
+	 
+	 	 	<td th:text="${facturedevis.datecreation}"/> 
+	 		
+	 		
+	 		
+	 
+	 		
+	 		
+	 	
+	 	</tr>
+	 </tbody>
+ </table>
+ 
+ <h2 th:if="${action == 'ModifierDevis'}">
+ <a	th:href="@{/afficherCreerDevis}" th:text="'Formulaire de Mofication'"></a>
+ </h2>
+ 
+ <div>
+
+ </div>
+ <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </body>
+</html>
