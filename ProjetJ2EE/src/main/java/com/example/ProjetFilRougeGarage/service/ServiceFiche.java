@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.ProjetFilRougeGarage.beans.FactureFiche;
 import com.example.ProjetFilRougeGarage.beans.Fiche;
+import com.example.ProjetFilRougeGarage.dao.DaoFactureFiche;
 import com.example.ProjetFilRougeGarage.dao.DaoFiche;
 
 @Service
@@ -15,6 +17,9 @@ public class ServiceFiche implements iServiceFiche {
 	@Autowired
 	DaoFiche dao;
 
+	@Autowired
+	DaoFactureFiche daofacturefiche;
+	
 	@Transactional
 	@Override
 	public List<Fiche> rechercherFicheActive() {
@@ -30,6 +35,11 @@ public class ServiceFiche implements iServiceFiche {
 	@Transactional
 	@Override
 	public void creerFiche(Fiche pfiche) {
+//		if(pfiche.getEtatfiche()==true) {
+//		FactureFiche facturefiche = new FactureFiche();
+		
+		
+	//	}
 		dao.save(pfiche);
 	}
 

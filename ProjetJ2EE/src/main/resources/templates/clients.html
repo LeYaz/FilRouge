@@ -64,60 +64,35 @@
 				th:object="${clientform}" method="post">
 
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
+			
+				<label for="name">Nom</label> <input type="text"
+					th:field="*{name}" id="name" placeholder="Nom" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+							
+				<label for="firstname">Prénom</label> <input type="text"
+					th:field="*{firstname}" id="firstname" placeholder="Prénom" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></label>
 				
-				<div class="form-group">
-				 <label for="name">Nom</label> 
-				 <input type="text" th:field="*{name}" id="name" placeholder="nom" required class="form-control"/>
-				 <span id="tag" class="w3-tag w3- w3-black"> Renseignez votre nom </span>
-				 <br/><br/><br/>
-				</div>
+				<label for="adresse">Adresse</label> <input type="text"
+					th:field="*{adresse}" id="adresse" placeholder="Adresse" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></label>
+
+					<label for="codepostal">Code postal</label> <input type="text"
+					th:field="*{codepostal}" id="codepostal" placeholder="codepostal" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('codepostal')}" th:errors="*{codepostal}"></label>
 				
-				<div>
-				 <label for="firstname">Prénom</label>
-				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre prénom </span>
-				 <br/><br/><br/>
-				</div>
+				<label for="ville">Ville</label> <input type="text"
+					th:field="*{ville}" id="ville" placeholder="ville" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></label>
+							
+				<label for="tel">Téléphone</label> <input type="text"
+					th:field="*{tel}" id="tel" placeholder="tel" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></label>
 				
-				<div>
-				 <label for="adresse">Adresse</label>
-				  <input type="text" th:field="*{adresse}" id="adresse" 
-				  placeholder="Adresse" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre adresse </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="codepostal">Code Postal</label> 
-				  <input type="text" th:field="*{codepostal}" id="codepostal"
-				   placeholder="code postal" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre code postal </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="ville">Ville</label>
-				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre ville </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="tel">Téléphone</label>
-				  <input type="text" th:field="*{tel}" id="tel" 
-				  placeholder="Téléphone" required/> 
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de téléphone </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="portable">Mobile</label>
-				  <input type="text" th:field="*{portable}" id="portable" 
-				  placeholder="Mobile" required/> 
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de portable </span>
-				 <br/><br/><br/>
-				</div>
-				
+				<label for="portable">Mobile</label> <input type="text"
+					th:field="*{portable}" id="portable" placeholder="portable" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('portable')}" th:errors="*{portable}"></label>
+
 				<button type="submit">Valider</button>
 				<br/><br/>
 			</form>
