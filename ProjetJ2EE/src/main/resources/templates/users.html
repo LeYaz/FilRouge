@@ -66,11 +66,12 @@
 	   		<input type="password" th:field="*{pwd}" id="pwd" 
 	   		placeholder="Password"/>
 	   		<ul>
-       			<li th:each="profil : ${listeprofil} ">
-            		<input type="checkbox" th:name="profils" th:value="${profil.id}" 
-            		/>
-            		<label th:text="${profil.name}"></label>
+      			<li th:each="profil : ${listeprofil} ">
+            			<input type="checkbox" th:name="profils" th:value="${profil.id}"
+            			 th:checked="${userform.profils.contains(profil.name)} ? 'true' : 'false'" />
+		          		<label th:text="${profil.name}"></label>
        			 </li>
+
     		</ul>
 
 	   	
