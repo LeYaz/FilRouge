@@ -6,10 +6,17 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerstock :: headerstock"></div>
 
-	<div class="container">
-		<table border="1" th:unless="${action == 'ModifierUser'}">
-			<thead>
+	<div class="showcase1">
+  		<div id="cookies">
+  		<h1> Clientèle du garage </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierUser'}">
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Quantite</th>
@@ -22,7 +29,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="commande : ${listecommandepiece}">
-					<td><a
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{/afficherModifierCommandePiece/{id}(id=${commande.id})}"
 						th:text="${commande.id}"></a></td>
 					<td th:text="${commande.quantite}" />
@@ -30,20 +37,25 @@
 					<td th:text="${commande.date_cloture}" />
 					<td th:text="${commande.user.nom}" />
 					<td th:text="${commande.piece.libelle}" />
-					
-
-
-				<td><a th:href="@{/DesactiverCommandePiece/{id}(id=${commande.id})}"
+				<td><a class="btn btn-outline-secondary"
+				th:href="@{/DesactiverCommandePiece/{id}(id=${commande.id})}"
 					th:text="'Desactiver'"></a></td>
 				</tr>
 			</tbody>
 		</table>
+		
+		<div id="cookies">
 		<h2 th:if="${action == 'ModifierCommandePiece'}">
- <a	th:href="@{/afficherCreerCommandePiece}" th:text="'Formulaire de Modification'"></a>
- </h2>
- <h2 th:unless="${action == 'ModifierCommandePiece'}">Formulaire d'Ajout</h2>
- 
- <div>
+			 <a	th:href="@{/afficherCreerCommandePiece}" th:text="'Formulaire de Modification'"></a>
+			 </h2>
+			 <h2 th:unless="${action == 'ModifierCommandePiece'}">Formulaire d'Ajout</h2>
+ 			<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
+		
+		
+		</div>
+		
+		<br/><br/>
+ 	<div>
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${commandepieceform}"   method="post">
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
@@ -74,6 +86,7 @@
 
 
 		<div th:replace="fragments/footer :: footer"></div>
+	</div>
 	</div>
 </body>
 </html>
