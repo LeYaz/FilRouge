@@ -1,6 +1,8 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 
 public class VehiculeForm {
@@ -11,6 +13,8 @@ public class VehiculeForm {
 	@NotEmpty
 	private String modele;
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Min(value = 1)
 	private String quantite;
 	@NotEmpty
 	private String prixht;

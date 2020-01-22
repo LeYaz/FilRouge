@@ -1,11 +1,13 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class TacheForm {
 
 	private Integer id;
-
+	@NotEmpty
 	private String commentaire;
 	@NotEmpty
 	private String user;
@@ -18,9 +20,11 @@ public class TacheForm {
 
 	@NotEmpty
 	private String piece;
-
+	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Min(value = 1)
 	private String qte;
-	
+
 	private String etattache;
 
 	private String desactiver;
@@ -97,7 +101,4 @@ public class TacheForm {
 		this.desactiver = desactiver;
 	}
 
-	
-	
-	
 }

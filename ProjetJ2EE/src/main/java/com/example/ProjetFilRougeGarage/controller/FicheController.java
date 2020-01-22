@@ -43,7 +43,7 @@ public class FicheController {
 	private Fiche convertForm(FicheForm ficheform) throws Exception {
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		
 		Date madate1 = sdf.parse(ficheform.getDatecreation());
 		Date madate2 = null;
