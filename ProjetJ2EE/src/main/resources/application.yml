@@ -1,0 +1,16 @@
+spring:
+  
+      jpa:
+          hibernate:
+            ddl-auto: validate
+          properties:
+            hibernate:
+              hibernate.enable_lazy_load_no_trans: true
+              show_sql: true
+              use_sql_comments: true
+              format_sql: true
+
+      datasource:
+           url: jdbc:mysql://localhost:3306/garagepoefr
+           username: root
+           password:

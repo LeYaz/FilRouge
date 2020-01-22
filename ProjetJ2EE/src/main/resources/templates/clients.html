@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion Des Clients'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="showcase1">
+  		<div id="cookies">
+  		<h1> Clientèle du garage </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
+			<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Code Postal</th>
+					<th>Ville</th>
+					<th>Telephone</th>
+					<th>Mobile</th>
+					<th>Désactiver</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client : ${listeclient}">
+					<td><a class="btn btn-outline-secondary"
+						th:href="@{/afficherModifierClient/{id}(id=${client.id})}"
+						th:text="${client.id}"></a></td>
+					<td th:text="${client.name}" />
+					<td th:text="${client.firstname}" />
+					<td th:text="${client.adresse}" />
+					<td th:text="${client.codepostal}" />
+					<td th:text="${client.ville}" />
+					<td th:text="${client.tel}" />
+					<td th:text="${client.portable}" />
+					<td><a  class="btn btn-outline-secondary"
+					 th:href="@{/DesactiverClient/{id}(id=${client.id})}"
+						th:text="'Desactiver'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	<div id="cookies">
+		<h2 th:if="${action == 'ModifierClient'}">
+			<a th:href="@{/afficherCreerClient}"
+				th:text="'Formulaire de Modification'"></a>
+		</h2>
+		<h2  th:unless="${action == 'ModifierClient'}">Formulaire d'Ajout</h2>
+				 <br/>
+				 
+		<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
+		
+		
+		</div>
+		
+		<br/><br/>
+		<div class="form">
+			<form action="#" th:action="@{/{action}(action=${action})}"
+				th:object="${clientform}" method="post">
+
+				<input type="hidden" th:field="*{id}" th:value="*{id}" />
+				
+				<div class="form-group">
+				 <label for="name">Nom</label> 
+				 <input type="text" th:field="*{name}" id="name" placeholder="nom" required class="form-control"/>
+				 <span id="tag" class="w3-tag w3- w3-black"> Renseignez votre nom </span>
+				 
+				</div>
+				
+				<div>
+				 <label for="firstname">Prénom</label>
+				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required class="form-control"/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre prénom </span>
+				 
+				</div>
+				
+				<div>
+				 <label for="adresse">Adresse</label>
+				  <input type="text" th:field="*{adresse}" id="adresse" 
+				  placeholder="Adresse" required class="form-control"/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre adresse </span>
+				 
+				</div>
+				
+				<div>
+				 <label for="codepostal">Code Postal</label> 
+				  <input type="text" th:field="*{codepostal}" id="codepostal"
+				   placeholder="code postal" required class="form-control"/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre code postal </span>
+				 
+				</div>
+				
+				<div>
+				 <label for="ville">Ville</label>
+				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required class="form-control"/>
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre ville </span>
+				
+				</div>
+				
+				<div>
+				 <label for="tel">Téléphone</label>
+				  <input type="text" th:field="*{tel}" id="tel" 
+				  placeholder="Téléphone" required class="form-control"/> 
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de téléphone </span>
+				 
+				</div>
+				
+				<div>
+				 <label for="portable">Mobile</label>
+				  <input type="text" th:field="*{portable}" id="portable" 
+				  placeholder="Mobile" required class="form-control"/> 
+				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de portable </span>
+				 <br/><br/>
+				</div>
+				
+				<button type="submit" class="form-control">Valider</button>
+				<br/><br/>
+			</form>
+		</div>
+
+
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</div>
+
+</body>
+</html>

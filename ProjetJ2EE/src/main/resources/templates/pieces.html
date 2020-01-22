@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head 
+th:replace="fragments/headerload :: load">
+  	<title th:text="'Gestion Des Classes'"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+ </head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+ 
+    <div class="container">
+	 <table th:unless="${action == 'ModifierPiece'}">
+	 <thead>
+	 	<tr>
+	 	<th>Id</th>
+	 	<th>Libelle</th>
+	 	<th>Quantité</th>
+	 	<th>Date de saisie</th>
+	 	<th>Desactiver</th>
+	 	</tr>
+	 </thead>
+	 <tbody>
+	 	<tr th:each="piece : ${listepiece}">
+	 		<td >
+	 		<a	th:href="@{/afficherModifierPiece/{id}(id=${piece.id})}" 
+	 		th:text="${piece.id}"></a></td>
+	 		<spring:message code="NotEmpty.creation.libelle" />
+	 		<td th:text="${piece.libelle}"/>
+	 		<td th:text="${piece.quantite}"/>
+	 		<td th:text="${piece.date_saisie}"/>
+	 		<td >
+	 		<a th:href="@{/DesactiverPiece/{id}(id=${piece.id})}" 
+	 		th:text="'Desactiver'"></a></td>
+	 	</tr>
+	 </tbody>
+ </table>
+ 
+ <h2 th:if="${action == 'ModifierPiece'}">
+ <a	th:href="@{/afficherCreerPiece}" th:text="'Formulaire de Modification'"></a>
+ </h2>
+ <h2 th:unless="${action == 'ModifierPiece'}">Formulaire d'Ajout</h2>
+ 
+ <div>
+	  <form action="#" th:action="@{/{action}(action=${action})}" 
+	  th:object="${pieceform}"   method="post">
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+	    	<label for="libelle">libelle</label>
+	   		<input type="text" th:field="*{libelle}" id="libelle" placeholder="libelle"/>
+	   		<label for="quantite">quantite</label>
+	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="quantite"/>
+	   		<label for="date_saisie">date de saisie</label>
+	   		<input type="date" th:field="*{date_saisie}" id="date_saisie" placeholder="date de saisie"/>
+	   <button  type="submit">Valider</button>
+	</form>
+ </div>
+ <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </body>
+</html>

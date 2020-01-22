@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head 
+th:replace="fragments/headerload :: load">
+  	<title th:text="'Gestion Des Classes'"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+ </head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+ <h2> FACTURE FICHE</h2>
+    <div class="container">
+	 <table th:unless="${action == 'ModifierFactureFiche'}">
+	 <thead>
+	 	<tr>
+	 	<th>Id</th>
+	 	<th>Fiche</th>
+	 	<th>PrixHT</th>
+	 	<th>TauxTVA</th>
+	 	<th>Desactiver</th>
+	 	</tr>
+	 </thead>
+	 <tbody>
+	 	<tr th:each="facturefiche : ${listefacturefiche}">
+	 		<td >
+	 		<a	th:href="@{/afficherModifierFactureFiche/{id}(id=${facturefiche.id})}" 
+	 		th:text="${facturefiche.id}"></a></td>
+	 	
+				<td th:text="${facturefiche.fiche.id}"/>
+	 		<td th:text="${facturefiche.prixht}"/>
+	 		<td th:text="${facturefiche.tauxTVA}"/>
+	 		
+	 		<td >
+	 		<a th:href="@{/DesactiverFactureFiche/{id}(id=${facturefiche.id})}" 
+	 		th:text="'Desactiver'"></a></td>
+	 	</tr>
+	 </tbody>
+ </table>
+ 
+ <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </body>
+</html>
