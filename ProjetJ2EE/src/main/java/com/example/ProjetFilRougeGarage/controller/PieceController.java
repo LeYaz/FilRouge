@@ -44,11 +44,12 @@ private iServicePiece servicepiece;
 		pmodel.addAttribute("listepiece", lpiece);
 		
 		pmodel.addAttribute("action", "CreerPiece");
-		
+		if(!pmodel.containsAttribute("pieceform"))
+		{
 			PieceForm pieceform = new PieceForm();
 			pieceform.setId(0);
 			pmodel.addAttribute("pieceform",pieceform);
-		
+		}
 		return "pieces";
 	}
 	
@@ -92,11 +93,16 @@ private iServicePiece servicepiece;
 			{
 				Piece ppiece = convertForm(pieceform);
 				servicepiece.creerPiece(ppiece);
+				pieceform = new PieceForm();
+				pieceform.setId(0);
+				pmodel.addAttribute("pieceform",pieceform);
 			}
 			catch(Exception e) {
 				System.err.println(e.getMessage());
 			}
+
 		}
+		
 		return this.getAffiche(pmodel);
 	}
 

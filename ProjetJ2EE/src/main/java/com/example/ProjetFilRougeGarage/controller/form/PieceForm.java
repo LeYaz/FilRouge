@@ -2,6 +2,7 @@ package com.example.ProjetFilRougeGarage.controller.form;
 
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class PieceForm {
 
@@ -11,6 +12,7 @@ public class PieceForm {
 	@NotEmpty
 	private String libelle;
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
 	private String quantite;
 	@NotEmpty
 	private String date_saisie;
