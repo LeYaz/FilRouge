@@ -97,11 +97,13 @@
 		<!--  <label for="etatdevis">Reglé ?</label> 
 				   <input type="text" th:field="*{etatdevis}" id="etatdevis" placeholder="true/false" />  -->		  
 								
-							<label for="regle">Reglé ?</label>
-								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis" class="form-control">
-									<OPTION value="true">Accepté
-									<OPTION value="false">Refusé		
-							</SELECT>
+													<label for="regle">Etat devis ?</label>
+								
+								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis">
+<OPTION value="true">Accepté
+<OPTION value="false">Refusé
+
+</SELECT>
 	   
 	   	<br/> 
 	   <button  type="submit" class="form-control" >Valider</button>

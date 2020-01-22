@@ -111,7 +111,13 @@
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
 	   		</div>
 	   					
-	   		
+	   		<label for="etat">Etat fiche ?</label>
+								
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
+<OPTION value="true">Accepté
+<OPTION value="false">Refusé
+
+</SELECT>
 	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
