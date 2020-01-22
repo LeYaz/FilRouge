@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/headerload :: load">
-<title th:text="'Gestion Des Elèves'"></title>
+<title th:text="'Gestion Des Clients'"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -10,8 +10,11 @@
 	<div th:replace="fragments/header :: header"></div>
 
 	<div class="showcase1">
-  
+  		<div id="cookies">
+  		<h1> Clientèle du garage </h1>
+  		</div>
       <div class="container showcase-inner">
+      
 		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
 			<thead class="thead-dark">
 				<tr>
@@ -69,56 +72,56 @@
 				 <label for="name">Nom</label> 
 				 <input type="text" th:field="*{name}" id="name" placeholder="nom" required class="form-control"/>
 				 <span id="tag" class="w3-tag w3- w3-black"> Renseignez votre nom </span>
-				 <br/><br/><br/>
+				 
 				</div>
 				
 				<div>
 				 <label for="firstname">Prénom</label>
-				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required/>
+				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required class="form-control"/>
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre prénom </span>
-				 <br/><br/><br/>
+				 
 				</div>
 				
 				<div>
 				 <label for="adresse">Adresse</label>
 				  <input type="text" th:field="*{adresse}" id="adresse" 
-				  placeholder="Adresse" required/>
+				  placeholder="Adresse" required class="form-control"/>
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre adresse </span>
-				 <br/><br/><br/>
+				 
 				</div>
 				
 				<div>
 				 <label for="codepostal">Code Postal</label> 
 				  <input type="text" th:field="*{codepostal}" id="codepostal"
-				   placeholder="code postal" required/>
+				   placeholder="code postal" required class="form-control"/>
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre code postal </span>
-				 <br/><br/><br/>
+				 
 				</div>
 				
 				<div>
 				 <label for="ville">Ville</label>
-				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required/>
+				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required class="form-control"/>
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre ville </span>
-				 <br/><br/><br/>
+				
 				</div>
 				
 				<div>
 				 <label for="tel">Téléphone</label>
 				  <input type="text" th:field="*{tel}" id="tel" 
-				  placeholder="Téléphone" required/> 
+				  placeholder="Téléphone" required class="form-control"/> 
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de téléphone </span>
-				 <br/><br/><br/>
+				 
 				</div>
 				
 				<div>
 				 <label for="portable">Mobile</label>
 				  <input type="text" th:field="*{portable}" id="portable" 
-				  placeholder="Mobile" required/> 
+				  placeholder="Mobile" required class="form-control"/> 
 				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de portable </span>
-				 <br/><br/><br/>
+				 <br/><br/>
 				</div>
 				
-				<button type="submit">Valider</button>
+				<button type="submit" class="form-control">Valider</button>
 				<br/><br/>
 			</form>
 		</div>
