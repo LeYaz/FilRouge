@@ -1,6 +1,8 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class CommandePieceForm {
 
@@ -8,9 +10,12 @@ public class CommandePieceForm {
 	private Integer id;
 	
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Min(value = 1)
 	private String quantite;
 	
 	@NotEmpty
+	@Pattern(regexp = "^([0-3][0-9]})(/)([0-9]{2,2})(/)([0-3]{2,2})$", message="la date est invalide")
 	private String date_creation;
 	
 	

@@ -61,10 +61,11 @@ public class UserController {
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listeprofil", lprofil);
 		pmodel.addAttribute("action", "CreerUser");
+		if (pmodel.containsAttribute("userform")){
 		UserForm userform = new UserForm();
 		userform.setId(0);
 		pmodel.addAttribute("userform", userform);
-
+		}
 		return "users";
 	}
 
@@ -112,6 +113,9 @@ public class UserController {
 		if (!presult.hasErrors()) {
 			try {
 				System.err.println("convertion du user");
+			    userform = new UserForm();
+				userform.setId(0);
+				pmodel.addAttribute("userform", userform);
 				User puser = convertForm(userform);
 				serviceuser.creerUser(puser);
 			} catch (Exception e) {
