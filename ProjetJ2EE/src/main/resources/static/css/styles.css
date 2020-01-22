@@ -53,10 +53,12 @@ body {
 
 .showcase h1{
     font-size: 4rem;
+    color: white;
 }
 
 .showcase p {
     font-size: 1.3rem;
+    color: white;
 }
 
 
