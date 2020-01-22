@@ -13,72 +13,58 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.ProjetFilRougeGarage.beans.Devis;
+import com.example.ProjetFilRougeGarage.beans.FactureDevis;
 import com.example.ProjetFilRougeGarage.beans.FactureFiche;
 import com.example.ProjetFilRougeGarage.beans.Fiche;
+import com.example.ProjetFilRougeGarage.controller.form.FactureDevisForm;
 import com.example.ProjetFilRougeGarage.controller.form.FactureFicheForm;
+import com.example.ProjetFilRougeGarage.service.IServiceDevis;
+import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceFactureFiche;
 import com.example.ProjetFilRougeGarage.service.iServiceFiche;
 
+/**
+ * 
+ * @author Xavier
+ *
+ */
 @Controller
 public class FactureFicheController {
+	/**
+	 * Déclaration des services
+	 */
+	@Autowired
+	private iServiceFiche serviceFiche;
+	@Autowired
+	private iServiceFactureFiche serviceFactureFiche;
 
-	@Autowired
-	private iServiceFiche servicefiche;
-	@Autowired
-	private iServiceFactureFiche servicefacturefiche;
-	private FactureFiche convertForm(FactureFicheForm factureficheform) throws Exception {
-		
-		FactureFiche facturefiche = new FactureFiche();
-		facturefiche.setId(factureficheform.getId());
-		facturefiche.setFiche(servicefiche.rechercherFicheId(Integer.parseInt(factureficheform.getFiche())));
-		facturefiche.setPrixht(Float.valueOf(factureficheform.getPrixht()));
-		facturefiche.setTauxTVA(Float.valueOf(factureficheform.getTauxTVA()));
-		facturefiche.setDesactiver(Boolean.valueOf(factureficheform.getDesactiver()));
-		
-		return facturefiche;
-	}
-	
+
+	/**
+	 * Affiche la liste des facture de fiches actives
+	 * @param pmodel : l'affichage des données
+	 * @return la page html des facture de fiches avec sa liste.
+	 */
 	@GetMapping("/afficherCreerFactureFiche")
 	public String getAffiche(Model pmodel) {
-		List<FactureFiche> lfacturefiche = servicefacturefiche.rechercheFactureFicheActive();
-		List<Fiche> lfiches = servicefiche.rechercherFicheActive();
+
+		List<Fiche> lfiche = serviceFiche.rechercherFicheActive();
+		List<FactureFiche> lfacturefiche = serviceFactureFiche.rechercheFactureFicheActive();
+
+		pmodel.addAttribute("listefiche", lfiche);
 		pmodel.addAttribute("listefacturefiche", lfacturefiche);
-		pmodel.addAttribute("listefiches", lfiches);
+
 		pmodel.addAttribute("action", "CreerFactureFiche");
-		if(pmodel.containsAttribute("factureficheform") == false) {
+		if (pmodel.containsAttribute("factureficheform") == false) {
 			FactureFicheForm factureficheform = new FactureFicheForm();
 			factureficheform.setId(0);
-			pmodel.addAttribute("factureficheform",factureficheform);
+			pmodel.addAttribute("factureficheform", factureficheform);
 		}
+		
+		
 		return "facturefiches";
 	}
 	
-	
-	@GetMapping("/DesactiverFactureFiche/{id}")
-	public String getDesactiver(@PathVariable final Integer id,Model pmodel) {
-		FactureFiche facturefiche = servicefacturefiche.rechercheFactureFicheId(id);
-		facturefiche.setDesactiver(true);
-		servicefacturefiche.desactiverFactureFiche(facturefiche);
-		return this.getAffiche(pmodel);
-	}
-	
-	@PostMapping("/CreerFactureFiche")
-	public String ajoutFactureFiche( 
-			@Valid @ModelAttribute(name = "factureficheform") FactureFicheForm factureficheform,
-			BindingResult presult,
-			Model pmodel)
-	{
-		if(!presult.hasErrors()) {
-			try
-			{
-				FactureFiche facturefiche = convertForm(factureficheform);
-				servicefacturefiche.creerFactureFiche(facturefiche);
-			}
-			catch(Exception e) {
-				System.err.println(e.getMessage());
-			}
-		}
-		return this.getAffiche(pmodel);
-	}
-	
+
 }
+

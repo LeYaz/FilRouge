@@ -28,7 +28,14 @@ public class UserController {
 
 	@Autowired
 	private iServiceUser serviceuser;
-
+	
+	/**
+	 * Methode de convertion des différents valeur entrer dans le formulaire html en Entité User
+	 * 
+	 * @param userform objet stockant les différentes valeurs entrer dans le formulaire html
+	 * @return Une entité User rempli à l'aide des données du formulaire html
+	 * @throws Exception
+	 */
 	private User convertForm(UserForm userform) throws Exception {
 		User puser = new User();
 		List<Profil> pList = new ArrayList<Profil>();
@@ -40,7 +47,7 @@ public class UserController {
 		}
 
 		puser.setProfils(pList);
-//		List<Profil> pListbis = serviceprofil.rechercherProfil();
+
 
 		puser.setProfils(pList);
 		puser.setId(userform.getId());
@@ -52,7 +59,13 @@ public class UserController {
 
 		return puser;
 	}
-
+	
+	
+	/**
+	 * Methode d'envoi a la vue la liste des différents User
+	 * @param pmodel model permettant de communiquer des données entre la vue et le controller 
+	 * @return le nom du template html a afficher
+	 */
 	@GetMapping("/afficherCreerUser")
 	public String getAffiche(Model pmodel) {
 		List<User> luser = serviceuser.rechercherUserActive();
@@ -68,6 +81,12 @@ public class UserController {
 		return "users";
 	}
 
+	/**
+	 * Methode d'envoi à la vue d'un user afin de modifier les données du user
+	 * @param id correspond au user a modifier
+	 * @param pmodel model permettant de communiquer des données entre la vue et le controller 
+	 * @return le nom du template html a afficher
+	 */
 	@GetMapping("/afficherModifierUser/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		User puser = serviceuser.rechercherUserId(id);
@@ -93,7 +112,13 @@ public class UserController {
 		}
 		return "users";
 	}
-
+	
+	/**
+	 *  Methode permettant de désactiver un user
+	 * @param id correspond au user a desactiver
+	 * @param pmodel model permettant de communiquer des données entre la vue et le controller
+	 * @return la methode d'affichage des users
+	 */
 	@GetMapping("/DesactiverUser/{id}")
 	public String getDesactiver(@PathVariable final Integer id, Model pmodel) {
 		User puser = serviceuser.rechercherUserId(id);
@@ -102,7 +127,15 @@ public class UserController {
 		}
 		return this.getAffiche(pmodel);
 	}
-
+	
+	/**
+	 * Methode permettant de récuperer les données d'un user et de le creer en bdd
+	 * 	
+	 * @param userform objet stockant les différentes valeurs entrer dans le formulaire html
+	 * @param presult Resultat de la requete post 	
+	 * @param pmodel model permettant de communiquer des données entre la vue et le controller
+	 * @return la methode d'affichage des users
+	 */
 	@PostMapping("/CreerUser")
 	public String ajoutUser(@Valid @ModelAttribute(name = "userform") UserForm userform, BindingResult presult,
 			Model pmodel) {
@@ -120,7 +153,14 @@ public class UserController {
 		}
 		return this.getAffiche(pmodel);
 	}
-
+	/**
+	 * Methode permettant de récuperer les données d'un user et de mettre à jour celle ci en bdd
+	 * 
+	 * @param userform objet stockant les différentes valeurs entrer dans le formulaire html
+	 * @param presult Resultat de la requete post 
+	 * @param pmodel model permettant de communiquer des données entre la vue et le controller
+	 * @return la methode d'affichage des users
+	 */
 	@PostMapping("/ModifierUser")
 	public String modifieUser(@Valid @ModelAttribute UserForm userform, BindingResult presult, Model pmodel) {
 		if (!presult.hasErrors()) {

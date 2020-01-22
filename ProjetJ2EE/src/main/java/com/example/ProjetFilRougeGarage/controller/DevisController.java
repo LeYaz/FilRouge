@@ -29,9 +29,19 @@ import com.example.ProjetFilRougeGarage.service.IServiceVehicule;
 import com.example.ProjetFilRougeGarage.service.ServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceUser;
 
+
+/**
+ * 
+ * @author Xavier
+ * Le controlleur des devis
+ *
+ */
 @Controller
 public class DevisController {
 
+	/**
+	 * Déclaration des services nécéssaires
+	 */
 	@Autowired
 	private IServiceDevis serviceDevis;
 	@Autowired
@@ -45,7 +55,13 @@ public class DevisController {
 
 	
 	
-
+/**
+ * Le ConvertForm permet de récupérer le formulaire saisi pour la création
+ * et modification de données
+ * @param devisform : récupérer le formulaire spécifique a Devis
+ * @return le formulaire saisi et ses données
+ * @throws Exception
+ */
 	
 	
 	private Devis convertForm(DevisForm devisform) throws Exception {
@@ -72,6 +88,13 @@ public class DevisController {
 	}
 	
 	
+	/**
+	 * Sert à afficher la liste des devis actifs et le formulaire de creation d'un
+	 * nouveau devis. On prend également la liste des client, vehicule, et user 
+	 * pour les afficher dans la liste, on passe ensuite à CreerDevis
+	 * @param pmodel : l'affichage de la page
+	 * @return : la page HTML des devis et leur affichage
+	 */
 	
 	@GetMapping("/afficherCreerDevis")
 	public String getAffiche(Model pmodel) {
@@ -95,6 +118,13 @@ public class DevisController {
 		return "devis";
 	}
 	
+	/**
+	 * afficher le menu de modification d'un devis pour modifier un ou plusieurs 
+	 * champs
+	 * @param id : l'id du devis que l'on souhaite modifier
+	 * @param pmodel : l'affichage de la page
+	 * @return :  la page HTML des devis et leur affichage
+	 */
 	@GetMapping("/afficherModifierDevis/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		Devis pdevis = serviceDevis.rechercheDevisId(id);
@@ -121,7 +151,14 @@ public class DevisController {
 		}
 		return "devis";
 	}
-	
+	/**
+	 * Permet de récupérer ce qui a été envoyer par afficherCreerDevis, converti le
+	 * formulaire et crée le devis grace au service
+	 * @param devisform : le formulaire du devis recupéré
+	 * @param presult : le résultat
+	 * @param pmodel : l'affichage de la page et des données
+	 * @return : l'affichage actualisé avec le devis crée
+	 * 	 */
 	@PostMapping("/CreerDevis")
 	public String ajoutNote(@Valid @ModelAttribute(name = "devisform") DevisForm devisform, BindingResult presult,
 			Model pmodel) {
@@ -138,6 +175,14 @@ public class DevisController {
 		return this.getAffiche(pmodel);
 	}
 	
+	/**
+	 * Permet de récupérer ce qui a été envoyer par afficherModifierDevis, converti le
+	 * formulaire de modification et modifie le devis grace au service
+	 * @param devisform : le formulaire du devis recupéré
+	 * @param presult : le résultat
+	 * @param pmodel : l'affichage de la page et des données
+	 * @return l'affichage actualisé avec le devis modifié
+	 */
 	@PostMapping("/ModifierDevis")
 	public String modifieNote(@Valid @ModelAttribute(name = "devisform") DevisForm devisform, BindingResult presult,
 			Model pmodel) {
@@ -155,7 +200,13 @@ public class DevisController {
 		return this.getAffiche(pmodel);
 
 	}
-	
+	/**
+	 * Permet de désactiver un devis, le retire de la liste d'affichage mais sans 
+	 * l'effacer de la base de données
+	 * @param id : l'id du devis que l'on veut désactiver
+	 * @param pmodel : l'affichage de la liste des devis
+	 * @return : la liste des devis actualisée après la désactivation
+	 */
 	@GetMapping("/DesactiverDevis/{id}")
 	public String getDesactiver(@PathVariable final Integer id,Model pmodel) {
 		Devis pdevis = serviceDevis.rechercheDevisId(id);

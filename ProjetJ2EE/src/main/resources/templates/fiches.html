@@ -69,6 +69,8 @@
 	  
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	  		
+	  		
+	  		
 	  		<div class="form-group">
 	  		<label for="select">Client</label>
 	  		<select th:field="*{client}" class="form-control">
@@ -101,17 +103,23 @@
 	    	
 	   		<div class="form-group">
 	   		<label for="datecreation">Date de Creation</label>
-	   		<input type="text" th:field="*{datecreation}" id="datecreation" 
+	   		<input type="date" th:field="*{datecreation}" id="datecreation" 
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
 	   		</div>
 	   		
 	   		<div class="form-group">
 	   		<label for="datecloture">Date de Cloture</label>
-	   		<input type="text" th:field="*{datecloture}" id="datecloture" 
+	   		<input type="date" th:field="*{datecloture}" id="datecloture" 
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
 	   		</div>
 	   					
-	   		
+	   		<label for="etat">Etat fiche ?</label>
+								
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
+<OPTION value="true">Accepté
+<OPTION value="false">Refusé
+
+</SELECT>
 	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>

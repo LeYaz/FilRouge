@@ -68,11 +68,11 @@ public class TacheController {
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "CreerTache");
-
-		TacheForm tacheform = new TacheForm();
-		tacheform.setId(0);
-		pmodel.addAttribute("tacheform", tacheform);
-
+		if (!pmodel.containsAttribute("tacheform")) {
+			TacheForm tacheform = new TacheForm();
+			tacheform.setId(0);
+			pmodel.addAttribute("tacheform", tacheform);
+		}
 		return "taches";
 	}
 
@@ -122,6 +122,9 @@ public class TacheController {
 			try {
 				Tache tache = convertForm(tacheform);
 				servicetache.creerTache(tache);
+			    tacheform = new TacheForm();
+				tacheform.setId(0);
+				pmodel.addAttribute("tacheform", tacheform);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
