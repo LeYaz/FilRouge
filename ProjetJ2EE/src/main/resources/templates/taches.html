@@ -7,14 +7,16 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerentretien :: headerentretien"></div>
 
 	<div class="showcase1">
   		<div id="cookies">
-  		<h1> Création de tâches </h1>
+  		<h1> Gestion de tâches </h1>
   		</div>
       <div class="container showcase-inner">
       
-		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierTache'}">
 			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
@@ -55,51 +57,72 @@
 		<h2 th:unless="${action == 'ModifierTache'}">Formulaire d'Ajout</h2>
 		<br/>
 				 
-		<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
-
-		<div>
+		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
+		
+		</div> 
+		<br/><br/>
+		<div class="form">
 			<form action="#" th:action="@{/{action}(action=${action})}"
 				th:object="${tacheform}" method="post">
 				
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
-				 <label
-					for="commentaire">Commentaire</label> <input type="text"
-					th:field="*{commentaire}" id="commentaire"
-					placeholder="commentaire" />
+				
+				<div class="form-group">
+				 	<label for="commentaire">Commentaire</label> 
+				 	<input type="text" th:field="*{commentaire}" id="commentaire"
+					placeholder="commentaire" required class="form-control"/>
+					<span id="tag" class="w3-tag w3- w3-black"> Renseignez ce champs </span>
+				</div>
+					
+				<div class="form-group">
 					 <label for="user">Utilisateur</label>
-				<select th:field="*{user}">
+					<select th:field="*{user}" required class="form-control">
 					<option th:each="puser :${listeuser}" th:value="${puser.id}"
 						th:utext="${puser.nom}" />
-				</select>
+					</select>
+				</div>
 				
-				 <label for="fiche">Fiche</label> <select th:field="*{fiche}">
+				<div class="form-group">
+				 	<label for="fiche">Fiche</label> <select th:field="*{fiche}" 
+				 	required class="form-control">
 					<option th:each="fiche :${listefiches}" th:value="${fiche.id}"
 						th:utext="${fiche.id}" />
-				</select> 
-				<label for="priorite">Priorite</label> 
-				<select
-					th:field="*{priorite}">
+					</select> 
+				</div>
+				
+				<div class="form-group">
+					<label for="priorite">Priorite</label> 
+					<select th:field="*{priorite}" required class="form-control">
 					<option th:each="ppriorite :${listepriorite}"
-						th:value="${ppriorite.id}" th:utext="${ppriorite.libelle}" />
-				</select> 
-				<label for="piece">Piece</label>
-				 <select th:field="*{piece}">
+						th:value="${ppriorite.id}" th:utext="${ppriorite.libelle}" 
+						/>
+					</select> 
+				</div>
+				
+				<div class="form-group">
+					<label for="piece">Piece</label>
+				 	<select th:field="*{piece}" required class="form-control">
 					<option th:each="ppiece :${listepiece}" th:value="${ppiece.id}"
 						th:utext="${ppiece.libelle}" />
-				</select> 
-				<label for="etattache">Etattache</label>
-				 <select
-					th:field="*{etattache}">
+					</select> 
+				</div>
+				
+				<div class="form-group">
+					<label for="etattache">Etattache</label>
+				 	<select th:field="*{etattache}" required class="form-control">
 
 					<option th:value="true">Vrai</option>
-					<option th:value="false">Faux</option></select> 
+					<option th:value="false">Faux</option>
+					</select> 
+				</div>
 					
+				<div class="form-group">
 					<label for="qte">Quantite</label> <input type="text"
-					th:field="*{qte}" id="qte" placeholder="qte" />
+					th:field="*{qte}" id="qte" placeholder="qte" required class="form-control" />
+				</div>
 					
-					 <input
-					type="hidden" th:field="*{desactiver}" id="desactiver"
-					placeholder="desactiver" />
+				<input type="hidden" th:field="*{desactiver}" id="desactiver"
+					placeholder="desactiver" class="form-control"/>
 
 
 				<button type="submit">Valider</button>
@@ -107,6 +130,6 @@
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
-</div>
+  </div>
 </body>
 </html>

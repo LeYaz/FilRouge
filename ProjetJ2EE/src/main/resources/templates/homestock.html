@@ -7,46 +7,9 @@
   </head>
   <body>
  	<div th:replace="fragments/header :: header"></div>
+ 	<div th:replace="fragments/headerstock :: headerstock"></div>
  
- <header class="headerhome">
-		<div class="navbar navbar-expand-lg navbar-light bg center">
-				  <a class="navbar-brand" href="home.html" th:href="@{/stock}">Menu stock</a>
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" 
-				  data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
-				  aria-expanded="false" aria-label="Toggle navigation">
-				    <span class="navbar-toggler-icon"></span>
-				  </button>
-				  
-				  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-				    <ul class="navbar-nav">
-				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
-				        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Pièces
-				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				          <a class="dropdown-item" href="#">Action</a>
-				          <a class="dropdown-item" href="#">Another action</a>
-				          <a class="dropdown-item" href="#">Something else here</a>
-				        </div>
-				      </li>
-				     
-				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
-				        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Véhicule
-				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				          <a class="dropdown-item" href="#">Action</a>
-				          <a class="dropdown-item" href="#">Another action</a>
-				          <a class="dropdown-item" href="#">Something else here</a>
-				        </div>
-				      </li>
-				    </ul>
-				  </div>
-		</div>
 
-	</header>
  
     <div class="container">
      <header class="showcase">

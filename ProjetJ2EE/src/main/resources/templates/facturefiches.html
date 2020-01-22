@@ -8,22 +8,30 @@ th:replace="fragments/headerload :: load">
  </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
- <h2> FACTURE FICHE</h2>
-    <div class="container">
-	 <table th:unless="${action == 'ModifierFactureFiche'}">
-	 <thead>
-	 	<tr>
-	 	<th>Id</th>
-	 	<th>Fiche</th>
-	 	<th>PrixHT</th>
-	 	<th>TauxTVA</th>
-	 	<th>Desactiver</th>
+
+<div th:replace="fragments/headerentretien :: headerentretien"></div>
+
+ <div class="showcase1">
+  		<div id="cookies">
+  		<h1> Liste des factures de fiche </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1"th:unless="${action == 'ModifierFactureFiche'}">
+			 <thead class="thead-dark">
+			 	<tr>
+			 	<th>Id</th>
+			 	<th>Fiche</th>
+			 	<th>PrixHT</th>
+			 	<th>TauxTVA</th>
+			 	<th>Desactiver</th>
 	 	</tr>
 	 </thead>
 	 <tbody>
 	 	<tr th:each="facturefiche : ${listefacturefiche}">
 	 		<td >
-	 		<a	th:href="@{/afficherModifierFactureFiche/{id}(id=${facturefiche.id})}" 
+	 		<a	class="btn btn-outline-secondary"
+	 		th:href="@{/afficherModifierFactureFiche/{id}(id=${facturefiche.id})}" 
 	 		th:text="${facturefiche.id}"></a></td>
 	 	
 				<td th:text="${facturefiche.fiche.id}"/>
@@ -31,13 +39,15 @@ th:replace="fragments/headerload :: load">
 	 		<td th:text="${facturefiche.tauxTVA}"/>
 	 		
 	 		<td >
-	 		<a th:href="@{/DesactiverFactureFiche/{id}(id=${facturefiche.id})}" 
+	 		<a class="btn btn-outline-secondary"
+	 		th:href="@{/DesactiverFactureFiche/{id}(id=${facturefiche.id})}" 
 	 		th:text="'Desactiver'"></a></td>
 	 	</tr>
 	 </tbody>
  </table>
  
  <div th:replace="fragments/footer :: footer"></div>
+    </div>
     </div>
     </body>
 </html>

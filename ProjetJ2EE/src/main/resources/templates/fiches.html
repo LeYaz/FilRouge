@@ -7,10 +7,17 @@
   </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+
+<div th:replace="fragments/headerentretien :: headerentretien"></div>
  
-    <div class="container">
-	 <table border = "1" th:unless="${action == 'ModifierFiche'}">
-	 <thead>
+    <div class="showcase1">
+  		<div id="cookies">
+  		<h1> Gestion des fiches </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierFiche'}">
+			<thead class="thead-dark">
 	 	<tr>
 	 	<th>Id</th>
 	 	<th>Client</th>
@@ -26,7 +33,8 @@
 	 <tbody>
 	 	<tr th:each="fiche : ${listefiche}">
 	 		<td >
-	 		<a	th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
+	 		<a	class="btn btn-outline-secondary"
+	 		th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
 	 		<td th:text="${fiche.client.name}"/>
 	 		<td th:text="${fiche.user.nom}"/>
 	 		<td th:text="${fiche.etatfiche}"/>
@@ -34,60 +42,81 @@
 	 		<td th:text="${fiche.datecreation}"/>
 	 		<td th:text="${fiche.datecloture}"/>
 	 		<td th:text="${fiche.description}"/>
-	 		<td><a th:href="@{/DesactiverFiche/{id}(id=${fiche.id})}"
+	 		<td><a class="btn btn-outline-secondary"
+	 		 th:href="@{/DesactiverFiche/{id}(id=${fiche.id})}"
 						th:text="'Desactiver'"></a></td>
 	 	</tr>
 	 </tbody>
  </table>
  
- <h2 th:if="${action == 'ModifierFiche'}">
- <a	th:href="@{/afficherCreerFiche}" 
- th:text="'Formulaire de Modification'"></a>
- </h2>
- <h2 th:unless="${action == 'ModifierFiche'}">Formulaire d'Ajout</h2>
- 
- <div>
+ <div id="cookies">
+		<h2 th:if="${action == 'ModifierFiche'}">
+			<a th:href="@{/afficherCreerFiche}"
+				th:text="'Formulaire de Modification'"></a>
+		</h2>
+		<h2  th:unless="${action == 'ModifierFiche'}">Formulaire d'Ajout</h2>
+				 <br/>
+				 
+		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
+		
+		
+		</div>
+		
+		<br/><br/>
+ <div >
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${ficheform}"   method="post">
 	  
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	  		
+	  		<div class="form-group">
 	  		<label for="select">Client</label>
-	  		<select th:field="*{client}">
+	  		<select th:field="*{client}" class="form-control">
 			    <option th:each="pclient :${listeclient}" 
 			    	th:value="${pclient.id}" th:utext="${pclient.name}"/>
 			</select>
+			</div>
 			
+			<div class="form-group">
 			<label for="select">Utilisateur</label>
-			<select th:field="*{user}">
+			<select th:field="*{user}" class="form-control">
 			    <option th:each="puser :${listeuser}" 
 			    	th:value="${puser.id}" th:utext="${puser.nom}"/>
 			</select>
+			</div>
 			
+			<div class="form-group">
 			<label for="select">Priorite</label>
-			<select th:field="*{priorite}">
+			<select th:field="*{priorite}" class="form-control">
 			    <option th:each="ppriorite :${listepriorite}" 
 			    	th:value="${ppriorite.id}" th:utext="${ppriorite.libelle}"/>
 			</select>
+			</div>
 			
+			<div class="form-group">
 			<label for="description">Description Fiche</label>
 	   		<input type="text" th:field="*{description}" id="description" 
-	   		placeholder="Description Fiche"/>
+	   		placeholder="Description Fiche" class="form-control"/>
+	    	</div>
 	    	
-	   		
+	   		<div class="form-group">
 	   		<label for="datecreation">Date de Creation</label>
 	   		<input type="text" th:field="*{datecreation}" id="datecreation" 
-	   		placeholder="aaaa-mm-jj"/>
+	   		placeholder="aaaa-mm-jj" class="form-control"/>
+	   		</div>
 	   		
+	   		<div class="form-group">
 	   		<label for="datecloture">Date de Cloture</label>
 	   		<input type="text" th:field="*{datecloture}" id="datecloture" 
-	   		placeholder="aaaa-mm-jj"/>
+	   		placeholder="aaaa-mm-jj" class="form-control"/>
+	   		</div>
 	   					
 	   		
-	   <button  type="submit">Valider</button>
+	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
  <div th:replace="fragments/footer :: footer"></div>
+    </div>
     </div>
     </body>
 </html>

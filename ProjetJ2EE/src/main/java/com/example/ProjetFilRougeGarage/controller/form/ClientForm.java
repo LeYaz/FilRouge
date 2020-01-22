@@ -1,14 +1,14 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
-import javax.validation.Valid;
+
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class ClientForm {
 
 	private Integer id;
 
-	@Valid
-	@NotEmpty (message ="{client.obligatoire.notempty}")
+	@NotEmpty 
 	private String name;
 
 	@NotEmpty
@@ -18,15 +18,18 @@ public class ClientForm {
 	private String adresse;
 
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
 	private String codepostal;
 
 	@NotEmpty
 	private String ville;
 
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
 	private String tel;
 
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
 	private String portable;
 
 	private String desactiver;
