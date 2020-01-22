@@ -1,5 +1,6 @@
 package com.example.ProjetFilRougeGarage.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.beans.Devis;
+import com.example.ProjetFilRougeGarage.beans.FactureDevis;
 import com.example.ProjetFilRougeGarage.beans.User;
 import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.DevisForm;
@@ -42,6 +44,10 @@ public class DevisController {
 	private IServiceFactureDevis factureDevis;
 
 	
+	
+
+	
+	
 	private Devis convertForm(DevisForm devisform) throws Exception {
 		Devis pdevis = new Devis();
 		//System.err.println(devisform.getClient());
@@ -62,9 +68,10 @@ public class DevisController {
 		pdevis.setDatecreation(madate);
 		pdevis.setEtatdevis(Boolean.valueOf(devisform.getEtatdevis()));
 		pdevis.setDesactiver(Boolean.valueOf(devisform.getDesactiver()));
-
 		return pdevis;
 	}
+	
+	
 	
 	@GetMapping("/afficherCreerDevis")
 	public String getAffiche(Model pmodel) {
