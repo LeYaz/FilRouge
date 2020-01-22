@@ -42,7 +42,7 @@ public class VehiculeController {
 	
 	@GetMapping("/afficherCreerVehicule")
 	public String getAffiche(Model pmodel) {
-		List<Vehicule> lvehicule = serviceVehicule.rechercheVehicule();
+		List<Vehicule> lvehicule = serviceVehicule.rechercherVehiculeActive();
 		pmodel.addAttribute("listevehicule", lvehicule);
 		pmodel.addAttribute("action", "CreerVehicule");
 		if (pmodel.containsAttribute("vehiculeform") == false) {
@@ -70,12 +70,12 @@ public class VehiculeController {
 		}
 		return "vehicules";
 	}
+	
 	@GetMapping("/DesactiverVehicule/{id}")
 	public String getDesactiver(@PathVariable final Integer id,Model pmodel) {
 		Vehicule pvehicule = serviceVehicule.rechercheVehiculeId(id);
 		pvehicule.setDesactiver(true);
 		serviceVehicule.desactiverVehicule(pvehicule);
-		
 		return this.getAffiche(pmodel);
 	}
 	

@@ -25,6 +25,7 @@ th:replace="fragments/headerload :: load">
 	 		<td >
 	 		<a	th:href="@{/afficherModifierPiece/{id}(id=${piece.id})}" 
 	 		th:text="${piece.id}"></a></td>
+	 		<spring:message code="NotEmpty.creation.libelle" />
 	 		<td th:text="${piece.libelle}"/>
 	 		<td th:text="${piece.quantite}"/>
 	 		<td th:text="${piece.date_saisie}"/>
@@ -48,8 +49,8 @@ th:replace="fragments/headerload :: load">
 	   		<input type="text" th:field="*{libelle}" id="libelle" placeholder="libelle"/>
 	   		<label for="quantite">quantite</label>
 	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="quantite"/>
-	   		<label for="quantite">date de saisie</label>
-	   		<input type="text" th:field="*{date_saisie}" id="date_saisie" placeholder="date de saisie"/>
+	   		<label for="date_saisie">date de saisie</label>
+	   		<input type="date" th:field="*{date_saisie}" id="date_saisie" placeholder="date de saisie"/>
 	   <button  type="submit">Valider</button>
 	</form>
  </div>

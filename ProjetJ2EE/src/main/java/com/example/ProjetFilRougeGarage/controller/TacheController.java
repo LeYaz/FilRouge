@@ -38,8 +38,6 @@ public class TacheController {
 
 	@Autowired
 	private iServiceUser serviceuser;
-	
-	
 
 	private Tache convertForm(TacheForm tacheform) throws Exception {
 
@@ -50,7 +48,7 @@ public class TacheController {
 		tache.setFiche(servicefiche.rechercherFicheId(Integer.parseInt(tacheform.getFiche())));
 		tache.setPriorite(servicepriorite.rechercherPrioriteId(Integer.parseInt(tacheform.getPriorite())));
 		tache.setPiece(servicepiece.recherchePieceId(Integer.parseInt(tacheform.getPiece())));
-		tache.setDesactiver(false);//Boolean.valueOf(tacheform.getDesactiver()));
+		tache.setDesactiver(false);// Boolean.valueOf(tacheform.getDesactiver()));
 		tache.setUser(serviceuser.rechercherUserId(Integer.parseInt(tacheform.getUser())));
 		tache.setQte(Integer.valueOf(tacheform.getQte()));
 		return tache;
@@ -62,28 +60,34 @@ public class TacheController {
 		List<Tache> ltaches = servicetache.rechercheTacheActive();
 		List<User> luser = serviceuser.rechercherUser();
 		List<Piece> lpiece = servicepiece.recherchePiece();
-		List<Priorite> lpriorite =servicepriorite.rechercherPriorite();
-	
+		List<Priorite> lpriorite = servicepriorite.rechercherPriorite();
+
 		pmodel.addAttribute("listefiches", lfiches);
 		pmodel.addAttribute("listepriorite", lpriorite);
 		pmodel.addAttribute("listetache", ltaches);
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "CreerTache");
-		if (pmodel.containsAttribute("tacheform") == false) {
-			TacheForm tacheform = new TacheForm();
-			tacheform.setId(0);
-			pmodel.addAttribute("tacheform", tacheform);
-		}
+
+		TacheForm tacheform = new TacheForm();
+		tacheform.setId(0);
+		pmodel.addAttribute("tacheform", tacheform);
+
 		return "taches";
 	}
 
 	@GetMapping("/afficherModifierTache/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		Tache tache = servicetache.rechercherTacheId(id);
-
+		List<Fiche> lfiches = servicefiche.rechercherFicheActive();
+		List<User> luser = serviceuser.rechercherUser();
+		List<Piece> lpiece = servicepiece.recherchePiece();
+		List<Priorite> lpriorite = servicepriorite.rechercherPriorite();
 		pmodel.addAttribute("listetache", null);
-
+		pmodel.addAttribute("listefiches", lfiches);
+		pmodel.addAttribute("listepriorite", lpriorite);
+		pmodel.addAttribute("listeuser", luser);
+		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "ModifierTache");
 		if (pmodel.containsAttribute("tacheform") == false) {
 			TacheForm tacheform = new TacheForm();

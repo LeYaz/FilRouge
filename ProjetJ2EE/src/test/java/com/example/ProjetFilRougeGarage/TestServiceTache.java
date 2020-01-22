@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.ProjetFilRougeGarage.beans.Piece;
 import com.example.ProjetFilRougeGarage.beans.Tache;
 import com.example.ProjetFilRougeGarage.service.IServicePriorite;
 import com.example.ProjetFilRougeGarage.service.iServiceFiche;
@@ -34,7 +35,6 @@ class TestServiceTache {
 	private iServiceUser serviceuser;
 	
 	private static String commentaire = "Moteur de la gole 6 à changer";
-	private static String nameUser = "Xavier";
 	private static Integer qte = 1;
 	private static Boolean etattache= true;
 	private static Boolean desactiver = true;
@@ -83,12 +83,19 @@ class TestServiceTache {
 
 	@Test
 	void testModifierTache() {
-		//fail("Not yet implemented");
+		Tache t = servicetache.rechercherTacheId(3);
+		t.setCommentaire("test changement commentaire");;
+		servicetache.modifierTache(t);
+		assertEquals(t.getCommentaire(), "test changement commentaire");
 	}
 
 	@Test
 	void testDesactiverTache() {
-		//fail("Not yet implemented");
+		Tache tache = servicetache.rechercherTacheId(4);
+		tache.setDesactiver(true);
+		servicetache.desactiverTache(tache);
+		Tache t = servicetache.rechercherTacheId(4);
+		assertTrue(t.getDesactiver());
 	}
 
 }

@@ -46,6 +46,12 @@ public class ServiceVehicule implements IServiceVehicule {
 		daoVehicule.save(vehicule);
 		
 	}
+	@Transactional
+	@Override
+	public List<Vehicule> rechercherVehiculeActive() {
+		// TODO Auto-generated method stub
+		return daoVehicule.listActive();
+	}
 
 	
 	
