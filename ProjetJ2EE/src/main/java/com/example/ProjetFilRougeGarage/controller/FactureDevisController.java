@@ -13,8 +13,18 @@ import com.example.ProjetFilRougeGarage.controller.form.FactureDevisForm;
 import com.example.ProjetFilRougeGarage.service.IServiceDevis;
 import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 
+/**
+ * 
+ * @author Xavier
+ *
+ */
 @Controller
+/**
+ */
 public class FactureDevisController {
+	/**
+	 * Déclaration des services
+	 */
 	@Autowired
 	private IServiceDevis serviceDevis;
 	@Autowired
@@ -23,8 +33,12 @@ public class FactureDevisController {
 	
 
 	
-
-	@GetMapping("/afficherCreerFactureDevis")
+/**
+ * Affiche la liste des facture de devis actives
+ * @param pmodel : l'affichage des données
+ * @return la page html des facture de devis avec sa liste.
+ */
+	@GetMapping("/afficherFactureDevis")
 	public String getAffiche(Model pmodel) {
 
 		List<Devis> ldevis = serviceDevis.rechercherDevisActive();
@@ -33,7 +47,6 @@ public class FactureDevisController {
 		pmodel.addAttribute("listedevis", ldevis);
 		pmodel.addAttribute("listefacturedevis", lfacturedevis);
 
-		pmodel.addAttribute("action", "CreerFactureDevis");
 		if (pmodel.containsAttribute("facturedevisform") == false) {
 			FactureDevisForm facturedevisform = new FactureDevisForm();
 			facturedevisform.setId(0);

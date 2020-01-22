@@ -24,15 +24,27 @@ import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceFactureFiche;
 import com.example.ProjetFilRougeGarage.service.iServiceFiche;
 
+/**
+ * 
+ * @author Xavier
+ *
+ */
 @Controller
 public class FactureFicheController {
+	/**
+	 * Déclaration des services
+	 */
 	@Autowired
 	private iServiceFiche serviceFiche;
 	@Autowired
 	private iServiceFactureFiche serviceFactureFiche;
 
 
-
+	/**
+	 * Affiche la liste des facture de fiches actives
+	 * @param pmodel : l'affichage des données
+	 * @return la page html des facture de fiches avec sa liste.
+	 */
 	@GetMapping("/afficherCreerFactureFiche")
 	public String getAffiche(Model pmodel) {
 
