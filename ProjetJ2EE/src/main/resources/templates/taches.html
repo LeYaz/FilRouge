@@ -68,10 +68,9 @@
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
 				
 				<div class="form-group">
-				 	<label for="commentaire">Commentaire</label> 
-				 	<input type="text" th:field="*{commentaire}" id="commentaire"
-					placeholder="commentaire" required class="form-control"/>
-					<span id="tag" class="w3-tag w3- w3-black"> Renseignez ce champs </span>
+				<label for="commentaire">Commentaire</label> <input type="text"
+					th:field="*{commentaire}" id="commentaire" placeholder="commentaire" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('commentaire')}" th:errors="*{commentaire}"></label>
 				</div>
 					
 				<div class="form-group">
@@ -115,12 +114,13 @@
 					<option th:value="false">Faux</option>
 					</select> 
 				</div>
-					
-				<div class="form-group">
-					<label for="qte">Quantite</label> <input type="text"
-					th:field="*{qte}" id="qte" placeholder="qte" required class="form-control" />
+
+						<div class="form-group">
+				<label for="qte">Quantite</label> <input type="text"
+					th:field="*{qte}" id="qte" placeholder="qte" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('qte')}" th:errors="*{qte}"></label>
 				</div>
-					
+				
 				<input type="hidden" th:field="*{desactiver}" id="desactiver"
 					placeholder="desactiver" class="form-control"/>
 

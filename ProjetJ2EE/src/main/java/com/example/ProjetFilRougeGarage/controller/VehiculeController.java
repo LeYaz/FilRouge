@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.ProjetFilRougeGarage.beans.Piece;
+
 import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.VehiculeForm;
 import com.example.ProjetFilRougeGarage.service.IServiceVehicule;
@@ -37,6 +37,7 @@ public class VehiculeController {
 		pvehicule.setQuantite(Integer.valueOf(vehiculeform.getQuantite()));
 		pvehicule.setPrixht(Float.valueOf(vehiculeform.getPrixht()));
 		pvehicule.setDatecreation(madate);
+		pvehicule.setDesactiver(false);
 		return pvehicule;
 	}
 	
@@ -45,7 +46,8 @@ public class VehiculeController {
 		List<Vehicule> lvehicule = serviceVehicule.rechercherVehiculeActive();
 		pmodel.addAttribute("listevehicule", lvehicule);
 		pmodel.addAttribute("action", "CreerVehicule");
-		if (pmodel.containsAttribute("vehiculeform") == false) {
+		if(!pmodel.containsAttribute("vehiculeform"))
+		{
 			VehiculeForm vehiculeform = new VehiculeForm();
 			vehiculeform.setId(0);
 			pmodel.addAttribute("vehiculeform", vehiculeform);
@@ -86,6 +88,9 @@ public class VehiculeController {
 			try {
 				Vehicule vehicule = convertForm(vehiculeform);
 				serviceVehicule.creerVehicule(vehicule);
+				vehiculeform = new VehiculeForm();
+				vehiculeform.setId(0);
+				pmodel.addAttribute("vehiculeform", vehiculeform);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}

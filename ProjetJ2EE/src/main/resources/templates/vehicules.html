@@ -56,40 +56,81 @@
 		</div>
 		
 		
- <div>
+
  	<div class="form">
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${vehiculeform}"   method="post">
 	  
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	  		
+	  		<!-- <div class="form-group">
+				<label for="modele">Modele</label> <input type="text"
+					th:field="*{modele}" id="modele" placeholder="Modele" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('modele')}" th:errors="*{modele}"></label>
+				</div> -->
 	  		<div class="form-group">
+				<label for="modele">Modele</label> <input type="text"
+					th:field="*{modele}" id="modele" placeholder="modele" class="form-control"/> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('modele')}" th:errors="*{modele}"></label>
+				</div>
+	  		<!-- <div class="form-group">
 		    	<label for="modele">Modele</label>
 		   		<input type="text" th:field="*{modele}" id="modele" placeholder="modele" class="form-control"/>
 	   		</div>
-	   		
-	   		<div class="form-group">
+	   		 -->
+	   		 
+	   		 <div class="form-group">
+				<label for="marque">Marque</label> <input type="text"
+					th:field="*{marque}" id="marque" placeholder="Marque" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('marque')}" th:errors="*{marque}"></label>
+				</div>
+	   		 
+	   		 
+	   		<!-- <div class="form-group">
 	   			<label for="modele">Marque</label>
 	   			<input type="text" th:field="*{marque}" id="marque" placeholder="marque" class="form-control"/>
-	   		</div>
+	   		</div> -->
+	   		
 	   		
 	   		<div class="form-group">
+				<label for="quantite">quantite</label> <input type="text"
+					th:field="*{quantite}" id="quantite" placeholder="Quantite" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('quantite')}" th:errors="*{quantite}"></label>
+				</div>
+	   		
+	   		
+	   		
+	   		<!-- <div class="form-group">
 	   		<label for="quantite">Quantité</label>
 	   		<input type="text" th:field="*{quantite}" id="quantite" 
 	   		placeholder="quantite" class="form-control"/>
-	   		</div>
+	   		</div> -->
 	   		
-	   		<div class="form-group">
+	   		
+	   			<div class="form-group">
+				<label for="datecreation">Date de creation</label> <input type="date"
+					th:field="*{datecreation}" id="datecreation" placeholder="date de creation" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('datecreation')}" th:errors="*{datecreation}"></label>
+				</div>
+	   		<!-- <div class="form-group">
 	   		<label for="datecreation">Date de Création</label>
 	   		<input type="date" th:field="*{datecreation}" id="datecreation" 
 	   		placeholder="Date de création" class="form-control"/>
-	   		</div>
+	   		</div> -->
+	   		
 	   		
 	   		<div class="form-group">
+				<label for="prixht">PrixHT</label> <input type="text"
+					th:field="*{prixht}" id="prixht" placeholder="Prix hors taxes" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('prixht')}" th:errors="*{prixht}"></label>
+				</div>
+	   		
+	   		
+	   		<!-- <div class="form-group">
 	   		<label for="prixht">prix HT</label>
 	   		<input type="text" th:field="*{prixht}" id="prixht" 
 	   		placeholder="Prix Hors Taxe" class="form-control"/>
-	   		</div>	
+	   		</div>	 -->
 	   		
 	   		<br/>
 	   		
@@ -99,5 +140,6 @@
  <div th:replace="fragments/footer :: footer"></div>
     </div>
     </div>
+ 
     </body>
 </html>

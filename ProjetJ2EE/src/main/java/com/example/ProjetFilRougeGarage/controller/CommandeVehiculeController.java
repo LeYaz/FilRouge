@@ -30,7 +30,7 @@ public class CommandeVehiculeController {
 	private IServiceDevis servicedevis;
 
 	private CommandeVehicule convertForm(CommandeVehiculeForm commandevehiculeform) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Date datecreation = sdf.parse(commandevehiculeform.getDate_creation());
 		Date datecloture = null;
 		if (commandevehiculeform.getDate_cloture().length() > 1) {
@@ -58,41 +58,40 @@ public class CommandeVehiculeController {
 		pmodel.addAttribute("listedevis", ldevis);
 
 		pmodel.addAttribute("action", "CreerCommandeVehicule");
-
-		CommandeVehiculeForm commandevehiculeform = new CommandeVehiculeForm();
-		commandevehiculeform.setId(0);
-		pmodel.addAttribute("commandevehiculeform", commandevehiculeform);
-
+		if (!pmodel.containsAttribute("commandevehiculeform")) {
+			CommandeVehiculeForm commandevehiculeform = new CommandeVehiculeForm();
+			commandevehiculeform.setId(0);
+			pmodel.addAttribute("commandevehiculeform", commandevehiculeform);
+		}
 		return "commandevehicules";
 	}
-	
+
 	@GetMapping("/afficherModifierCommandeVehicule/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		CommandeVehicule vcommande = servicecmdvehicule.rechercherCommandeVehiculeId(id);
 		List<Devis> ldevis = servicedevis.rechercherDevisActive();
-		
+
 		pmodel.addAttribute("listecommandevehicule", null);
 		pmodel.addAttribute("listedevis", ldevis);
 		pmodel.addAttribute("action", "ModifierCommandeVehicule");
 		if (pmodel.containsAttribute("commandevehiculeform") == false) {
 			CommandeVehiculeForm commandevehiculeform = new CommandeVehiculeForm();
 			commandevehiculeform.setId(vcommande.getId());
-			
-			if(commandevehiculeform.getDate_cloture()!=null) {
+
+			if (commandevehiculeform.getDate_cloture() != null) {
 				commandevehiculeform.setDate_cloture(vcommande.getDatecloture().toString());
 			}
-			
+
 			commandevehiculeform.setDate_creation(vcommande.getDatecreation().toString());
 			commandevehiculeform.setDesactiver(vcommande.getDesactiver().toString());
 			commandevehiculeform.setDevis(vcommande.getDevis().getId().toString());
 			commandevehiculeform.setEtat(vcommande.getEtat().toString());
-			
+
 			pmodel.addAttribute("commandevehiculeform", commandevehiculeform);
 		}
 		return "commandevehicules";
 	}
-	
-	
+
 	@GetMapping("/DesactiverCommandeVehicule/{id}")
 	public String getDesactiver(@PathVariable final Integer id, Model pmodel) {
 		CommandeVehicule vcommande = servicecmdvehicule.rechercherCommandeVehiculeId(id);
@@ -101,15 +100,18 @@ public class CommandeVehiculeController {
 		}
 		return this.getAffiche(pmodel);
 	}
-	
+
 	@PostMapping("/CreerCommandeVehicule")
-	public String ajoutUser(@Valid @ModelAttribute(name = "commandevehiculeform") CommandeVehiculeForm commandevehiculeform, BindingResult presult,
-			Model pmodel) {
+	public String ajoutUser(
+			@Valid @ModelAttribute(name = "commandevehiculeform") CommandeVehiculeForm commandevehiculeform,
+			BindingResult presult, Model pmodel) {
 		System.err.println(presult);
 		if (!presult.hasErrors()) {
 			try {
 				CommandeVehicule commande = convertForm(commandevehiculeform);
-				
+				commandevehiculeform = new CommandeVehiculeForm();
+				commandevehiculeform.setId(0);
+				pmodel.addAttribute("commandevehiculeform", commandevehiculeform);
 				servicecmdvehicule.creerCommandeVehicule(commande);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
@@ -119,7 +121,8 @@ public class CommandeVehiculeController {
 	}
 
 	@PostMapping("/ModifierCommandeVehicule")
-	public String modifieUser(@Valid @ModelAttribute CommandeVehiculeForm commandevehiculeform, BindingResult presult, Model pmodel) {
+	public String modifieUser(@Valid @ModelAttribute CommandeVehiculeForm commandevehiculeform, BindingResult presult,
+			Model pmodel) {
 		if (!presult.hasErrors()) {
 			try {
 				CommandeVehicule commande = convertForm(commandevehiculeform);
@@ -130,6 +133,5 @@ public class CommandeVehiculeController {
 		}
 		return this.getAffiche(pmodel);
 	}
-	
 
 }
