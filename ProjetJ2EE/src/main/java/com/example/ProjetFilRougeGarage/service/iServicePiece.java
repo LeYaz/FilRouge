@@ -12,5 +12,5 @@ public interface iServicePiece {
 	public void creerPiece(final Piece piece);
 	public void modifierPiece(final Piece piece);
 	public void desactiverPiece(final Piece piece);
-	List<Piece> recherchePieceActive();
+	public List<Piece> recherchePieceActive();
 }

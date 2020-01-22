@@ -4,33 +4,75 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
- <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+
+    <div class="menu-wrap" th:fragment="header">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div>
+            </div>
+        </div>
+        <div class="menu">
+            <div> 
+                <div>
+                    <ul>
+                        
+                        <li> <a href="home.html" th:href="@{/}"> Home </a></li>
+                        <li><a	class="navbar-brand" th:href="@{/afficherCreerClient}" 
+            			th:text="'Gestion des Clients'"></a></li>
+            			
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerVehicule}" 
+            			th:text="'Gestion des Vehicule'"></a></li>
+            			
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerUser}" 
+            			th:text="'Gestion des Users'"></a></li>
+            			
+            			<li> <a class="navbar-brand" th:href="@{/afficherCreerPiece}" 
+            			th:text="'Gestion des Pieces'"></a></li>
+            			
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerFiche}" 
+            			th:text="'Gestion des Fiches'"></a></li>
+            				
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerDevis}" 
+            			th:text="'Gestion des Devis'"></a></li>
+            
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerCommandePiece}" 
+            			th:text="'Gestion des Commandes de pièces'"></a></li>
+            
+            			<li><a class="navbar-brand" th:href="@{/afficherCreerTache}" 
+            			th:text="'Gestion des Tâches'"></a></li>
+            
+            
+            			
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+ <!-- <div class="navbar navbar-inverse navbar-fixed-top" >
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
           
-            <a	class="navbar-brand" th:href="@{/afficherCreerClient}" 
-            th:text="'Gestion des Clients'"></a>
             
-            <a class="navbar-brand" th:href="@{/afficherCreerVehicule}" 
-            th:text="'Gestion des Vehicule'"></a>
+            
+            
  			
- 			<a class="navbar-brand" th:href="@{/afficherCreerUser}" 
-            th:text="'Gestion des Users'"></a>
+ 			
             
-            <a class="navbar-brand" th:href="@{/afficherCreerFiche}" 
-            th:text="'Gestion des Fiches'"></a>
+           
             
-            <a class="navbar-brand" th:href="@{/afficherCreerDevis}" 
-            th:text="'Gestion des Devis'"></a>
             
-            <a class="navbar-brand" th:href="@{/afficherCreerCommandePiece}" 
-            th:text="'Gestion des Commandes de pièces'"></a>
             
                        <a class="navbar-brand" th:href="@{/afficherCreerFactureDevis}" 
             th:text="'Gestion des Factures de devis'"></a>
             
 
+            
+            
+            
+			
  
           </div>
           <div class="navbar-collapse collapse">
@@ -45,6 +87,10 @@
             th:text="'Gestion des Users'"></a></li>
             <li class="active">
             
+             <a	class="navbar-brand" th:href="@{/afficherCreerPiece}" 
+            th:text="'Gestion des Piece'"></a></li>
+            <li class="active">
+            
             <a	class="navbar-brand" th:href="@{/afficherCreerFiche}" 
             th:text="'Gestion des Fiches'"></a></li>
             <li class="active">
@@ -56,13 +102,22 @@
             <a	class="navbar-brand" th:href="@{/afficherCreerCommandePiece}" 
             th:text="'Gestion des commandes de pièces'"></a></li>
             <li class="active">
+            
+            <a	class="navbar-brand" th:href="@{/afficherCreerTache}" 
+            th:text="'Gestion des Tâches'"></a></li>
+            <li class="active">
 
             </ul>
           </div>
         </div>
       </div>
        
- </div>
+ </div> -->
+ 
+    
+      
+      
+    
  </body>
 
  

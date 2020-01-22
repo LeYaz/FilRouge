@@ -21,13 +21,6 @@ public class ServicePiece implements iServicePiece {
 	@Transactional
 	@Override
 	public List<Piece> recherchePieceActive() {
-//		List<Piece> lpiece = daopiece.findAll();
-//		
-//		for(Piece p : lpiece) {
-//			if(p.getDesactiver()){
-//			lpiece.remove(p);
-//			}
-//		}
 		return daopiece.listActive();
 	}
 	
@@ -40,21 +33,19 @@ public class ServicePiece implements iServicePiece {
 	@Transactional
 	@Override
 	public Piece recherchePieceId(int id) {
-		// TODO Auto-generated method stub
 		return daopiece.findById(id).get();
 	}
 
 	@Transactional
 	@Override
 	public void creerPiece(Piece ppiece) {
-		// TODO Auto-generated method stub
+
 		daopiece.save(ppiece);
 	}
 
 	@Transactional
 	@Override
 	public void modifierPiece(Piece ppiece) {
-		// TODO Auto-generated method stub
 		daopiece.save(ppiece);
 	}
 	@Transactional
@@ -63,6 +54,5 @@ public class ServicePiece implements iServicePiece {
 	
 		daopiece.save(piece);
 	}
-
 
 }

@@ -37,6 +37,8 @@ public class Tache {
 	
 	@Column(name="etattache", nullable=true)
 	private Boolean etattache;
+	
+	private Boolean desactiver;
 
 	public Integer getId() {
 		return id;
@@ -102,10 +104,19 @@ public class Tache {
 		this.etattache = etattache;
 	}
 
+	public Boolean getDesactiver() {
+		return desactiver;
+	}
+
+	public void setDesactiver(Boolean desactiver) {
+		this.desactiver = desactiver;
+	}
+
 	@Override
 	public String toString() {
 		return "Tache [id=" + id + ", commentaire=" + commentaire + ", user=" + user + ", fiche=" + fiche
-				+ ", priorite=" + priorite + ", qte=" + qte + ", etattache=" + etattache + "]";
+				+ ", priorite=" + priorite + ", piece=" + piece + ", qte=" + qte + ", etattache=" + etattache
+				+ ", desactiver=" + desactiver + "]";
 	}
 
 

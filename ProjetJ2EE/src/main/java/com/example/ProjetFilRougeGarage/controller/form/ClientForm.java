@@ -1,12 +1,14 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 public class ClientForm {
 
 	private Integer id;
 
-	@NotEmpty
+	@Valid
+	@NotEmpty (message ="{client.obligatoire.notempty}")
 	private String name;
 
 	@NotEmpty

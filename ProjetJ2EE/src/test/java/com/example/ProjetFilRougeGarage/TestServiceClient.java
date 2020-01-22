@@ -15,7 +15,7 @@ import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.service.IServiceClient;
 
 @SpringBootTest
-class TestClient {
+class TestServiceClient {
 	@Autowired
 	private IServiceClient serviceclient;
 

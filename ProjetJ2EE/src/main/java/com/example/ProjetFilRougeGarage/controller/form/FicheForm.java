@@ -20,7 +20,7 @@ public class FicheForm {
 		private String priorite;
 
 		@NotEmpty
-		private String datecreation;
+		private String datecreation; 
 
 		
 		private String datecloture;

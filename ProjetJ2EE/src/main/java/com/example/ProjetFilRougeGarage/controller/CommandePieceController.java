@@ -91,6 +91,7 @@ public class CommandePieceController {
 		if (pmodel.containsAttribute("commandepieceform") == false) {
 			CommandePieceForm commandepieceform = new CommandePieceForm();
 			commandepieceform.setId(pcommande.getId());
+			
 			if(commandepieceform.getDate_cloture()!=null) {
 				commandepieceform.setDate_cloture(pcommande.getDate_cloture().toString());
 			}
