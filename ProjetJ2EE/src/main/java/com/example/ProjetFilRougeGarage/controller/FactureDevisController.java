@@ -65,6 +65,8 @@ public class FactureDevisController {
 			facturedevisform.setId(0);
 			pmodel.addAttribute("facturedevisform", facturedevisform);
 		}
+		
+		
 		return "facturedevis";
 	}
 	
