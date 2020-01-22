@@ -6,10 +6,17 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerstock :: headerstock"></div>
 
-	<div class="container">
-		<table border="1" th:unless="${action == 'ModifierUser'}">
-			<thead>
+	<div class="showcase1">
+  		<div id="cookies">
+  		<h1> Commande de véhicules </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierUser'}">
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Devis</th>
@@ -21,59 +28,72 @@
 			</thead>
 			<tbody>
 				<tr th:each="commande : ${listecommandevehicule}">
-					<td><a
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{/afficherModifierCommandeVehicule/{id}(id=${commande.id})}"
 						th:text="${commande.id}"></a></td>
 					<td th:text="${commande.devis.id}" />
 					<td th:text="${commande.datecreation}" />
 					<td th:text="${commande.datecloture}" />
 					<td th:text="${commande.etat}" />
-					
-					
 
-
-				<td><a th:href="@{/DesactiverCommandeVehicule/{id}(id=${commande.id})}"
+				<td><a class="btn btn-outline-secondary"
+				th:href="@{/DesactiverCommandeVehicule/{id}(id=${commande.id})}"
 					th:text="'Desactiver'"></a></td>
 				</tr>
 			</tbody>
 		</table>
+		
+	<div id="cookies">	
 		<h2 th:if="${action == 'ModifierCommandeVehicule'}">
- <a	th:href="@{/afficherCreerCommandeVehicule}" th:text="'Formulaire de Modification'"></a>
- </h2>
- <h2 th:unless="${action == 'ModifierCommandeVehicule'}">Formulaire d'Ajout</h2>
- 
- <div>
-	  <form action="#" th:action="@{/{action}(action=${action})}" 
-	  th:object="${commandevehiculeform}"   method="post">
+			 <a	th:href="@{/afficherCreerCommandeVehicule}" th:text="'Formulaire de Modification'"></a>
+			 </h2>
+			 <h2 th:unless="${action == 'ModifierCommandeVehicule'}">Formulaire d'Ajout</h2>
+			<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
+		
+		
+	</div>
+		
+		<br/><br/>
+		<div class="form">
+		  <form action="#" th:action="@{/{action}(action=${action})}" 
+		  th:object="${commandevehiculeform}"   method="post">
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	    	
+	    	<div class="form-group">
 	    	<label for="devis">Devis</label>
-	   		<select id="devis" th:field="*{devis}">
+	   		<select id="devis" th:field="*{devis}" class="form-control">
 			    <option th:each="pdevis :${listedevis}" 
 			    	th:value="${pdevis.id}" th:utext="${pdevis.id}"/>
 			</select>
+	   		</div>
 	   		
+	   		<div class="form-group">
 	   		<label for="date_creation">Date de création</label>
 	   		<input type="date" th:field="*{date_creation}" id="date_creation" 
-	   		placeholder="Date de création"/>
+	   		placeholder="Date de création" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="date_cloture">Date de cloture</label>
 	   		<input type="date" th:field="*{date_cloture}" id="date_cloture" 
-	   		placeholder="Date de cloture"/>
+	   		placeholder="Date de cloture" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="etat">Etat de la commande</label>
-			<select id="etat" th:field="*{etat}">
+			<select id="etat" th:field="*{etat}" class="form-control">
 			    <option th:value="false">Commandé</option>
 			    <option th:value="true">En Stock </option>
 			</select>
-			
-			
-
-	   	
-	   <button  type="submit">Valider</button>
+			</div>
+			<br/>
+			<button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
 
 
 		<div th:replace="fragments/footer :: footer"></div>
+	</div>
 	</div>
 </body>
 </html>

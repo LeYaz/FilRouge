@@ -36,8 +36,7 @@ public class UserController {
 		for (String pprofil : userform.getProfils()) {
 			System.err.println(pprofil);
 			pList.add(serviceprofil.rechercherProfilId(Integer.valueOf(pprofil)));
-			
-			
+
 		}
 
 		puser.setProfils(pList);
@@ -62,11 +61,9 @@ public class UserController {
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listeprofil", lprofil);
 		pmodel.addAttribute("action", "CreerUser");
-		if (pmodel.containsAttribute("userform") == false) {
-			UserForm userform = new UserForm();
-			userform.setId(0);
-			pmodel.addAttribute("userform", userform);
-		}
+		UserForm userform = new UserForm();
+		userform.setId(0);
+		pmodel.addAttribute("userform", userform);
 
 		return "users";
 	}

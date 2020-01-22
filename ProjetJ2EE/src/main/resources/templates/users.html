@@ -6,10 +6,17 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headeradmin :: headeradmin"></div>
 
-	<div class="container">
-		<table border="1" th:unless="${action == 'ModifierUser'}">
-			<thead>
+	<div class="showcase1">
+  		<div id="cookies">
+  		<h1> Gestion des employés </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierUser'}">
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Nom</th>
@@ -17,18 +24,19 @@
 					<th>Login</th>
 					<th>Password</th>
 					<th>Profils</th>
+					<th>Désactiver</th>
 
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user : ${listeuser}">
-					<td><a
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{/afficherModifierUser/{id}(id=${user.id})}"
 						th:text="${user.id}"></a></td>
 					<td th:text="${user.nom}" />
 					<td th:text="${user.prenom}" />
 					<td th:text="${user.login}" />
-					<td th:text="${user.pwd}" />
+					<td>******</td>
 					<td >
 						<ul th:each=" profil : ${user.profils}">
 							<li th:text="${profil.name}"></li>
@@ -38,47 +46,67 @@
 					
 
 
-				<td><a th:href="@{/DesactiverUser/{id}(id=${user.id})}"
+				<td><a class="btn btn-outline-secondary"
+				th:href="@{/DesactiverUser/{id}(id=${user.id})}"
 					th:text="'Desactiver'"></a></td>
 				</tr>
 			</tbody>
 		</table>
+		
+		<div id="cookies">
 		<h2 th:if="${action == 'ModifierUser'}">
- <a	th:href="@{/afficherCreerUser}" th:text="'Formulaire de Modification'"></a>
- </h2>
- <h2 th:unless="${action == 'ModifierUser'}">Formulaire d'Ajout</h2>
- 
- <div>
+			 <a	th:href="@{/afficherCreerUser}" th:text="'Formulaire de Modification'"></a>
+			 </h2>
+			 <h2 th:unless="${action == 'ModifierUser'}">Formulaire d'Ajout</h2>
+			<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
+		
+		
+		</div>
+		
+		<br/><br/> 
+ 	<div class="form">
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${userform}"   method="post">
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 	    	
+	    	<div class="form-group">
 	    	<label for="nom">Nom</label>
-	   		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom"/>
+	   		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="prenom">Prénom</label>
 	   		<input type="text" th:field="*{prenom}" id="prenom" 
-	   		placeholder="Prenom"/>
+	   		placeholder="Prenom" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="login">Login</label>
 	   		<input type="text" th:field="*{login}" id="login" 
-	   		placeholder="Login"/>
+	   		placeholder="Login" class="form-control"/>
+	   		</div>
 	   		
-	   		<label for="pwd">Password HT</label>
-	   		<input type="text" th:field="*{pwd}" id="pwd" 
-	   		placeholder="Password"/>
+	   		<div class="form-group">
+	   		<label for="pwd">Password</label>
+	   		<input type="password" th:field="*{pwd}" id="pwd" 
+	   		placeholder="Password" class="form-control"/>
 	   		<ul>
-       			<li th:each="profil : ${listeprofil} ">
-            		<input type="checkbox" th:name="profils" th:value="${profil.id}"/>
-            		<label th:text="${profil.name}"></label>
+      			<li th:each="profil : ${listeprofil} ">
+            			<input type="checkbox" th:name="profils" th:value="${profil.id}"
+            			 th:checked="${userform.profils.contains(profil.name)} ? 'true' : 'false'" />
+		          		<label th:text="${profil.name}"></label>
        			 </li>
-    		</ul>
 
-	   	
-	   <button  type="submit">Valider</button>
+    		</ul>
+			</div>
+	   	<br/> 
+	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
 
 
 		<div th:replace="fragments/footer :: footer"></div>
+	</div>
 	</div>
 </body>
 </html>

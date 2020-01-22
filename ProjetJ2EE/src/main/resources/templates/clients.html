@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/headerload :: load">
-<title th:text="'Gestion Des Elèves'"></title>
+<title th:text="'Gestion Des Clients'"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
 
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerentretien :: headerentretien"></div>
 
 	<div class="showcase1">
-  
+  		<div id="cookies">
+  		<h1> Clientèle du garage </h1>
+  		</div>
       <div class="container showcase-inner">
+      
 		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierClient'}">
 			<thead class="thead-dark">
 				<tr>
@@ -53,7 +58,7 @@
 		<h2  th:unless="${action == 'ModifierClient'}">Formulaire d'Ajout</h2>
 				 <br/>
 				 
-		<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
+		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
 		
 		
 		</div>
@@ -64,61 +69,48 @@
 				th:object="${clientform}" method="post">
 
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
+			
+				<div class="form-group">
+					<label for="name">Nom</label> <input type="text"
+					th:field="*{name}" id="name" placeholder="Nom" class="form-control" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+				</div>
+				
+				<div class="form-group">		
+					<label for="firstname">Prénom</label> <input type="text"
+					th:field="*{firstname}" id="firstname" placeholder="Prénom" class="form-control" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></label>
+				</div>
+				
+				<div class="form-group">				
+					<label for="adresse">Adresse</label> <input type="text"
+					th:field="*{adresse}" id="adresse" placeholder="Adresse" class="form-control" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></label>
+				</div>
 				
 				<div class="form-group">
-				 <label for="name">Nom</label> 
-				 <input type="text" th:field="*{name}" id="name" placeholder="nom" required class="form-control"/>
-				 <span id="tag" class="w3-tag w3- w3-black"> Renseignez votre nom </span>
-				 <br/><br/><br/>
+					<label for="codepostal">Code postal</label> <input type="text"
+					th:field="*{codepostal}" id="codepostal" placeholder="codepostal" class="form-control" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('codepostal')}" th:errors="*{codepostal}"></label>
 				</div>
 				
-				<div>
-				 <label for="firstname">Prénom</label>
-				  <input type="text" th:field="*{firstname}" id="firstname" placeholder="prénom" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre prénom </span>
-				 <br/><br/><br/>
-				</div>
+				<div class="form-group">
+					<label for="ville">Ville</label> <input type="text"
+					th:field="*{ville}" id="ville" placeholder="ville" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></label>
+				</div>	
 				
-				<div>
-				 <label for="adresse">Adresse</label>
-				  <input type="text" th:field="*{adresse}" id="adresse" 
-				  placeholder="Adresse" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre adresse </span>
-				 <br/><br/><br/>
+				<div class="form-group">
+					<label for="tel">Téléphone</label> <input type="text"
+					th:field="*{tel}" id="tel" placeholder="tel" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></label>
 				</div>
-				
-				<div>
-				 <label for="codepostal">Code Postal</label> 
-				  <input type="text" th:field="*{codepostal}" id="codepostal"
-				   placeholder="code postal" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre code postal </span>
-				 <br/><br/><br/>
+					<div class="form-group">
+				<label for="portable">Mobile</label> <input type="text"
+					th:field="*{portable}" id="portable" placeholder="portable" class="form-control" /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('portable')}" th:errors="*{portable}"></label>
 				</div>
-				
-				<div>
-				 <label for="ville">Ville</label>
-				  <input type="text" th:field="*{ville}" id="ville" placeholder="ville" required/>
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre ville </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="tel">Téléphone</label>
-				  <input type="text" th:field="*{tel}" id="tel" 
-				  placeholder="Téléphone" required/> 
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de téléphone </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<div>
-				 <label for="portable">Mobile</label>
-				  <input type="text" th:field="*{portable}" id="portable" 
-				  placeholder="Mobile" required/> 
-				<span id="tag" class="w3-tag w3- w3-black"> Renseignez votre numéro de portable </span>
-				 <br/><br/><br/>
-				</div>
-				
-				<button type="submit">Valider</button>
+				<button type="submit" class="form-control">Valider</button>
 				<br/><br/>
 			</form>
 		</div>

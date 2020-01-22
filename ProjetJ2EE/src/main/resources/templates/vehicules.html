@@ -6,10 +6,17 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+
+<div th:replace="fragments/headerstock :: headerstock"></div>
  
-    <div class="container">
-	 <table border = "1" th:unless="${action == 'ModifierVehicule'}">
-	 <thead>
+    <div class="showcase1">
+  		<div id="cookies">
+  		<h1> Vente de véhicules </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierVehicule'}">
+	 <thead class="thead-dark">
 	 	<tr>
 	 	<th>Id</th>
 	 	<th>Modele</th>
@@ -18,12 +25,14 @@
 	 	<th>Quantite</th>
 	 	<th>Prix HT</th>
 	 	<th>Date de création</th>
+	 	<th>Désactiver</th>
 	 	</tr>
 	 </thead>
 	 <tbody>
 	 	<tr th:each="vehicule : ${listevehicule}">
 	 		<td >
-	 		<a	th:href="@{/afficherModifierVehicule/{id}(id=${vehicule.id})}" th:text="${vehicule.id}"></a></td>
+	 		<a	class="btn btn-outline-secondary"
+	 		th:href="@{/afficherModifierVehicule/{id}(id=${vehicule.id})}" th:text="${vehicule.id}"></a></td>
 	 		<td th:text="${vehicule.modele}"/>
 	 		<td th:text="${vehicule.marque}"/>
 	 	
@@ -32,39 +41,64 @@
 	 		<td th:text="${vehicule.datecreation}"/>
 	 		
 	 		<td >
-	 		<a th:href="@{/DesactiverVehicule/{id}(id=${vehicule.id})}" th:text="'Desactiver'"></a></td>
+	 		<a class="btn btn-outline-secondary"
+	 		th:href="@{/DesactiverVehicule/{id}(id=${vehicule.id})}" th:text="'Desactiver'"></a></td>
 	 	</tr>
 	 </tbody>
  </table>
  
- <h2 th:if="${action == 'ModifierVehicule'}">
- <a	th:href="@{/afficherCreerVehicule}" th:text="'Formulaire de Mofication'"></a>
- </h2>
- <h2 th:unless="${action == 'ModifierVehicule'}">Formulaire d'Ajout</h2>
- 
+ 		<div id="cookies">
+			 <h2 th:if="${action == 'ModifierVehicule'}">
+			 <a	th:href="@{/afficherCreerVehicule}" th:text="'Formulaire de Mofication'"></a>
+			 </h2>
+			 <h2 th:unless="${action == 'ModifierVehicule'}">Formulaire d'Ajout</h2>
+			 <p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
+		</div>
+		
+		
  <div>
+ 	<div class="form">
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${vehiculeform}"   method="post">
+	  
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
-	    	<label for="modele">Modele</label>
-	   		<input type="text" th:field="*{modele}" id="modele" placeholder="modele"/>
+	  		
+	  		<div class="form-group">
+		    	<label for="modele">Modele</label>
+		   		<input type="text" th:field="*{modele}" id="modele" placeholder="modele" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   			<label for="modele">Marque</label>
-	   		<input type="text" th:field="*{marque}" id="marque" placeholder="marque"/>
+	   			<input type="text" th:field="*{marque}" id="marque" placeholder="marque" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="quantite">Quantité</label>
 	   		<input type="text" th:field="*{quantite}" id="quantite" 
-	   		placeholder="quantite"/>
+	   		placeholder="quantite" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="datecreation">Date de Création</label>
 	   		<input type="date" th:field="*{datecreation}" id="datecreation" 
-	   		placeholder="Date de création"/>
+	   		placeholder="Date de création" class="form-control"/>
+	   		</div>
 	   		
+	   		<div class="form-group">
 	   		<label for="prixht">prix HT</label>
 	   		<input type="text" th:field="*{prixht}" id="prixht" 
-	   		placeholder="Prix Hors Taxe"/>
-	   	
-	   <button  type="submit">Valider</button>
+	   		placeholder="Prix Hors Taxe" class="form-control"/>
+	   		</div>	
+	   		
+	   		<br/>
+	   		
+	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
  <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    </div>
     </div>
     </body>
 </html>

@@ -6,17 +6,24 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+
+<div th:replace="fragments/headervente :: headervente"></div>
  
-    <div class="container">
-	 <table border = "1" th:unless="${action == 'ModifierDevis'}">
-	 <thead>
-	 	<tr>
-	 	<th>Id</th>
-	 	<th>ID Devis</th>
-	 	<th>Prix Hors Taxe</th>
-	 
-	 	<th>Taux TVA</th>
-	 	<th>Date de création</th>
+    <div class="showcase1">
+  		<div id="cookies">
+  		<h1> Liste des factures de devis </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierDevis'}">
+	 		<thead class="thead-dark">
+			 	<tr>
+			 	<th>Id</th>
+			 	<th>ID Devis</th>
+			 	<th>Prix Hors Taxe</th>
+			 
+			 	<th>Taux TVA</th>
+			 	<th>Date de création</th>
 	 	
 	 	</tr>
 	 </thead>
@@ -30,24 +37,17 @@
 	 
 	 	 	<td th:text="${facturedevis.datecreation}"/> 
 	 		
-	 		
-	 		
-	 
-	 		
-	 		
-	 	
 	 	</tr>
 	 </tbody>
  </table>
  
- <h2 th:if="${action == 'ModifierDevis'}">
- <a	th:href="@{/afficherCreerDevis}" th:text="'Formulaire de Mofication'"></a>
- </h2>
+
  
  <div>
 
  </div>
  <div th:replace="fragments/footer :: footer"></div>
+    </div>
     </div>
     </body>
 </html>
