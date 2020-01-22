@@ -18,18 +18,18 @@ public class ClientForm {
 	private String adresse;
 
 	@NotEmpty
-	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Pattern(regexp = "([0-9]{4,5})", message="Entrez un code postal valide")
 	private String codepostal;
 
 	@NotEmpty
 	private String ville;
 
 	@NotEmpty
-	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Pattern(regexp = "(0|(\\+33)|(0033))[1-9][0-9]{8}", message="Entrez un numéro de téléphone valide")
 	private String tel;
 
 	@NotEmpty
-	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Pattern(regexp = "(0|(\\+33)|(0033))[1-9][0-9]{8}", message="Entrez un numéro de téléphone valide")
 	private String portable;
 
 	private String desactiver;

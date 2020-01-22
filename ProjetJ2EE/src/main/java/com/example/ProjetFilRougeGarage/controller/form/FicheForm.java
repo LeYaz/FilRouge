@@ -1,6 +1,7 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class FicheForm {
 
@@ -20,11 +21,13 @@ public class FicheForm {
 		private String priorite;
 
 		@NotEmpty
+		//@Pattern(regexp = "([0-3][0-9]})(-)([0-9]{2,2})(-)([0-3]{2,2})", message="Entrez une date valide")
 		private String datecreation; 
 
 		
 		private String datecloture;
 		
+		@NotEmpty
 		private String description;
 		
 		
