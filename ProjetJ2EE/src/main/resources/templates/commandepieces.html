@@ -11,7 +11,7 @@
 
 	<div class="showcase1">
   		<div id="cookies">
-  		<h1> Clientèle du garage </h1>
+  		<h1> Commande de pièces </h1>
   		</div>
       <div class="container showcase-inner">
       
@@ -55,32 +55,48 @@
 		</div>
 		
 		<br/><br/>
- 	<div>
+ 	<div class="form">
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${commandepieceform}"   method="post">
-	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+	  		<input type="hidden" th:field="*{id}" th:value="*{id}" class="form-control"/>
 	    	
+	    	<div class="form-group">
 	    	<label for="quantite">Quantité</label>
-	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="Quantité"/>
+	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="Quantité"
+	   		class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="date_creation">Date de création</label>
 	   		<input type="date" th:field="*{date_creation}" id="date_creation" 
-	   		placeholder="Date de création"/>
+	   		placeholder="Date de création" class="form-control"/>
+	   		</div>
+	   		
+	   		<div class="form-group">
 	   		<label for="date_cloture">Date de cloture</label>
 	   		<input type="date" th:field="*{date_cloture}" id="date_cloture" 
-	   		placeholder="Date de cloture"/>
+	   		placeholder="Date de cloture" class="form-control"/>
+	   		</div>
 	   		
-	   		<select th:field="*{user}">
+	   		<div class="form-group">
+	   		<label for="user">Utilisateur</label>
+	   		<select th:field="*{user}" class="form-control">
 			    <option th:each="puser :${listeuser}" 
 			    	th:value="${puser.id}" th:utext="${puser.nom}"/>
 			</select>
+			</div>
 			
-			<select th:field="*{piece}">
+			
+			<div class="form-group">
+			<label for="piece">Pièce</label>
+			<select th:field="*{piece}" class="form-control">
 			    <option th:each="ppiece :${listepiece}" 
 			    	th:value="${ppiece.id}" th:utext="${ppiece.libelle}"/>
 			</select>
-
+			</div>
+			<br/>
 	   	
-	   <button  type="submit">Valider</button>
+	   <button  type="submit" class="form-control">Valider</button>
 	</form>
  </div>
 
