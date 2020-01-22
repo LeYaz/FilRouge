@@ -36,7 +36,7 @@ public class CommandePieceController {
 	private iServicePiece servicepiece;
 
 	private CommandePiece convertForm(CommandePieceForm commandepieceform) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Date datecreation = sdf.parse(commandepieceform.getDate_creation());
 		Date datecloture = null;
 		if (commandepieceform.getDate_cloture().length() > 1) {
@@ -67,11 +67,11 @@ public class CommandePieceController {
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listepiece", lpiece);
 		pmodel.addAttribute("action", "CreerCommandePiece");
-
-		CommandePiece commandepieceform = new CommandePiece();
-		commandepieceform.setId(0);
-		pmodel.addAttribute("commandepieceform", commandepieceform);
-
+		if (!pmodel.containsAttribute("commandepieceform")) {
+			CommandePieceForm commandepieceform = new CommandePieceForm();
+			commandepieceform.setId(0);
+			pmodel.addAttribute("commandepieceform", commandepieceform);
+		}
 		return "commandepieces";
 	}
 
@@ -120,7 +120,9 @@ public class CommandePieceController {
 		if (!presult.hasErrors()) {
 			try {
 				CommandePiece commande = convertForm(commandepieceform);
-
+				commandepieceform = new CommandePieceForm();
+				commandepieceform.setId(0);
+				pmodel.addAttribute("commandepieceform", commandepieceform);
 				servicecommandepiece.creerCommandePiece(commande);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
