@@ -158,7 +158,9 @@ form div:hover span{
     text-align: center;
     height: 100%;}
 
-
+div ul li{
+	list-style-type: none
+}
 
 
 
