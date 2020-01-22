@@ -7,10 +7,17 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
+	
+	<div th:replace="fragments/headerstock :: headerstock"></div>
 
-	<div class="container">
-		<table th:unless="${action == 'ModifierPiece'}">
-			<thead>
+	<div class="showcase1">
+  		<div id="cookies">
+  		<h1> Stock de pièces </h1>
+  		</div>
+      <div class="container showcase-inner">
+      
+		<table class="table table-sm table-light" border="1" th:unless="${action == 'ModifierPiece'}">
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Libelle</th>
@@ -21,51 +28,68 @@
 			</thead>
 			<tbody>
 				<tr th:each="piece : ${listepiece}">
-					<td><a
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{/afficherModifierPiece/{id}(id=${piece.id})}"
 						th:text="${piece.id}"></a></td>
 					<td th:text="${piece.libelle}" />
 					<td th:text="${piece.quantite}" />
 					<td th:text="${piece.date_saisie}" />
-					<td><a th:href="@{/DesactiverPiece/{id}(id=${piece.id})}"
+					<td><a class="btn btn-outline-secondary"
+					th:href="@{/DesactiverPiece/{id}(id=${piece.id})}"
 						th:text="'Desactiver'"></a></td>
 				</tr>
 			</tbody>
 		</table>
 
-		<h2 th:if="${action == 'ModifierPiece'}">
-			<a th:href="@{/afficherCreerPiece}"
-				th:text="'Formulaire de Modification'"></a>
-		</h2>
-		<h2 th:unless="${action == 'ModifierPiece'}">Formulaire d'Ajout</h2>
+		<div id="cookies">
+			<h2 th:if="${action == 'ModifierPiece'}">
+				<a th:href="@{/afficherCreerPiece}"
+					th:text="'Formulaire de Modification'"></a>
+			</h2>
+			<h2 th:unless="${action == 'ModifierPiece'}">Formulaire d'Ajout</h2>
+			
+			<p> Veuillez renseigner tout les champs suivant s'il vous plait </p>
+			
+		
+		</div>
+		
+		<br/><br/>
 
-		<div>
+		<div class="form">
 			<form action="#" th:action="@{/{action}(action=${action})}"
 				th:object="${pieceform}" method="post">
 				<input type="hidden" th:field="*{id}" th:value="*{id}" />
 
+				<div class="form-group">
 				<label for="libelle">Libelle</label> <input type="text"
-					th:field="*{libelle}" id="libelle" placeholder="libelle" /> <label class="btn btn-danger"
+					th:field="*{libelle}" id="libelle" placeholder="libelle" class="form-control"/> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}"></label>
-					
+				</div>
+				
+				<div class="form-group">	
 					<label for="quantite">Quantite</label> <input type="text"
-					th:field="*{quantite}" id="quantite" placeholder="quantite" /> <label class="btn btn-danger"
+					th:field="*{quantite}" id="quantite" placeholder="quantite" class="form-control" /> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('quantite')}" th:errors="*{quantite}"></label>
+				</div>
+				
 				<!-- <label
 					for="quantite">quantite</label> <input type="text"
 					th:field="*{quantite}" id="quantite" placeholder="quantite" />--> 
-					
+				<div class="form-group">	
 					<label for="date_saisie">Date_saisie</label> <input type="date"
-					th:field="*{date_saisie}" id="date_saisie" placeholder="date_saisie" /> <label class="btn btn-danger"
+					th:field="*{date_saisie}" id="date_saisie" placeholder="date_saisie" class="form-control"/> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('date_saisie')}" th:errors="*{date_saisie}"></label>
+				</div>
 					
 					<!-- for="date_saisie">date de saisie</label> <input type="date"
 					th:field="*{date_saisie}" id="date_saisie" -->
 					<!-- placeholder="date de saisie" /> -->
-				<button type="submit">Valider</button>
+					<br/>
+				<button type="submit" class="form-control">Valider</button>
 			</form>
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
+	</div>
 	</div>
 </body>
 </html>
