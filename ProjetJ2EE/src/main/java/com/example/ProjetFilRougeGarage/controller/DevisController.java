@@ -22,7 +22,9 @@ import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.DevisForm;
 import com.example.ProjetFilRougeGarage.service.IServiceClient;
 import com.example.ProjetFilRougeGarage.service.IServiceDevis;
+import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.IServiceVehicule;
+import com.example.ProjetFilRougeGarage.service.ServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceUser;
 
 @Controller
@@ -36,7 +38,9 @@ public class DevisController {
 	private IServiceVehicule serviceVehicule;
 	@Autowired
 	private iServiceUser serviceUser;
-	
+	@Autowired
+	private IServiceFactureDevis factureDevis;
+
 	
 	private Devis convertForm(DevisForm devisform) throws Exception {
 		Devis pdevis = new Devis();
@@ -65,11 +69,11 @@ public class DevisController {
 	@GetMapping("/afficherCreerDevis")
 	public String getAffiche(Model pmodel) {
 
-		List<Client> lclient = serviceClient.rechercheClient();
-		List<Vehicule> lvehicule = serviceVehicule.rechercheVehicule();
-		List<User> luser = serviceUser.rechercherUser();
-		List<Devis> ldevis = serviceDevis.rechercheDevis();
-
+		List<Client> lclient = serviceClient.rechercheClientActive();
+		List<Vehicule> lvehicule = serviceVehicule.rechercherVehiculeActive();
+		List<User> luser = serviceUser.rechercherUserActive();
+		List<Devis> ldevis = serviceDevis.rechercherDevisActive();
+		
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("listevehicule", lvehicule);
 		pmodel.addAttribute("listeuser", luser);
@@ -120,7 +124,6 @@ public class DevisController {
 				Devis pdevis = convertForm(devisform);
 				System.err.println("convert");
 				serviceDevis.creerDevis(pdevis);
-				
 			} catch (Exception e) {
 				System.err.println("CRDeVis :"+e.getMessage());
 			}

@@ -12,4 +12,6 @@ public interface IServiceVehicule {
 	public void creerVehicule(final Vehicule vehicule);
 	public void modifierVehicule(final Vehicule vehicule);
 	public void desactiverVehicule(final Vehicule vehicule);
+	public List<Vehicule> rechercherVehiculeActive();
+
 }
