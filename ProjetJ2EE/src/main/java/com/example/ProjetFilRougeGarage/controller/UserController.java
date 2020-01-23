@@ -74,7 +74,7 @@ public class UserController {
 		pmodel.addAttribute("listeuser", luser);
 		pmodel.addAttribute("listeprofil", lprofil);
 		pmodel.addAttribute("action", "CreerUser");
-		if (pmodel.containsAttribute("userform")){
+		if (!pmodel.containsAttribute("userform")){
 		UserForm userform = new UserForm();
 		userform.setId(0);
 		pmodel.addAttribute("userform", userform);
