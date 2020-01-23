@@ -41,7 +41,7 @@
 					<td th:text="${tache.priorite.libelle}" />
 					<td th:text="${tache.piece.libelle}" />
 					<td th:text="${tache.qte}" />
-					<td th:text="${tache.etattache}" />
+					<td th:text="${tache.etattache} ? 'En cours' : 'Cloturée'" />
 					<td><a class="btn btn-outline-secondary"
 					 th:href="@{/DesactiverTache/{id}(id=${tache.id})}"
 						th:text="'Desactiver'"></a></td>
