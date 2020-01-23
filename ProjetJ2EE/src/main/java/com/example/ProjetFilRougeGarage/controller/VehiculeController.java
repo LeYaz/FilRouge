@@ -96,7 +96,7 @@ public class VehiculeController {
 			vehiculeform.setModele(vehicule.getModele());
 			vehiculeform.setMarque(vehicule.getMarque());
 			vehiculeform.setQuantite(String.valueOf(vehicule.getQuantite()));
-			vehiculeform.setPrixht(String.valueOf(vehicule.getQuantite()));
+			vehiculeform.setPrixht(String.valueOf(vehicule.getPrixht()));
 			vehiculeform.setDatecreation(new SimpleDateFormat("yyyy-MM-dd").format(vehicule.getDatecreation()));
 			pmodel.addAttribute("vehiculeform", vehiculeform);
 		}
