@@ -30,7 +30,7 @@ public class ClientController {
 		cl.setName(clientform.getName());
 		cl.setFirstname(clientform.getFirstname());
 		cl.setAdresse(clientform.getAdresse());
-		cl.setCodepostal(clientform.getAdresse());
+		cl.setCodepostal(clientform.getCodepostal());
 		cl.setVille(clientform.getVille());
 		cl.setTel(clientform.getTel());
 		cl.setPortable(clientform.getPortable());
