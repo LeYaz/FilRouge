@@ -66,7 +66,6 @@ public class ClientController {
 		List<Client> lclient = serviceclient.rechercheClientActive();
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("action", "CreerClient");
-		pmodel.addAttribute("header", "headerentretien");
 		if(pmodel.containsAttribute("clientform") == false) {
 			ClientForm clientform = new ClientForm();
 			clientform.setId(0);
@@ -75,25 +74,6 @@ public class ClientController {
 		return "clients";
 	}
 	
-	/**
-	* Sert à afficher la liste des clients actifs et le formulaire de creation d'un
-	 * nouveau client. On les affiche dans la liste.
-	 * @param pmodel
-	 * @return
-	 */
-	@GetMapping("/afficherCreerClientV")
-	public String getAfficheV(Model pmodel) {
-		List<Client> lclient = serviceclient.rechercheClientActive();
-		pmodel.addAttribute("listeclient", lclient);
-		pmodel.addAttribute("action", "CreerClient");
-		pmodel.addAttribute("header", "headervente");
-		if(pmodel.containsAttribute("clientform") == false) {
-			ClientForm clientform = new ClientForm();
-			clientform.setId(0);
-			pmodel.addAttribute("clientform",clientform);
-		}
-		return "clients";
-	}
 	
 	/**
 	 * Après être passé par afficherCreerClient, on crée le client à partir du
