@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class UserForm {
 	
@@ -19,6 +20,7 @@ public class UserForm {
 	private String login;
 
 	@NotEmpty
+	@Size(min=2)
 	private String pwd;
 	
 	@NotEmpty
