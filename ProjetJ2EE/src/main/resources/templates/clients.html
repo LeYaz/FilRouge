@@ -9,7 +9,13 @@
 
 	<div th:replace="fragments/header :: header"></div>
 	
-	<div th:replace="fragments/headerentretien :: headerentretien"></div>
+	<div th:if="${header.equals('headerentretien')}">
+	<div  th:replace="fragments/headerentretien :: headerentretien"></div>
+	</div>
+	
+	<div th:if="${header.equals('headervente')}">
+	<div  th:replace="fragments/headervente :: headervente"></div>
+	</div>
 
 	<div class="showcase1">
   		<div id="cookies">

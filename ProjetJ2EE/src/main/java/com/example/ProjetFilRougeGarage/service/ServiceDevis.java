@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.ProjetFilRougeGarage.beans.CommandeVehicule;
 import com.example.ProjetFilRougeGarage.beans.Devis;
 import com.example.ProjetFilRougeGarage.beans.FactureDevis;
+import com.example.ProjetFilRougeGarage.dao.DaoCommandeVehicule;
 import com.example.ProjetFilRougeGarage.dao.DaoDevis;
 import com.example.ProjetFilRougeGarage.dao.DaoFactureDevis;
 
@@ -26,9 +28,10 @@ public class ServiceDevis implements IServiceDevis {
 	 * Importation des ADO
 	 */
 	@Autowired
-	DaoDevis daoDevis;
+	private DaoDevis daoDevis;
+	
 	@Autowired
-	DaoFactureDevis daoFacture;
+	private DaoCommandeVehicule daocommande;
 
 	/**
 	 * Permet de rechercher la liste des devis
@@ -69,15 +72,15 @@ public class ServiceDevis implements IServiceDevis {
 		int index = ld.size();
 
 		if (pdevis.getEtatdevis()) {
-			FactureDevis facture = new FactureDevis();
-			facture.setDatecreation(new Date());
-			facture.setDesactiver(false);
-			facture.setDevis(this.rechercheDevisId(ld.get(index - 1).getId()));
-			facture.setPrixht(pdevis.getVehicule().getPrixht());
-			facture.setTauxtva(0.2f);
 
-			daoFacture.save(facture);
-
+			
+			CommandeVehicule cmd = new CommandeVehicule();
+			cmd.setDatecreation(new Date());
+			cmd.setDesactiver(false);
+			cmd.setDevis(this.rechercheDevisId(ld.get(index - 1).getId()));
+			cmd.setEtat(false);
+			
+			daocommande.save(cmd);
 		}
 
 	}
@@ -91,9 +94,9 @@ public class ServiceDevis implements IServiceDevis {
 	@Override
 	public void modifierDevis(Devis pdevis) {
 
-		List<FactureDevis> lfd = daoFacture.findAll();
+		List<CommandeVehicule> lfd = daocommande.findAll();
 		Boolean existe = true;
-		for (FactureDevis fd : lfd) {
+		for (CommandeVehicule fd : lfd) {
 
 			if (pdevis.getId().equals(fd.getDevis().getId())) {
 				existe = false;
@@ -103,14 +106,13 @@ public class ServiceDevis implements IServiceDevis {
 
 		if (existe) {
 			if (pdevis.getEtatdevis()) {
-				FactureDevis facture = new FactureDevis();
-				facture.setDatecreation(new Date());
-				facture.setDesactiver(false);
-				facture.setDevis(pdevis);
-				facture.setPrixht(pdevis.getVehicule().getPrixht());
-				facture.setTauxtva(0.2f);
-
-				daoFacture.save(facture);
+				CommandeVehicule cmd = new CommandeVehicule();
+				cmd.setDatecreation(new Date());
+				cmd.setDesactiver(false);
+				cmd.setDevis(pdevis);
+				cmd.setEtat(false);
+				
+				daocommande.save(cmd);
 			}
 		}
 

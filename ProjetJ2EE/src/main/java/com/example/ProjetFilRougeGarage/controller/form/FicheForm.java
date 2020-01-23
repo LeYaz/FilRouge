@@ -28,6 +28,9 @@ public class FicheForm {
 		private String datecloture;
 		
 		@NotEmpty
+		private String prixht;
+		
+		@NotEmpty
 		private String description;
 		
 		
@@ -121,6 +124,16 @@ public class FicheForm {
 
 		public void setDesactiver(String desactiver) {
 			this.desactiver = desactiver;
+		}
+
+
+		public String getPrixht() {
+			return prixht;
+		}
+
+
+		public void setPrixht(String prixht) {
+			this.prixht = prixht;
 		}
 		
 		
