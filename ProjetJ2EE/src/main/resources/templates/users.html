@@ -67,9 +67,9 @@
  	<div class="form">
 	  <form action="#" th:action="@{/{action}(action=${action})}" 
 	  th:object="${userform}"   method="post">
-	  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
-	    	
-	    	<div class="form-group">
+					<input type="hidden" th:field="*{id}" th:value="*{id}" />
+
+					<div class="form-group">
 	    	<label for="nom">Nom</label>
 	   		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom" class="form-control"/>
 	   		<label class="btn btn-danger"
