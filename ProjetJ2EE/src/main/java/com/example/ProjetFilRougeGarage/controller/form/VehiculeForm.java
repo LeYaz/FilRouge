@@ -18,6 +18,8 @@ public class VehiculeForm {
 	@Min(value = 1)
 	private String quantite;
 	@NotEmpty
+	@Pattern(regexp = "\\d*", message="nombre uniquement")
+	@Min(value = 1)
 	private String prixht;
 	@NotEmpty
 	@Size(max=10, message="Veuillez entrer une date valide!")

@@ -9,12 +9,21 @@ import com.example.ProjetFilRougeGarage.beans.FactureDevis;
 import com.example.ProjetFilRougeGarage.dao.DaoDevis;
 import com.example.ProjetFilRougeGarage.dao.DaoFactureDevis;
 @Service
-
+/**
+ * 
+ * @author Xavier
+ *
+ */
 public class ServiceFactureDevis implements IServiceFactureDevis {
+	/**
+	 * Déclaration du DAO
+	 * 	 */
 	@Autowired
 	DaoFactureDevis daoFactureDevis;
 	
-	
+	/**
+	 * Permet d'afficher toutes les factures de devis
+	 */
 	@Override
 	public List<FactureDevis> rechercheFactureDevis() {
 		// TODO Auto-generated method stub

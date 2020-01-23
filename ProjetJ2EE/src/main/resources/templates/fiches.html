@@ -38,7 +38,7 @@
 	 		th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
 	 		<td th:text="${fiche.client.name}"/>
 	 		<td th:text="${fiche.user.nom}"/>
-	 		<td th:text="${fiche.etatfiche}"/>
+	 		<td th:text="${fiche.etatfiche} ? 'Accepté' : 'Refusé'"/>
 	 		<td th:text="${fiche.priorite.libelle}"/>
 	 		<td th:text="${fiche.datecreation}"/>
 	 		<td th:text="${fiche.datecloture}"/>
@@ -130,11 +130,12 @@
 	   		
 	   		<div class="form-group">			
 	   		<label for="etat">Etat fiche ?</label>					
-			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche" class="form-control">
+				<OPTION value="false">En attente
 				<OPTION value="true">Accepté
-				<OPTION value="false">Refusé
 			</SELECT>
 			</div>
+			<br/>
 	   <button  type="submit" class="form-control">Valider</button>
 	</form>
 	</div>
