@@ -1,14 +1,16 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class CommandeVehiculeForm {
 
 	private Integer id;
 
 	@NotEmpty
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String date_creation;
-
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String date_cloture;
 
 	@NotEmpty

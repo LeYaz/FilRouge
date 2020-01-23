@@ -3,6 +3,7 @@ package com.example.ProjetFilRougeGarage.controller.form;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 public class VehiculeForm {
@@ -21,6 +22,7 @@ public class VehiculeForm {
 	@Min(value = 1)
 	private String prixht;
 	@NotEmpty
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String datecreation;
 	@NotEmpty
 	private String marque;

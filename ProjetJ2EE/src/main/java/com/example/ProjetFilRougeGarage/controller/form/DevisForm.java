@@ -1,6 +1,7 @@
 package com.example.ProjetFilRougeGarage.controller.form;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class DevisForm {
 	private Integer id;
@@ -15,6 +16,7 @@ public class DevisForm {
 	private String user;
 
 	@NotEmpty
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String datecreation;
 
 	private String etatdevis;
