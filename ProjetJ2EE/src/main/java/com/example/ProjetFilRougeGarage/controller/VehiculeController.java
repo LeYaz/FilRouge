@@ -127,7 +127,7 @@ public class VehiculeController {
 	 * @return : l'affichage actualisé avec le vehicule crée
 	 * 	 */
 	@PostMapping("/CreerVehicule")
-	public String ajoutProf(@Valid @ModelAttribute VehiculeForm vehiculeform, BindingResult presult, Model pmodel) {
+	public String ajoutProf(@Valid @ModelAttribute(name="vehiculeform") VehiculeForm vehiculeform, BindingResult presult, Model pmodel) {
 		if (!presult.hasErrors()) {
 			try {
 				Vehicule vehicule = convertForm(vehiculeform);
@@ -150,7 +150,7 @@ public class VehiculeController {
 	 * @return l'affichage actualisé avec le vehicule modifié
 	 */
 	@PostMapping("/ModifierVehicule")
-	public String modifieProf(@Valid @ModelAttribute VehiculeForm vehiculeform, BindingResult presult, Model pmodel) {
+	public String modifieProf(@Valid @ModelAttribute(name="vehiculeform") VehiculeForm vehiculeform, BindingResult presult, Model pmodel) {
 		if (!presult.hasErrors()) {
 			try {
 				Vehicule vehicule = convertForm(vehiculeform);

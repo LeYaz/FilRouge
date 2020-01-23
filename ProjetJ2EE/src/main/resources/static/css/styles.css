@@ -114,6 +114,7 @@ form div:hover span{
 
 #cookies{
     background: rgba(0,0,255,0.5);
+    color:white;
     border: 5px solid blue;
     width: 55%;
     /*min-width: 300px;*/
@@ -138,6 +139,7 @@ form div:hover span{
 #cookies:hover{
     min-height: 100px;
     background: white;
+    color: blue;
 }
 
 #cookies>h2,h1 {
@@ -148,15 +150,33 @@ form div:hover span{
     text-align: center;
 }
 
+#cookies>p{
+	font-size: 1.2em;
+}
 
 
 .headerhome{
+	position:static;
+    top: 0;
+    left: 40%;
+    z-index: 1;
 	display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    height: 100%;}
+    height: 100%;
+    }
+    
+.divhead .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
 
 div ul li{
 	list-style-type: none
