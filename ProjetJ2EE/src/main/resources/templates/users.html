@@ -72,24 +72,40 @@
 	    	<div class="form-group">
 	    	<label for="nom">Nom</label>
 	   		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom" class="form-control"/>
+	   		<label class="btn btn-danger"
+					th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></label>
 	   		</div>
 	   		
-	   		<div class="form-group">
+	   		
+	   		
+	   		<div class="form-group">		
+					<label for="prenom">Prenom</label>
+ 						<input type="text" th:field="*{prenom}" id="prenom" placeholder="prenom" class="form-control" />
+ 						<label class="btn btn-danger" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></label>
+					</div>	
+	   		
+	   		
+	   		<!-- <div class="form-group">
 	   		<label for="prenom">Prénom</label>
 	   		<input type="text" th:field="*{prenom}" id="prenom" 
 	   		placeholder="Prenom" class="form-control"/>
-	   		</div>
+	   		<label class="btn btn-danger"
+					th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></label>
+	   		</div> -->
 	   		
 	   		<div class="form-group">
 	   		<label for="login">Login</label>
 	   		<input type="text" th:field="*{login}" id="login" 
 	   		placeholder="Login" class="form-control"/>
+	   		<label class="btn btn-danger"
+					th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></label>
 	   		</div>
 	   		
 	   		<div class="form-group">
 	   		<label for="pwd">Password</label>
 	   		<input type="password" th:field="*{pwd}" id="pwd" 
 	   		placeholder="Password" class="form-control"/>
+	   		
 	   		<ul>
       			<li th:each="profil : ${listeprofil} ">
             			<input type="checkbox" th:name="profils" th:value="${profil.id}"

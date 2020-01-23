@@ -51,7 +51,6 @@
 			 <h2 th:unless="${action == 'ModifierCommandePiece'}">Formulaire d'Ajout</h2>
  			<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
 		
-		
 		</div>
 		
 		<br/><br/>
@@ -60,23 +59,40 @@
 	  th:object="${commandepieceform}"   method="post">
 	  		<input type="hidden" th:field="*{id}" th:value="*{id}" class="form-control"/>
 	    	
-	    	<div class="form-group">
+	    	<!-- <div class="form-group">
 	    	<label for="quantite">Quantité</label>
 	   		<input type="text" th:field="*{quantite}" id="quantite" placeholder="Quantité"
 	   		class="form-control"/>
-	   		</div>
+	   		</div> -->
 	   		
+	   		<div class="form-group">
+				<label for="quantite">Quantite</label> <input type="text"
+					th:field="*{quantite}" id="quantite" placeholder="quantite" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('quantite')}" th:errors="*{quantite}"></label>
+				</div>
+	   		
+	   		
+	   		
+	   		<!-- 
 	   		<div class="form-group">
 	   		<label for="date_creation">Date de création</label>
 	   		<input type="date" th:field="*{date_creation}" id="date_creation" 
 	   		placeholder="Date de création" class="form-control"/>
-	   		</div>
+	   		</div> -->
 	   		
-	   		<div class="form-group">
+	   			<div class="form-group">
+				<label for="date_creation">Date de création</label> <input type="date"
+					th:field="*{date_creation}" id="date_creation" placeholder="Date de création" class="form-control"  /> <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('date_creation')}" th:errors="*{date_creation}"></label>
+				</div>
+	   		
+	   		
+	   		
+	   		 <div class="form-group">
 	   		<label for="date_cloture">Date de cloture</label>
 	   		<input type="date" th:field="*{date_cloture}" id="date_cloture" 
 	   		placeholder="Date de cloture" class="form-control"/>
-	   		</div>
+	   		</div> 
 	   		
 	   		<div class="form-group">
 	   		<label for="user">Utilisateur</label>

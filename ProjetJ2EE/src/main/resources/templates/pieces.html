@@ -72,18 +72,12 @@
 					th:if="${#fields.hasErrors('quantite')}" th:errors="*{quantite}"></label>
 				</div>
 				
-				<!-- <label
-					for="quantite">quantite</label> <input type="text"
-					th:field="*{quantite}" id="quantite" placeholder="quantite" />--> 
 				<div class="form-group">	
 					<label for="date_saisie">Date_saisie</label> <input type="date"
 					th:field="*{date_saisie}" id="date_saisie" placeholder="date_saisie" class="form-control"/> <label class="btn btn-danger"
 					th:if="${#fields.hasErrors('date_saisie')}" th:errors="*{date_saisie}"></label>
 				</div>
 					
-					<!-- for="date_saisie">date de saisie</label> <input type="date"
-					th:field="*{date_saisie}" id="date_saisie" -->
-					<!-- placeholder="date de saisie" /> -->
 					<br/>
 				<button type="submit" class="form-control">Valider</button>
 			</form>

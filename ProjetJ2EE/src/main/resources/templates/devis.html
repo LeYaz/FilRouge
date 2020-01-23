@@ -37,16 +37,8 @@
 	 		<td th:text="${devis.client.name}"/>
 	 		<td th:text="${devis.vehicule.modele}"/>
 	 		 		<td th:text="${devis.user.nom}"/>
-	 
 	 	 	<td th:text="${devis.datecreation}"/> 
-	 		
-	
 	 		<td th:text="${devis.etatdevis}"/>
-	 		
-	 		
-	 
-	 		
-	 		
 	 		<td>
 	 		<a class="btn btn-outline-secondary"
 	 		th:href="@{/DesactiverDevis/{id}(id=${devis.id})}" th:text="'Desactiver'"></a></td>
@@ -92,18 +84,14 @@
 					<div class="form-group">		
 					<label for="date">Date de creation</label>
  						<input type="date" th:field="*{datecreation}" id="datecreation" placeholder="aaaa-mm-jj" class="form-control" />
-					</div>
-					
-		<!--  <label for="etatdevis">Reglé ?</label> 
-				   <input type="text" th:field="*{etatdevis}" id="etatdevis" placeholder="true/false" />  -->		  
+ 						<label class="btn btn-danger" th:if="${#fields.hasErrors('datecreation')}" th:errors="*{datecreation}"></label>
+					</div>		  
 								
-													<label for="regle">Etat devis ?</label>
-								
-								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis">
-<OPTION value="true">Accepté
-<OPTION value="false">Refusé
-
-</SELECT>
+							<label for="regle">Etat</label>
+								<SELECT name="regle" th:field="*{etatdevis}" id="etatdevis" class="form-control">
+									<OPTION value="true">Accepté
+									<OPTION value="false">Refusé		
+							</SELECT>
 	   
 	   	<br/> 
 	   <button  type="submit" class="form-control" >Valider</button>

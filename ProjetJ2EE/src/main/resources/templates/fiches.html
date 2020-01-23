@@ -99,18 +99,23 @@
 			<label for="description">Description Fiche</label>
 	   		<input type="text" th:field="*{description}" id="description" 
 	   		placeholder="Description Fiche" class="form-control"/>
+	   		 <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></label>
 	    	</div>
 	    	
 	   		<div class="form-group">
 	   		<label for="datecreation">Date de Creation</label>
 	   		<input type="date" th:field="*{datecreation}" id="datecreation" 
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
+	   		<label class="btn btn-danger"
+					th:if="${#fields.hasErrors('datecreation')}" th:errors="*{datecreation}"></label>
 	   		</div>
 	   		
 	   		<div class="form-group">
 	   		<label for="datecloture">Date de Cloture</label>
 	   		<input type="date" th:field="*{datecloture}" id="datecloture" 
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
+	   		
 	   		</div>
 	   					
 	   		<label for="etat">Etat fiche ?</label>
