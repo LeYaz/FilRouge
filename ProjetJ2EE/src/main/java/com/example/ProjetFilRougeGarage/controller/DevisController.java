@@ -1,6 +1,6 @@
 package com.example.ProjetFilRougeGarage.controller;
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -18,15 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.beans.Devis;
-import com.example.ProjetFilRougeGarage.beans.FactureDevis;
 import com.example.ProjetFilRougeGarage.beans.User;
 import com.example.ProjetFilRougeGarage.beans.Vehicule;
 import com.example.ProjetFilRougeGarage.controller.form.DevisForm;
 import com.example.ProjetFilRougeGarage.service.IServiceClient;
 import com.example.ProjetFilRougeGarage.service.IServiceDevis;
-import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.IServiceVehicule;
-import com.example.ProjetFilRougeGarage.service.ServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceUser;
 
 
@@ -50,9 +47,6 @@ public class DevisController {
 	private IServiceVehicule serviceVehicule;
 	@Autowired
 	private iServiceUser serviceUser;
-	@Autowired
-	private IServiceFactureDevis factureDevis;
-
 	
 	
 /**
