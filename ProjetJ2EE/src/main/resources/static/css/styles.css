@@ -152,34 +152,22 @@ form div:hover span{
 
 #cookies>p{
 	font-size: 1.2em;
+	font-style: italic;
 }
 
 
 .headerhome{
-	position:static;
-    top: 0;
-    left: 40%;
-    z-index: 1;
 	display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 100%;
+    height: 100%; 
     }
     
-.divhead .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    opacity: 0;
-}
+
 
 div ul li{
-	list-style-type: none
+	list-style-type: none;
 }
 
 
