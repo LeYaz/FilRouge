@@ -45,6 +45,21 @@ public class ClientController {
 		List<Client> lclient = serviceclient.rechercheClientActive();
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("action", "CreerClient");
+		pmodel.addAttribute("header", "headerentretien");
+		if(pmodel.containsAttribute("clientform") == false) {
+			ClientForm clientform = new ClientForm();
+			clientform.setId(0);
+			pmodel.addAttribute("clientform",clientform);
+		}
+		return "clients";
+	}
+	
+	@GetMapping("/afficherCreerClientV")
+	public String getAfficheV(Model pmodel) {
+		List<Client> lclient = serviceclient.rechercheClientActive();
+		pmodel.addAttribute("listeclient", lclient);
+		pmodel.addAttribute("action", "CreerClient");
+		pmodel.addAttribute("header", "headervente");
 		if(pmodel.containsAttribute("clientform") == false) {
 			ClientForm clientform = new ClientForm();
 			clientform.setId(0);
