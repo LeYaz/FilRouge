@@ -60,7 +60,7 @@ public class VehiculeController {
 	
 	/**
 	 * Sert à afficher la liste des vehicule actifs et le formulaire de creation d'un
-	 * nouveau vehicule. On les affiche dans la liste, on passe ensuite à CreerVEhicule
+	 * nouveau vehicule. On les affiche dans la liste
 	 * @param pmodel : l'affichage de la page
 	 * @return : la page HTML des devis et leur affichage des vehicule
 	 */

@@ -85,7 +85,7 @@ public class DevisController {
 	/**
 	 * Sert à afficher la liste des devis actifs et le formulaire de creation d'un
 	 * nouveau devis. On prend également la liste des client, vehicule, et user 
-	 * pour les afficher dans la liste, on passe ensuite à CreerDevis
+	 * pour les afficher dans la liste
 	 * @param pmodel : l'affichage de la page
 	 * @return : la page HTML des devis et leur affichage
 	 */
