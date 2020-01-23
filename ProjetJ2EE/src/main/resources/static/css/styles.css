@@ -21,6 +21,7 @@ body {
     margin: auto;
     overflow: hidden;
     padding: 0 3rem;
+    margin-bottom: 100px;
 }
 
 .showcase{
@@ -66,8 +67,10 @@ body {
     background-color: var(--primary-color);
     color; #fff;
     max-height: 100vh;
-    position: relative;
+    position: fixed;
     overflow: auto;
+    width: 100%;
+    
 }
 
 .showcase1:before{
