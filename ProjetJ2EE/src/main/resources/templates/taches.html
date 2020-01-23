@@ -59,7 +59,7 @@
 				 
 		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
 		
-		</div> 
+		
 		<br/><br/>
 		<div class="form">
 			<form action="#" th:action="@{/{action}(action=${action})}"
@@ -124,9 +124,10 @@
 				<input type="hidden" th:field="*{desactiver}" id="desactiver"
 					placeholder="desactiver" class="form-control"/>
 
-
-				<button type="submit">Valider</button>
+				<br/>
+				<button type="submit" class="form-control">Valider</button>
 			</form>
+			</div> 
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
