@@ -1,6 +1,5 @@
 package com.example.ProjetFilRougeGarage.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,7 @@ public class ServiceFiche implements iServiceFiche {
 			FactureFiche facture = new FactureFiche();
 			facture.setDesactiver(false);
 			facture.setFiche(this.rechercherFicheId(lf.get(index - 1).getId()));
-			facture.setPrixht(0f);
+			facture.setPrixht(pfiche.getPrixht());
 			facture.setTauxTVA(0.2f);
 
 			daoFFiche.save(facture);
@@ -77,7 +76,7 @@ public class ServiceFiche implements iServiceFiche {
 				FactureFiche fiche = new FactureFiche();
 				fiche.setDesactiver(false);
 				fiche.setFiche(pfiche);
-				fiche.setPrixht(0f);
+				fiche.setPrixht(pfiche.getPrixht());
 				fiche.setTauxTVA(0.2f);
 			
 				daoFFiche.save(fiche);

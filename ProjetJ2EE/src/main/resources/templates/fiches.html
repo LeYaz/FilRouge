@@ -26,6 +26,7 @@
 	 	<th>Priorite</th>
 	 	<th>Date de creation</th>
 	 	<th>Date de cloture</th>
+	 	<th>Prix HT </th>
 	 	<th>Description</th>
 	 	<th>Desactiver</th>
 	 	</tr>
@@ -37,10 +38,11 @@
 	 		th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
 	 		<td th:text="${fiche.client.name}"/>
 	 		<td th:text="${fiche.user.nom}"/>
-	 		<td th:text="${fiche.etatfiche}"/>
+	 		<td th:text="${fiche.etatfiche} ? 'Accepté' : 'Refusé'"/>
 	 		<td th:text="${fiche.priorite.libelle}"/>
 	 		<td th:text="${fiche.datecreation}"/>
 	 		<td th:text="${fiche.datecloture}"/>
+	 		<td th:text="${fiche.prixht}"/>
 	 		<td th:text="${fiche.description}"/>
 	 		<td><a class="btn btn-outline-secondary"
 	 		 th:href="@{/DesactiverFiche/{id}(id=${fiche.id})}"
@@ -60,7 +62,7 @@
 		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
 		
 		
-		</div>
+		
 		
 		<br/><br/>
  <div >
@@ -103,6 +105,14 @@
 					th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></label>
 	    	</div>
 	    	
+	    	<div class="form-group">
+			<label for="prixht">Prix HT</label>
+	   		<input type="text" th:field="*{prixht}" id="prixht" 
+	   		placeholder="Prix HT en €" class="form-control"/>
+	   		 <label class="btn btn-danger"
+					th:if="${#fields.hasErrors('prixht')}" th:errors="*{prixht}"></label>
+	    	</div>
+	    	
 	   		<div class="form-group">
 	   		<label for="datecreation">Date de Creation</label>
 	   		<input type="date" th:field="*{datecreation}" id="datecreation" 
@@ -117,16 +127,18 @@
 	   		placeholder="aaaa-mm-jj" class="form-control"/>
 	   		
 	   		</div>
-	   					
-	   		<label for="etat">Etat fiche ?</label>
-								
-			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
-<OPTION value="true">Accepté
-<OPTION value="false">Refusé
-
-</SELECT>
+	   		
+	   		<div class="form-group">			
+	   		<label for="etat">Etat fiche ?</label>					
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche" class="form-control">
+				<OPTION value="false">En attente
+				<OPTION value="true">Accepté
+			</SELECT>
+			</div>
+			<br/>
 	   <button  type="submit" class="form-control">Valider</button>
 	</form>
+	</div>
  </div>
  <div th:replace="fragments/footer :: footer"></div>
     </div>

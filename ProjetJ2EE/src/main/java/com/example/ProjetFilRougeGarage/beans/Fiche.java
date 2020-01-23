@@ -43,6 +43,9 @@ public class Fiche {
 	@Column(name="Date_cloture", nullable=false)
 	private Date datecloture;
 	
+	@Column(name="prixHT", columnDefinition = "float")
+	private Float prixht;
+	
 	@Column(name="description", nullable=true)
 	private String description;
 	
@@ -103,6 +106,14 @@ public class Fiche {
 
 	public void setDatecloture(Date datecloture) {
 		this.datecloture = datecloture;
+	}
+	
+	public Float getPrixht() {
+		return prixht;
+	}
+
+	public void setPrixht(Float prixht) {
+		this.prixht = prixht;
 	}
 
 	public String getDescription() {

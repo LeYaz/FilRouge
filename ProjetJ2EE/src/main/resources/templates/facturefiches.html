@@ -22,9 +22,10 @@ th:replace="fragments/headerload :: load">
 			 	<tr>
 			 	<th>Id</th>
 			 	<th>Fiche</th>
+			 	<th>Client </th>
 			 	<th>PrixHT</th>
 			 	<th>TauxTVA</th>
-			 	<th>Desactiver</th>
+			 	<th>Désactiver</th>
 	 	</tr>
 	 </thead>
 	 <tbody>
@@ -34,9 +35,10 @@ th:replace="fragments/headerload :: load">
 	 		th:href="@{/afficherModifierFactureFiche/{id}(id=${facturefiche.id})}" 
 	 		th:text="${facturefiche.id}"></a></td>
 	 	
-				<td th:text="${facturefiche.fiche.id}"/>
+			<td th:text="${facturefiche.fiche.id}"/>
+			<td th:text="${facturefiche.fiche.client.name}"/>
 	 		<td th:text="${facturefiche.prixht}"/>
-	 		<td th:text="${facturefiche.tauxTVA}"/>
+	 		<td> <span> 20 %</span> </td>
 	 		
 	 		<td >
 	 		<a class="btn btn-outline-secondary"
