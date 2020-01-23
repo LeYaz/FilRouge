@@ -17,12 +17,28 @@ import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.controller.form.ClientForm;
 import com.example.ProjetFilRougeGarage.service.IServiceClient;
 
+
+/**
+ * 
+ * @author Teddy
+ *
+ */
 @Controller
 public class ClientController {
 
+	/**
+	 * Déclaration du service
+	 */
 	@Autowired
 	private IServiceClient serviceclient;
 	
+	/**
+ * Le ConvertForm permet de récupérer le formulaire saisi pour la création
+ * et modification de données
+	 * @param clientform : les données à récupérer du formulaire Client
+	 * @return le client crée ou modifié
+	 * @throws Exception
+	 */
 	private Client convertForm(ClientForm clientform) throws Exception {
 		Client cl = new Client();
 		
@@ -39,7 +55,12 @@ public class ClientController {
 		return cl;
 	}
 	
-	
+	/**
+	 * Affiche la liste des clients actifs de la base de données et le formulaire
+	 * de creation de client.On les affiche dans la liste
+	 * @param pmodel
+	 * @return
+	 */
 	@GetMapping("/afficherCreerClient")
 	public String getAffiche(Model pmodel) {
 		List<Client> lclient = serviceclient.rechercheClientActive();
@@ -54,6 +75,12 @@ public class ClientController {
 		return "clients";
 	}
 	
+	/**
+	* Sert à afficher la liste des clients actifs et le formulaire de creation d'un
+	 * nouveau client. On les affiche dans la liste.
+	 * @param pmodel
+	 * @return
+	 */
 	@GetMapping("/afficherCreerClientV")
 	public String getAfficheV(Model pmodel) {
 		List<Client> lclient = serviceclient.rechercheClientActive();
@@ -68,7 +95,14 @@ public class ClientController {
 		return "clients";
 	}
 	
-	
+	/**
+	 * Après être passé par afficherCreerClient, on crée le client à partir du
+	 * formulaire récupéré
+	 * @param clientform : le formulaire du client recupéré
+	 * @param presult : le résultat
+	 * @param pmodel : l'affichage de la page et des données
+	 * @return la page de la liste des clients actualisée
+	 */
 	@PostMapping("/CreerClient")
 	public String ajoutClasse( 
 			@Valid @ModelAttribute(name = "clientform") 
