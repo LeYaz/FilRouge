@@ -171,16 +171,17 @@ CREATE TABLE `fiche` (
   `id_priorite` int(11) NOT NULL,
   `Date_creation` date NOT NULL,
   `Date_cloture` date DEFAULT NULL,
-`description`   varchar(200),
-`desactiver` bit(1) DEFAULT b'0'
+  `prixHT` float DEFAULT 0,
+  `description`   varchar(200),
+  `desactiver` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `fiche` (`id`, `id_client`, `id_user`, `etatfiche`, `id_priorite`, `Date_creation`, `Date_cloture`, `desactiver`) VALUES
-(1, '5', '1', b'0', '1', '2020-01-15', NULL, b'0'),
-(2, '6', '2', b'0', '2', '2020-01-16', NULL, b'0'),
-(3, '7', '3', b'0', '3', '2020-01-17', '2020-01-25', b'0'),
-(4, '8', '4', b'0', '4', '2020-01-18', '2020-01-26', b'0');
+INSERT INTO `fiche` (`id`, `id_client`, `id_user`, `etatfiche`, `id_priorite`, `Date_creation`, `Date_cloture`, `prixHT`, `description`, `desactiver`) VALUES
+(1, '5', '1', b'0', '1', '2020-01-15', NULL, '50', ' ', b'0'),
+(2, '6', '2', b'0', '2', '2020-01-16', NULL, '40', ' ', b'0'),
+(3, '7', '3', b'0', '3', '2020-01-17', '2020-01-25', '30', ' ', b'0'),
+(4, '8', '4', b'0', '4', '2020-01-18', '2020-01-26', '60', ' ', b'0');
 
 -- --------------------------------------------------------
 
