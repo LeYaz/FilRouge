@@ -2,25 +2,16 @@ package com.example.ProjetFilRougeGarage.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.ProjetFilRougeGarage.beans.Devis;
-import com.example.ProjetFilRougeGarage.beans.FactureDevis;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import com.example.ProjetFilRougeGarage.beans.FactureFiche;
 import com.example.ProjetFilRougeGarage.beans.Fiche;
-import com.example.ProjetFilRougeGarage.controller.form.FactureDevisForm;
 import com.example.ProjetFilRougeGarage.controller.form.FactureFicheForm;
-import com.example.ProjetFilRougeGarage.service.IServiceDevis;
-import com.example.ProjetFilRougeGarage.service.IServiceFactureDevis;
 import com.example.ProjetFilRougeGarage.service.iServiceFactureFiche;
 import com.example.ProjetFilRougeGarage.service.iServiceFiche;
 

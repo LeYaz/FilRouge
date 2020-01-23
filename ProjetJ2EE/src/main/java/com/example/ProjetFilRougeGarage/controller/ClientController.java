@@ -17,12 +17,28 @@ import com.example.ProjetFilRougeGarage.beans.Client;
 import com.example.ProjetFilRougeGarage.controller.form.ClientForm;
 import com.example.ProjetFilRougeGarage.service.IServiceClient;
 
+
+/**
+ * 
+ * @author Teddy
+ *
+ */
 @Controller
 public class ClientController {
 
+	/**
+	 * Déclaration du service
+	 */
 	@Autowired
 	private IServiceClient serviceclient;
 	
+	/**
+ * Le ConvertForm permet de récupérer le formulaire saisi pour la création
+ * et modification de données
+	 * @param clientform : les données à récupérer du formulaire Client
+	 * @return le client crée ou modifié
+	 * @throws Exception
+	 */
 	private Client convertForm(ClientForm clientform) throws Exception {
 		Client cl = new Client();
 		
@@ -39,27 +55,17 @@ public class ClientController {
 		return cl;
 	}
 	
-	
+	/**
+	 * Affiche la liste des clients actifs de la base de données et le formulaire
+	 * de creation de client.On les affiche dans la liste
+	 * @param pmodel
+	 * @return
+	 */
 	@GetMapping("/afficherCreerClient")
 	public String getAffiche(Model pmodel) {
 		List<Client> lclient = serviceclient.rechercheClientActive();
 		pmodel.addAttribute("listeclient", lclient);
 		pmodel.addAttribute("action", "CreerClient");
-		pmodel.addAttribute("header", "headerentretien");
-		if(pmodel.containsAttribute("clientform") == false) {
-			ClientForm clientform = new ClientForm();
-			clientform.setId(0);
-			pmodel.addAttribute("clientform",clientform);
-		}
-		return "clients";
-	}
-	
-	@GetMapping("/afficherCreerClientV")
-	public String getAfficheV(Model pmodel) {
-		List<Client> lclient = serviceclient.rechercheClientActive();
-		pmodel.addAttribute("listeclient", lclient);
-		pmodel.addAttribute("action", "CreerClient");
-		pmodel.addAttribute("header", "headervente");
 		if(pmodel.containsAttribute("clientform") == false) {
 			ClientForm clientform = new ClientForm();
 			clientform.setId(0);
@@ -69,6 +75,14 @@ public class ClientController {
 	}
 	
 	
+	/**
+	 * Après être passé par afficherCreerClient, on crée le client à partir du
+	 * formulaire récupéré
+	 * @param clientform : le formulaire du client recupéré
+	 * @param presult : le résultat
+	 * @param pmodel : l'affichage de la page et des données
+	 * @return la page de la liste des clients actualisée
+	 */
 	@PostMapping("/CreerClient")
 	public String ajoutClasse( 
 			@Valid @ModelAttribute(name = "clientform") 
@@ -94,7 +108,14 @@ public class ClientController {
 		return this.getAffiche(pmodel);
 	}
 	
-	
+	/**
+	 * Permet de désactiver des clients, active leur champ desactiver.
+	 * Les clients désactivés ne sont plus visible à l'affichage mais reste dans 
+	 * la base de données
+	 * @param id : l'id du client à désactiver
+	 * @param pmodel : l'affichage de la page, le modele
+	 * @return le modele actualisé, l'affichage des clients actifs
+	 */
 	@GetMapping("/DesactiverClient/{id}")
 	public String getDesativer(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);

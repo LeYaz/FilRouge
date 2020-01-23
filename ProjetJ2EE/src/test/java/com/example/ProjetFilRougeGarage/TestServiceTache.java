@@ -64,7 +64,7 @@ class TestServiceTache {
 
 	@Test
 	void testRechercherTacheId() {
-		assertNotNull(servicetache.rechercherTacheId(7));
+		assertNotNull(servicetache.rechercherTacheId(1));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ class TestServiceTache {
 
 	@Test
 	void testModifierTache() {
-		Tache t = servicetache.rechercherTacheId(3);
+		Tache t = servicetache.rechercherTacheId(1);
 		t.setCommentaire("test changement commentaire");;
 		servicetache.modifierTache(t);
 		assertEquals(t.getCommentaire(), "test changement commentaire");
@@ -91,7 +91,7 @@ class TestServiceTache {
 
 	@Test
 	void testDesactiverTache() {
-		Tache tache = servicetache.rechercherTacheId(4);
+		Tache tache = servicetache.rechercherTacheId(2);
 		tache.setDesactiver(true);
 		servicetache.desactiverTache(tache);
 		Tache t = servicetache.rechercherTacheId(4);
