@@ -24,6 +24,13 @@ body {
     margin-bottom: 100px;
 }
 
+.containerhome{
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 3rem;
+}
+
 .showcase{
     background-color: var(--primary-color);
     color; #fff;
