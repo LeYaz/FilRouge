@@ -105,12 +105,14 @@
 	   		<label for="pwd">Password</label>
 	   		<input type="password" th:field="*{pwd}" id="pwd" 
 	   		placeholder="Password" class="form-control"/>
-	   		
+	   		<br/>
 	   		<ul>
       			<li th:each="profil : ${listeprofil} ">
+      				<div class="form-group">
             			<input type="checkbox" th:name="profils" th:value="${profil.id}"
             			 th:checked="${userform.profils.contains(profil.name)} ? 'true' : 'false'" />
 		          		<label th:text="${profil.name}"></label>
+		          	</div>
        			 </li>
 
     		</ul>
