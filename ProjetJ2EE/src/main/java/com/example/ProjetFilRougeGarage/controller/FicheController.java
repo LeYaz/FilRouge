@@ -68,10 +68,10 @@ public class FicheController {
 		pfiche.setClient(pclient);
 		pfiche.setUser(puser);
 		pfiche.setPriorite(ppriorite);
-		
 		pfiche.setDatecreation(madate1);
 		pfiche.setDatecloture(madate2);
 		pfiche.setEtatfiche(Boolean.valueOf(ficheform.getEtatfiche()));
+		pfiche.setPrixht(Float.valueOf(ficheform.getPrixht()));
 		pfiche.setDescription(ficheform.getDescription());
 		pfiche.setDesactiver(Boolean.valueOf(ficheform.getDesactiver()));
 
@@ -171,6 +171,8 @@ public class FicheController {
 				ficheform.setDatecloture(pfiche.getDatecloture().toString());
 			}
 			ficheform.setDatecreation(pfiche.getDatecreation().toString());
+			
+			ficheform.setPrixht(String.valueOf(pfiche.getPrixht()));
 			
 			ficheform.setDescription(pfiche.getDescription());
 			
