@@ -108,7 +108,14 @@ public class ClientController {
 		return this.getAffiche(pmodel);
 	}
 	
-	
+	/**
+	 * Permet de désactiver des clients, active leur champ desactiver.
+	 * Les clients désactivés ne sont plus visible à l'affichage mais reste dans 
+	 * la base de données
+	 * @param id : l'id du client à désactiver
+	 * @param pmodel : l'affichage de la page, le modele
+	 * @return le modele actualisé, l'affichage des clients actifs
+	 */
 	@GetMapping("/DesactiverClient/{id}")
 	public String getDesativer(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);

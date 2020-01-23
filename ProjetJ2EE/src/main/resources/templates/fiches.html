@@ -38,7 +38,7 @@
 	 		th:href="@{/afficherModifierFiche/{id}(id=${fiche.id})}" th:text="${fiche.id}"></a></td>
 	 		<td th:text="${fiche.client.name}"/>
 	 		<td th:text="${fiche.user.nom}"/>
-	 		<td th:text="${fiche.etatfiche} ? 'Accepté' : 'Refusé'"/>
+	 		<td th:text="${fiche.etatfiche} ? 'Accepté' : 'En attente'"/>
 	 		<td th:text="${fiche.priorite.libelle}"/>
 	 		<td th:text="${fiche.datecreation}"/>
 	 		<td th:text="${fiche.datecloture}"/>

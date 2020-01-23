@@ -35,7 +35,7 @@
 						<td th:text="${commande.devis.id}" />
 						<td th:text="${commande.datecreation}" />
 						<td th:text="${commande.datecloture}" />
-						<td th:text="${commande.etat}" />
+						<td th:text="${commande.etat} ? 'En stock' : 'Commandé' " />
 
 						<td><a class="btn btn-outline-secondary"
 							th:href="@{/DesactiverCommandeVehicule/{id}(id=${commande.id})}"
