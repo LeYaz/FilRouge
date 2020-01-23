@@ -9,12 +9,23 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.ProjetFilRougeGarage.beans.FactureFiche;
 import com.example.ProjetFilRougeGarage.dao.DaoFactureFiche;
 
+/**
+ * 
+ * @author Xavier
+ *
+ */
 @Service
 public class ServiceFactureFiche implements iServiceFactureFiche {
 
+	/**
+	 * déclaration du dao
+	 */
 	@Autowired
 	DaoFactureFiche daofacturefiche;
 
+	/**
+	 * Permet d'afficher toutes les factures de fiches
+	 */
 	@Transactional
 	@Override
 	public List<FactureFiche> rechercheFactureFiche() {
