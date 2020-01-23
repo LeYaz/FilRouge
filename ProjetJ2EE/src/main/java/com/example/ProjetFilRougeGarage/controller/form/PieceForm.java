@@ -3,6 +3,7 @@ package com.example.ProjetFilRougeGarage.controller.form;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class PieceForm {
 
@@ -15,6 +16,7 @@ public class PieceForm {
 	@Pattern(regexp = "\\d*", message="nombre uniquement")
 	private String quantite;
 	@NotEmpty
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String date_saisie;
 	
 	private String desactiver;

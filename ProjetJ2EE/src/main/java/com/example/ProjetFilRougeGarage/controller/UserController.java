@@ -146,11 +146,11 @@ public class UserController {
 		if (!presult.hasErrors()) {
 			try {
 				System.err.println("convertion du user");
-			    userform = new UserForm();
-				userform.setId(0);
 				pmodel.addAttribute("userform", userform);
 				User puser = convertForm(userform);
 				serviceuser.creerUser(puser);
+				 userform = new UserForm();
+					userform.setId(0);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}

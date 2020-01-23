@@ -3,6 +3,7 @@ package com.example.ProjetFilRougeGarage.controller.form;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class CommandePieceForm {
 
@@ -15,9 +16,8 @@ public class CommandePieceForm {
 	private String quantite;
 	
 	@NotEmpty
-	@Pattern(regexp = "^([0-3][0-9]})(/)([0-9]{2,2})(/)([0-3]{2,2})$", message="la date est invalide")
+	@Size(max=10, message="Veuillez entrer une date valide!")
 	private String date_creation;
-	
 	
 	private String date_cloture;
 	
