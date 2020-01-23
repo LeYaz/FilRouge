@@ -16,8 +16,18 @@
 	<div th:if="${header.equals('headervente')}">
 	<div  th:replace="fragments/headervente :: headervente"></div>
 	</div>
+	
+	
+
 
 	<div class="showcase1">
+	
+		<div class="col btn-group" role="group" aria-label="bouton">
+		    <a type="button" class="btn btn-primary">Complete</a>
+		    <a type="button" class="btn btn-primary">Valide</a>
+		    <a type="button" class="btn btn-primary">Archivé</a>
+		</div>
+  		
   		<div id="cookies">
   		<h1> Clientèle du garage </h1>
   		</div>
@@ -56,6 +66,8 @@
 			</tbody>
 		</table>
 
+
+
 	<div id="cookies">
 		<h2 th:if="${action == 'ModifierClient'}">
 			<a th:href="@{/afficherCreerClient}"
@@ -65,9 +77,6 @@
 				 <br/>
 				 
 		<p> Veuillez renseigner tous les champs suivant s'il vous plait </p>
-		
-		
-		
 		
 		<br/><br/>
 		<div class="form">
