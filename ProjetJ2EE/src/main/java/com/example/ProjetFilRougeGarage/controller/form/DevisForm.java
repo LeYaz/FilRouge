@@ -20,6 +20,7 @@ public class DevisForm {
 	private String etatdevis;
 
 	private String desactiver;
+	
 	public Integer getId() {
 		return id;
 	}
