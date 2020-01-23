@@ -140,9 +140,7 @@ public class UserController {
 	@PostMapping("/CreerUser")
 	public String ajoutUser(@Valid @ModelAttribute(name = "userform") UserForm userform, BindingResult presult,
 			Model pmodel) {
-		System.err.println("convertion du user");
-		System.err.println(presult);
-		System.err.println(userform.getProfils());
+		
 		if (!presult.hasErrors()) {
 			try {
 				System.err.println("convertion du user");
@@ -167,8 +165,9 @@ public class UserController {
 	 * @return la methode d'affichage des users
 	 */
 	@PostMapping("/ModifierUser")
-	public String modifieUser(@Valid @ModelAttribute UserForm userform, BindingResult presult, Model pmodel) {
+	public String modifieUser(@Valid @ModelAttribute(name = "userform") UserForm userform, BindingResult presult, Model pmodel) {
 		if (!presult.hasErrors()) {
+			System.err.println(presult);
 			try {
 				User puser = convertForm(userform);
 				serviceuser.modifierUser(puser);

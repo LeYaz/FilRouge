@@ -20,7 +20,7 @@ public class UserForm {
 	private String login;
 
 	@NotEmpty
-	@Size(min=2)
+	@Size(min=2, message="Le mot de passe doit comporter au minimum 2 caractère")
 	private String pwd;
 	
 	@NotEmpty
