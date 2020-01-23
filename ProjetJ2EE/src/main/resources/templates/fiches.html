@@ -130,11 +130,12 @@
 	   		
 	   		<div class="form-group">			
 	   		<label for="etat">Etat fiche ?</label>					
-			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche">
+			<SELECT name="regle" th:field="*{etatfiche}" id="etatfiche" class="form-control">
 				<OPTION value="true">Accepté
 				<OPTION value="false">Refusé
 			</SELECT>
 			</div>
+			<br/>
 	   <button  type="submit" class="form-control">Valider</button>
 	</form>
 	</div>
