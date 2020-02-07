@@ -23,7 +23,12 @@ import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien
     
   ],
   exports: [
-    MecanicienComponent
+    MecanicienComponent,
+    TacheComponent,
+    FicheComponent,
+    PiecesComponent,
+    CommandePieceComponent,
+    HeaderMecanicienComponent
   ],
   bootstrap: [MecanicienComponent]
 })
