@@ -1,0 +1,6 @@
+.alert-link{
+    color: white;
+}
+.alert-link:hover{
+    color: blue;
+}
