@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '.././app-routing.module';
 import { MecanicienComponent } from './mecanicien.component';
 import { TacheComponent } from './tache/tache.component';
 import { FicheComponent } from './fiche/fiche.component';
@@ -19,7 +21,9 @@ import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien
     HeaderMecanicienComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule
     
   ],
   exports: [
