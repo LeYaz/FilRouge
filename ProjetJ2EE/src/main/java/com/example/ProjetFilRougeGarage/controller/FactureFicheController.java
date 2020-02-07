@@ -34,7 +34,7 @@ public class FactureFicheController {
 	/**
 	 * Affiche la liste des facture de fiches actives
 	 * @param pmodel : l'affichage des données
-	 * @return la page html des facture de fiches avec sa liste.
+	 * @return la page html des factures de fiches avec sa liste.
 	 */
 	@GetMapping("/afficherCreerFactureFiche")
 	public String getAffiche(Model pmodel) {
