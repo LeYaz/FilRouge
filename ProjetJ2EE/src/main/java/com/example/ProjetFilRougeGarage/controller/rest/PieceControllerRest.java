@@ -84,12 +84,11 @@ public class PieceControllerRest {
 	 * Methode mapper sur /RestPiece/Pieces
 	 * Permettant d'ajouter une Piece en bdd
 	 * @param ppiece correpond au données de la Piece
-	 * @return La piece ajouter en bdd
+	 * @return La piece ajoute en bdd
 	 */
 	@PostMapping("/Pieces")
 	public Piece addPiece(@RequestBody Piece ppiece) {
 		servicepiece.creerPiece(ppiece);
-		
 		return ppiece;
 	}
 	
