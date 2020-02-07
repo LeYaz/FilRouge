@@ -9,6 +9,7 @@ import { MecanicienModule } from './mecanicien/mecanicien.module';
 import { CommercialModule } from './commercial/commercial.module';
 import { MecanicienComponent } from './mecanicien/mecanicien.component';
 import { CommercialComponent } from './commercial/commercial.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommercialComponent } from './commercial/commercial.component';
     BrowserModule,
     AppRoutingModule,
     MecanicienModule,
-    CommercialModule
+    CommercialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

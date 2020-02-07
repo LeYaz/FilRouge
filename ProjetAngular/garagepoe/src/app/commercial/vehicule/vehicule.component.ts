@@ -15,7 +15,9 @@ export class VehiculeComponent implements OnInit {
   constructor(private vehiculelistservice: VehiculeListService, private route: Router) { }
 
   ngOnInit() {
-    this.vehiculelist = this.vehiculelistservice.getAll();
+    this.vehiculelistservice.getVehicules().subscribe(d => {
+      console.log(d);
+    });
   }
 
   editVehicule(id: number) {
