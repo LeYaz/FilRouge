@@ -21,7 +21,11 @@ import { HeaderCommercialComponent } from './header-commercial/header-commercial
     
   ],
   exports: [
-    CommercialComponent
+    CommercialComponent,
+    CommandeVehiculeComponent,
+    VehiculeComponent,
+    FactureDevisComponent,
+    HeaderCommercialComponent
   ],
   bootstrap:[CommercialComponent]
 })
