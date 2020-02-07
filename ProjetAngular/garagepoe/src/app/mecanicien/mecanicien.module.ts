@@ -5,6 +5,7 @@ import { TacheComponent } from './tache/tache.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { PiecesComponent } from './pieces/pieces.component';
 import { CommandePieceComponent } from './commande-piece/commande-piece.component';
+import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 
 
 
@@ -14,7 +15,8 @@ import { CommandePieceComponent } from './commande-piece/commande-piece.componen
     TacheComponent,
     FicheComponent,
     PiecesComponent,
-    CommandePieceComponent
+    CommandePieceComponent,
+    HeaderMecanicienComponent
   ],
   imports: [
     CommonModule
