@@ -38,7 +38,14 @@ public class TacheController {
 
 	@Autowired
 	private iServiceUser serviceuser;
-
+	
+	/**
+	 * Methode de convertion des différents valeurs entrées dans le formulaire html en Entité Tache
+	 * 
+	 * @param tacheform objet pour stocker les données qu'on rentre dans le formulaire.
+	 * @return tache pour former les taches rentrées dans le formulaire
+	 * @throws Exception
+	 */
 	private Tache convertForm(TacheForm tacheform) throws Exception {
 
 		Tache tache = new Tache();
@@ -54,6 +61,11 @@ public class TacheController {
 		return tache;
 	}
 
+	/**
+	 * 
+	 * @param pmodel objet dans lequel on enregistre les données en memoire afin de les afficher 
+	 * @return "taches" page html qui sert au CRUD de l'objet tache
+	 */
 	@GetMapping("/afficherCreerTache")
 	public String getAffiche(Model pmodel) {
 		List<Fiche> lfiches = servicefiche.rechercherFicheActive();
@@ -76,6 +88,13 @@ public class TacheController {
 		return "taches";
 	}
 
+	
+	/**
+	 * 
+	 * @param id id de l'objet tache
+	 * @param pmodel 
+	 * @return
+	 */
 	@GetMapping("/afficherModifierTache/{id}")
 	public String getAfficheMod(@PathVariable final Integer id, Model pmodel) {
 		Tache tache = servicetache.rechercherTacheId(id);
