@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FactureDevis, factureDev } from './facture-devis.model';
+import { FactureDevisService } from './facture-devis.service';
 
 @Component({
   selector: 'gar-facture-devis',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facture-devis.component.css']
 })
 export class FactureDevisComponent implements OnInit {
+  listFactureD: factureDev;
 
-  constructor() { }
+  constructor(private FactureS: FactureDevisService) { }
 
   ngOnInit() {
+    this.listFactureD = this.FactureS.getAll();
+
   }
 
 }
