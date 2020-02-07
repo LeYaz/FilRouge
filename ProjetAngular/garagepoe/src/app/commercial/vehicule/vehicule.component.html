@@ -1,7 +1,36 @@
-<ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des vehicules</h1>
+    </div>
+</div>
+
+    <table class="table table-striped">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Libellé du vehicule</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+
+    <!-- <tbody *ngIf="vehiculelist.length > 0; else elseBlock"> -->
+        <tr *ngFor="let vehicule of vehiculelist">
+            <th scope="row">{{vehicule.id}}</th>
+            <td>{{vehicule.marque}}</td>
+            <td>
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2" (click)="editVehicule(vehicule.id)" >Modifier</button>
+                
+                <button type="button" class="btn btn-outline-danger" (click)="deleteVehicule(vehicule.id)">Supprimer</button>
+            </td>
+        </tr>
+    <!-- </tbody>
+    <ng-template #elseBlock>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Aucune tâche pour le moment...</td>
+            </tr>
+        </tbody>
+    </ng-template> -->
+</table>
