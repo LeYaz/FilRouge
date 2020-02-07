@@ -124,7 +124,13 @@ public class ClientController {
 		return this.getAffiche(pmodel);
 	}
 	
-	
+	/**
+	 * afficher le menu de modification d'un client pour modifier un ou plusieurs 
+	 * champs
+	 * @param id : l'id du client que l'on souhaite modifier
+	 * @param pmodel : l'affichage de la page
+	 * @return :  la page des client et leur affichage
+	 */
 	@GetMapping("/afficherModifierClient/{id}")
 	public String getAfficheMod(@PathVariable final Integer id,Model pmodel) {
 		Client pclient = serviceclient.rechercheClientId(id);
@@ -144,7 +150,14 @@ public class ClientController {
 		}
 		return "clients";
 	}
-	
+	/**
+	 * Permet de récupérer ce qui a été envoyer par afficherModifierClient, converti le
+	 * formulaire de modification et modifie le client grace au service
+	 * @param clientform : le formulaire du client recupéré
+	 * @param presult : le résultat
+	 * @param pmodel : l'affichage de la page et des données
+	 * @return l'affichage actualisé avec le client modifié
+	 */
 	@PostMapping("/ModifierClient")
 	public String modifieClasse( 
 			@Valid @ModelAttribute(name = "clientform") 
