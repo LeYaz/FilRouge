@@ -7,8 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MecanicienModule } from './mecanicien/mecanicien.module';
 import { CommercialModule } from './commercial/commercial.module';
-import { MecanicienComponent } from './mecanicien/mecanicien.component';
-import { CommercialComponent } from './commercial/commercial.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -16,8 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    
-    
   ],
   imports: [
     BrowserModule,
