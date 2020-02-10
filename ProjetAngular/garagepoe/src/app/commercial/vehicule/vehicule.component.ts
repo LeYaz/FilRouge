@@ -32,8 +32,6 @@ export class VehiculeComponent implements OnInit {
         let desactiver = element.desactiver;
         let vehicule = new Vehicule(id, marque, modele, quantite, prixHT, datecreation, desactiver);
         this.vehiculelist.push(vehicule);
-       //  this.pokemons.push(pokemon); 
-  
       });
 
     });
