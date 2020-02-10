@@ -8,8 +8,11 @@
         <thead class="">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Libellé du vehicule</th>
-                <th scope="col">Actions</th>
+                <th scope="col">marque</th>
+                <th scope="col">modele</th>
+                <th scope="col">quantite</th>
+                <th scope="col">prixHT</th>
+                <th scope="col">date de creation</th>
             </tr>
         </thead>
 
@@ -18,6 +21,11 @@
         <tr *ngFor="let vehicule of vehiculelist">
             <th scope="row">{{vehicule.id}}</th>
             <td>{{vehicule.marque}}</td>
+            <td>{{vehicule.modele}}</td>
+            <td>{{vehicule.quantite}}</td>
+            <td>{{vehicule.prixHT}}</td>
+            <td>{{vehicule.date_creation}}</td>
+            <td>{{vehicule.desactivation}}</td>
             <td>
                 <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
                 <button type="button" class="btn btn-outline-warning mr-2" (click)="editVehicule(vehicule.id)" >Modifier</button>
