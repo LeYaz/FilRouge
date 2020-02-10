@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MecanicienModule } from './mecanicien/mecanicien.module';
 import { CommercialModule } from './commercial/commercial.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,12 +16,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    PageNotFoundComponent,
+    HomeComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     MecanicienModule,
     CommercialModule,
+    AppRoutingModule,
     HttpClientModule
   ],
   providers: [],
