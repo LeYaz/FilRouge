@@ -1,1 +1,5 @@
-<p>facture-devis works!</p>
+<tr *ngFor="let fa of listFactureD"><!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
+    <th scope="row"> {{fa.id}}<!-- Afficher ici l'id de la tâche --></th>
+    <td> {{fa.prixHt}}<!-- Afficher ici le label de la tâche --></td>
+ 
+</tr>
