@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
-import { factureDev, FactureDevis } from './facture-devis.model';
+import { FactureDev, FactureDevis } from './facture-devis.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FactureDevisService {
-factureDev: factureDev;
+FactureDev: FactureDev;
 
 private url :string = '../../assets/data/fd.js';
 
   constructor(private http:HttpClient) {
   }
   public getAll() {
-    console.log(this.factureDev);
+    console.log(this.FactureDev);
 
-    return this.factureDev;
+    return this.FactureDev;
   }
 
   get(id: number) {
     let factureD: FactureDevis;
-    this.factureDev.filter(element => {
+    this.FactureDev.filter(element => {
       if (element.id === id) {
         factureD = element;
       }
     });
-    console.log(this.factureDev);
+    console.log(this.FactureDev);
     return factureD;
   }
   public getNewId() {
-    let id: number = this.factureDev.length + 1;
+    let id: number = this.FactureDev.length + 1;
     return id + 1;
   }
 getDevis(){

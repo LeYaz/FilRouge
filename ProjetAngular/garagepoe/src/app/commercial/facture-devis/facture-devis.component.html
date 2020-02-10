@@ -1,5 +1,41 @@
-<tr *ngFor="let fa of listFactureD"><!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
-    <th scope="row"> {{fa.id}}<!-- Afficher ici l'id de la tâche --></th>
-    <td> {{fa.prixHt}}<!-- Afficher ici le label de la tâche --></td>
- 
-</tr>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des tâches</h1>
+        <p class="lead">Consulter la liste des tâches à faire ici</p>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead class="">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Libellé de la tâche</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="FactureDev.length > 0; else elseBlock">
+        <tr><!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
+            <th scope="row"><!-- Afficher ici l'id de la tâche --></th>
+            <td>
+            {{FactureDev.id}}
+
+                <!-- Afficher ici le label de la tâche --></td>
+            <td>
+                {{FactureDev.prixHT}}
+
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2">Modifier</button>
+                <!-- Gérer l'événement clic sur ce bouton afin de supprimer la tâche -->
+                <button type="button" class="btn btn-outline-danger">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+    <ng-template #elseBlock>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Aucune tâche pour le moment...</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>

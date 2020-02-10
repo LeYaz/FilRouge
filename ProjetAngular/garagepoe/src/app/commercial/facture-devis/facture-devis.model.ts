@@ -19,4 +19,4 @@ export class FactureDevis {
    this.desactiver = desactiver;
        }
    }
-export type factureDev =  Array<FactureDevis>;
+export type FactureDev =  Array<FactureDevis>;
