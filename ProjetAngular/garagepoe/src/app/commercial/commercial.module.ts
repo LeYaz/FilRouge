@@ -22,7 +22,7 @@ import { HeaderCommercialComponent } from './header-commercial/header-commercial
     CommonModule,
     BrowserModule,
     AppRoutingModule
-    
+
   ],
   exports: [
     CommercialComponent,
@@ -31,6 +31,6 @@ import { HeaderCommercialComponent } from './header-commercial/header-commercial
     FactureDevisComponent,
     HeaderCommercialComponent
   ],
-  bootstrap:[CommercialComponent]
+  bootstrap: [CommercialComponent]
 })
 export class CommercialModule { }

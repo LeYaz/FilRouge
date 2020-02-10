@@ -1,12 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { Devis } from 'src/app/model-util/devis-model';
 
-@Component({
-  selector: 'gar-commande-vehicule',
-  templateUrl: './commande-vehicule.component.html',
-  styleUrls: ['./commande-vehicule.component.css']
-})
-export class CommandeVehiculeComponent implements OnInit {
+export class CommandeVehicule {
 
 id: number;
 devis: Devis;
@@ -22,10 +16,5 @@ this.etat = etat;
 this.datecreation = datecreation;
 this.datecloture = datecloture;
 this.desactiver = desactiver;
-
-   }
-
-  ngOnInit() {
   }
-
 }
