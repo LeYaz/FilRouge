@@ -35,14 +35,20 @@ export class VehiculeComponent implements OnInit {
       });
 
     });
+    // this.vehiculelistservice.getVehiculesId();
   }
+
+
 
   editVehicule(id: number) {
     this.route.navigate(['/edit/' + id]);
   }
 
-  deactiveVehicule(id: number) {
-    // ici faire la desactivation aussi
+  deleteVehicule(id: number) {
+    this.vehiculelistservice.deleteVehiculesId(id).subscribe(d => {
+      this.vehiculelist = [];
+      this.ngOnInit();
+    });
   }
 
 }
