@@ -24,4 +24,4 @@ export class Vehicule {
     }
 }
 
-export type Vehicules = Array<Vehicule>;
+//export type Vehicules = Array<Vehicule>;
