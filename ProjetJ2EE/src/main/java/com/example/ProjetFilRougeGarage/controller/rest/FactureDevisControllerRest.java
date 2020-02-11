@@ -30,6 +30,7 @@ public class FactureDevisControllerRest {
 	 * Methode mapper sur /RestFactureDevis
 	 * @return la liste des devis au format JSON
 	 */
+	
 	@GetMapping("/FactureDevis")
 	public List<FactureDevis> getDevis(){
 		return servicedevis.rechercherFactureDevisActive();
