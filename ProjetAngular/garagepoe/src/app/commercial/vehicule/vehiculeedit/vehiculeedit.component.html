@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">test {{ vehicule.id == 0 ? "Ajout" : "Modification" }} d'un véhicule</h1>
+        <h1 class="display-4">{{ vehicule.id == 0 ? "Ajout" : "Modification" }} d'un véhicule</h1>
         <p class="lead">Utiliser le formulaire suivant afin {{ vehicule.id == 0 ? "d'ajouter" : "de modifier" }} un vehicule
         </p>
     </div>
@@ -10,10 +10,11 @@
     <form #vehiculeForm="ngForm" (ngSubmit)="addVehicule()"> 
         <input type="hidden" name="idInput" id="idInput" [(ngModel)]="vehicule.id"> 
         <div class="form-group">
-            <label for="labelInput">Label</label>
+            
 
             <div class="form-group">
-            <input type="text" class="form-control" name="labelInput" id="marqueInput"
+            <label for="labelInput">Marque</label>
+            <input type="text" class="form-control" name="labelInput" id="labelInput"
                 placeholder="Entrer une marque" required #label="ngModel" [(ngModel)]="vehicule.marque"> 
             <div *ngIf="vehicule.marque.dirty && vehicule.marque.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le label est obligatoire !</strong>
@@ -21,30 +22,34 @@
            
 
             <div class="form-group">
-            <input type="text" class="form-control" name="labelInput" id="modeleInput"
-                placeholder="Entrer une modele" required #label="ngModel" [(ngModel)]="vehicule.modele"> 
+            <label for="modeleInput">Modele</label>
+            <input type="text" class="form-control" name="modeleInput" id="modeleInput"
+                placeholder="Entrer un modele" required #label="ngModel" [(ngModel)]="vehicule.modele"> 
             <div *ngIf="vehicule.modele.dirty && vehicule.modele.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le label est obligatoire !</strong>
             </div></div>
 
             <div class="form-group">
-            <input type="text" class="form-control" name="labelInput" id="quantiteInput"
+                <label for="quantiteInput">Quantite</label>
+            <input type="text" class="form-control" name="quantiteInput" id="quantiteInput"
                 placeholder="Entrer une quantite" required #label="ngModel" [(ngModel)]="vehicule.quantite"> 
             <div *ngIf="vehicule.quantite.dirty && vehicule.quantite.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le label est obligatoire !</strong>
             </div></div>
 
             <div class="form-group">
-            <input type="text" class="form-control" name="labelInput" id="prixHTInput"
-                placeholder="Entrer un prix hors taxe" required #label="ngModel" [(ngModel)]="vehicule.prixHT"> 
+                <label for="prixHTInput">Prix</label>
+            <input type="text" class="form-control" name="prixHTInput" id="prixHTInput"
+                placeholder="Entrer un prix" required #label="ngModel" [(ngModel)]="vehicule.prixHT"> 
             <div *ngIf="vehicule.prixHT.dirty && vehicule.prixHT.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le label est obligatoire !</strong>
             </div></div>
 
             <div class="form-group">
-            <input type="date" class="form-control" name="labelInput" id="dateInput"
-                placeholder="Selectionner une date" required #label="ngModel" [(ngModel)]="vehicule.datecreation"> 
-            <div *ngIf="vehicule.datecreation.dirty && vehicule.datecreation.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                <label for="datecreationInput">Date</label>
+            <input type="text" class="form-control" name="datecreationInput" id="datecreationInput"
+                placeholder="Selectionner une date" required #label="ngModel" [(ngModel)]="vehicule.date_creation"> 
+            <div *ngIf="vehicule.date_creation.dirty && vehicule.date_creation.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le label est obligatoire !</strong>
             </div></div>
         
