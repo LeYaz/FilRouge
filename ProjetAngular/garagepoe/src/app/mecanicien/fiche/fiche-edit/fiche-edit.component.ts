@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FicheService } from '../fiche.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'gar-fiche-edit',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FicheEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fichelistserv: FicheService, private router: Router, private actrout: ActivatedRoute) { }
 
   ngOnInit() {
+    
   }
 
 }
