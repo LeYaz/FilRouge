@@ -1,1 +1,42 @@
-<p>pieces works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des pieces</h1>
+    </div>
+</div>
+
+    <table class="table table-striped">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">libelle</th>
+                <th scope="col">quantité</th>
+                <th scope="col">date de saisie</th>
+                
+            </tr>
+        </thead>
+
+
+    <!-- <tbody *ngIf="vehiculelist.length > 0; else elseBlock"> -->
+        <tr *ngFor="let piece of piecelist">
+            <th scope="row">{{piece.id}}</th>
+            <td>{{piece.libelle}}</td>
+            <td>{{piece.quantite}}</td>
+            <td>{{piece.date_saisie | date}}</td>
+          
+           
+            <td>
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2" (click)="editPiece(piece.id)">Modifier</button>
+                
+                <button type="button" class="btn btn-outline-danger" (click)="deletePiece(piece.id)">Supprimer</button>
+            </td>
+        </tr>
+    <!-- </tbody>
+    <ng-template #elseBlock>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Aucune tâche pour le moment...</td>
+            </tr>
+        </tbody>
+    </ng-template> -->
+</table>
