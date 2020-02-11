@@ -1,1 +1,21 @@
-<p>edit-commande-vehicule works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"> Modification de la date de cloture de la commande du véhicule</h1>
+        <p class="lead">Utiliser le formulaire suivant afin de modifier la commande véhicule
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <form #commandeVehiculeForm="ngForm" (ngSubmit)="editCVehicule()">
+        <input type="hidden" name="idInput" id="idInput" [(ngModel)]="commandeVehicule.id"> 
+        
+        <div class="form-group">
+            <label for="labelInput">DateCloture</label>
+            <input type="text" class="form-control" name="labelInput" id="labelInput"
+                placeholder="Entrer une date de clôture" required #label="ngModel" [(ngModel)]="commandeVehicule.datecloture"> 
+        </div>
+        <button  type="submit" class="btn btn-primary"
+             [disabled]="commandeVehiculeForm.invalid">Modifier</button> 
+    </form>
+</div>
