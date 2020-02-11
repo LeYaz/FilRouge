@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommandeVehicule } from './commande-vehicule-model';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +19,7 @@ import { CommandeVehicule } from './commande-vehicule-model';
     }
 
      getCommandeVehiculeId(id: number) {
-     return this.http.get(this.url + '/' + id);
+     return this.http.get<CommandeVehicule>(this.url + '/' + id);
    }
  
     deleteCommandeVehiculeId(id: number) {
@@ -31,7 +28,7 @@ import { CommandeVehicule } from './commande-vehicule-model';
  
 
    editCommandeVehicule(commandeVehicule: CommandeVehicule) {
-    let urlput : string = this.url + commandeVehicule.id;
+    let urlput : string = this.url + '/' + commandeVehicule.id;
     return this.http.put<CommandeVehicule>(urlput, commandeVehicule);
   
             }

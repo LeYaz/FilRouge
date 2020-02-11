@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Devis } from 'src/app/model-util/devis-model';
 import { CommandeVehicule } from './commande-vehicule-model';
 import { CommandeVehiculeService } from './commande-vehicule.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'gar-commande-vehicule',
@@ -14,7 +14,7 @@ export class CommandeVehiculeComponent implements OnInit {
   commandevehiculelist: CommandeVehicule[] = new Array();
 
 
-  constructor(private commandeVehiculeService: CommandeVehiculeService, private route: Router) { }
+  constructor(private commandeVehiculeService: CommandeVehiculeService, private route: Router, private activateroute: ActivatedRoute) { }
 
   ngOnInit(): void {
     let list;
@@ -35,7 +35,7 @@ export class CommandeVehiculeComponent implements OnInit {
 
 
   editCommandeVehicule(id: number) {
-    this.route.navigate(['/edit/' + id]);
+    this.route.navigate(['edit/' + id], {relativeTo: this.activateroute});
   }
 
   deleteCommandeVehicule(id: number) {

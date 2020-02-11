@@ -7,19 +7,13 @@
 </div>
 
 <div class="container">
-    <form #commandeVehiculeForm="ngForm" (ngSubmit)="editCommandeVehicule()">
+    <form #commandeVehiculeForm="ngForm" (ngSubmit)="editCVehicule()">
         <input type="hidden" name="idInput" id="idInput" [(ngModel)]="commandeVehicule.id"> 
-        <input type="hidden" name="idInput" id="idInput1" [(ngModel)]="commandeVehicule.devis"> 
-        <input type="hidden" name="idInput" id="idInput2" [(ngModel)]="commandeVehicule.etat"> 
-        <input type="hidden" name="idInput" id="idInput3" [(ngModel)]="commandeVehicule.datecreation"> 
         
         <div class="form-group">
             <label for="labelInput">DateCloture</label>
             <input type="text" class="form-control" name="labelInput" id="labelInput"
                 placeholder="Entrer une date de clôture" required #label="ngModel" [(ngModel)]="commandeVehicule.datecloture"> 
-            <!-- <div *ngIf="libelle.dirty && libelle.hasError('required')" class="alert alert-danger mt-2" role="alert">
-                <strong>Le libelle est obligatoire !</strong>
-            </div> -->
         </div>
         <button  type="submit" class="btn btn-primary"
              [disabled]="commandeVehiculeForm.invalid">Modifier</button> 

@@ -9,18 +9,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-commande-vehicule.component.css']
 })
 export class EditCommandeVehiculeComponent implements OnInit {
-commandeVehicule: CommandeVehicule;
+commandeVehicule: CommandeVehicule = new CommandeVehicule(0, null, false, new Date(), null, false ) ;
 
 
   constructor(private commandeVehiculeService: CommandeVehiculeService, private router: Router, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
 
-  this.commandeVehiculeService.getCommandeVehiculeId( parseInt (this.activatedRoute.snapshot.paramMap.get('id') ) );
-
+  // tslint:disable-next-line: radix
+ 
   if (this.activatedRoute.snapshot.paramMap.get('id') != null) {
     this.commandeVehiculeService.getCommandeVehiculeId (parseInt(this.activatedRoute.snapshot.paramMap.get('id'))).subscribe(d => {
-      let cv = d[0];
+      let cv = d;
       this.commandeVehicule = new CommandeVehicule(cv.id, cv.devis, cv.etat, cv.datecreation, cv.datecloture, cv.desactiver);
     });
   } else {
@@ -28,9 +28,14 @@ commandeVehicule: CommandeVehicule;
   }
 }
 
-  editCommandeVehicule(id: number) {
- 
-    this.router.navigate(['edit/' + id], {relativeTo: this.activatedRoute});
-  }
-  }
+editCVehicule() {
+  this.commandeVehicule.desactiver = false;
+
+  this.commandeVehiculeService.editCommandeVehicule(this.commandeVehicule).subscribe(d => {
+    console.log(d);
+  })
+  this.router.navigate(['commercial/commande-vehicule']);
+}
+}
+  
 
