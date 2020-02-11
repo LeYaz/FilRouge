@@ -8,8 +8,9 @@ import { VehiculeComponent } from './vehicule/vehicule.component';
 import { FactureDevisComponent } from './facture-devis/facture-devis.component';
 import { HeaderCommercialComponent } from './header-commercial/header-commercial.component';
 import { CommercialRoutingModule } from './commercial-routing.module';
+import { VehiculeeditComponent } from './vehicule/vehiculeedit/vehiculeedit.component'
+import { FormsModule } from '@angular/forms';
 import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande-vehicule/edit-commande-vehicule.component'
-
 
 
 @NgModule({
@@ -19,11 +20,14 @@ import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande
     VehiculeComponent,
     FactureDevisComponent,
     HeaderCommercialComponent,
+    VehiculeeditComponent
     EditCommandeVehiculeComponent
   ],
   imports: [
     CommercialRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
+
 
     
   ],
