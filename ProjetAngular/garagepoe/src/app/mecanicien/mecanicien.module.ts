@@ -7,8 +7,10 @@ import { PiecesComponent } from './pieces/pieces.component';
 import { CommandePieceComponent } from './commande-piece/commande-piece.component';
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
+import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
+
 import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { FormsModule } from '@angular/forms'
     PiecesComponent,
     CommandePieceComponent,
     HeaderMecanicienComponent,
+    FicheEditComponent,
     PiecesEditComponent
   ],
   imports: [
