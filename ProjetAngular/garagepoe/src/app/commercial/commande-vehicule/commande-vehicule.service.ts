@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
   export class CommandeVehiculeService {
 
-    private url: string = '../../assets/data/vehicule.json';
+    private url: string = 'localhost:8080/RestCommandeVehicule';
 
     constructor(private http: HttpClient) {
 
