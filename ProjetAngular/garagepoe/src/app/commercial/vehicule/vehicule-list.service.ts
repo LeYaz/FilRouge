@@ -27,9 +27,9 @@ export class VehiculeListService {
     return this.http.delete(this.url + '/' + id);
   }
 
-  editVehiculeId(id: number) {
-    return this.http.put(this.url);
-  }
+  // editVehiculeId(id: number) {
+  //   return this.http.put(this.url);
+  // }
 
   // get(id: number) {
   //   let veh1: Vehicule;
