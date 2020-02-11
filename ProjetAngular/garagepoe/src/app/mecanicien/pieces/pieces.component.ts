@@ -45,4 +45,8 @@ export class PiecesComponent implements OnInit {
     });
   }
 
+  addPiece(){
+    this.router.navigate(['edit/'], {relativeTo: this.route});
+  }
+
 }

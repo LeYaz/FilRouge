@@ -27,7 +27,7 @@ export class PiecesService {
   }
 
   get(id:number){
-    return this.http.get(this.url+id);
+    return this.http.get<Piece>(this.url+id);
   }
 
   

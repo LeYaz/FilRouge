@@ -10,22 +10,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PiecesEditComponent implements OnInit {
 
-  piece : Piece;
+  piece : Piece = new Piece(0,"",0,new Date(),false );
 
   constructor(private servicepiece:PiecesService, private router:Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     if(this.route.snapshot.paramMap.get('id')!=null){
       this.servicepiece.get(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(d=>{
-        let p = d[0];
+        console.log(d)
+        let p =d;
         this.piece = new Piece(p.id, p.libelle, p.quantite, p.date_saisie, p.desactiver);
       });
     }else{
       this.piece = new Piece(0,"",0,new Date(),false );
     }
+    
   }
 
   addPiece(){
-
+    this.piece.desactiver=false;
+    
+    this.servicepiece.editPiece(this.piece).subscribe(d=>{
+      console.log(d);
+    })
+    this.router.navigate(['mecanicien/pieces']);
   }
 }
