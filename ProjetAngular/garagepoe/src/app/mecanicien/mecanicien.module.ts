@@ -7,6 +7,7 @@ import { PiecesComponent } from './pieces/pieces.component';
 import { CommandePieceComponent } from './commande-piece/commande-piece.component';
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
+import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
 
 
 
@@ -17,7 +18,8 @@ import { MecanicienRoutingModule } from './mecanicien-routing.module';
     FicheComponent,
     PiecesComponent,
     CommandePieceComponent,
-    HeaderMecanicienComponent
+    HeaderMecanicienComponent,
+    FicheEditComponent
   ],
   imports: [
     MecanicienRoutingModule,
