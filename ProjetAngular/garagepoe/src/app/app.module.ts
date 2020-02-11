@@ -10,7 +10,7 @@ import { CommercialModule } from './commercial/commercial.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     CommercialModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

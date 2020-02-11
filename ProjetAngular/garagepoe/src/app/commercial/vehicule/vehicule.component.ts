@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Vehicule } from './vehicule.model';
 import { VehiculeListService } from './vehicule-list.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { element } from 'protractor';
+import { relative } from 'path';
 
 @Component({
   selector: 'gar-vehicule',
@@ -14,7 +15,7 @@ export class VehiculeComponent implements OnInit {
 
   vehiculelist: Vehicule[] = new Array();
   
-  constructor(private vehiculelistservice: VehiculeListService, private route: Router) { }
+  constructor(private vehiculelistservice: VehiculeListService, private route: Router, private actroute: ActivatedRoute) { }
 
   ngOnInit() {
     let list;
@@ -41,7 +42,7 @@ export class VehiculeComponent implements OnInit {
 
 
   editVehicule(id: number) {
-    this.route.navigate(['/edit/' + id]);
+    this.route.navigate(['edit/' + id], {relativeTo: this.actroute});
   }
 
   deleteVehicule(id: number) {
