@@ -7,7 +7,7 @@ export class FactureDevis {
     desactiver: boolean ;
 
     constructor( id: number,
-        devis: number,
+                 devis: number,
                  prixht: number,
                  tauxtva: number,
                  datecreation: Date,
