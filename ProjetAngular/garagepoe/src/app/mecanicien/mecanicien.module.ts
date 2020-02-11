@@ -9,6 +9,8 @@ import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
 import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
 
+import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +21,13 @@ import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
     PiecesComponent,
     CommandePieceComponent,
     HeaderMecanicienComponent,
-    FicheEditComponent
+    FicheEditComponent,
+    PiecesEditComponent
   ],
   imports: [
     MecanicienRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   bootstrap: [MecanicienComponent]
 })

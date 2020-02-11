@@ -51,7 +51,7 @@ public class ServicePiece implements iServicePiece {
 	@Transactional
 	@Override
 	public void desactiverPiece(Piece piece) {
-	
+		piece.setDesactiver(true);
 		daopiece.save(piece);
 	}
 

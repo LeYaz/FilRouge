@@ -3,6 +3,7 @@ package com.example.ProjetFilRougeGarage.controller.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.example.ProjetFilRougeGarage.service.iServicePiece;
  *
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/RestPiece/")
 public class PieceControllerRest {
 	@Autowired 
@@ -60,6 +62,7 @@ public class PieceControllerRest {
 	@DeleteMapping("/Pieces/{id}")
 	public Piece deletePiece(@PathVariable("id") int id){
 		Piece p = servicepiece.recherchePieceId(id);
+		p.setDesactiver(true);
 		servicepiece.desactiverPiece(p);
 		return p;
 	}

@@ -6,6 +6,7 @@ import { FicheComponent } from './fiche/fiche.component';
 import { PiecesComponent } from './pieces/pieces.component';
 import { TacheComponent } from './tache/tache.component';
 import { MecanicienComponent } from './mecanicien.component';
+import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
 
 const routes: Routes = [
   { path: 'mecanicien', component: MecanicienComponent,
@@ -13,6 +14,9 @@ const routes: Routes = [
     {path:'commande-piece', component: CommandePieceComponent},
     {path:'fiches', component: FicheComponent},
     {path:'pieces', component: PiecesComponent},
+    {path:'pieces/edit', component:PiecesEditComponent},
+    {path:'pieces/edit/:id', component:PiecesEditComponent},
+    
     {path:'taches', component: TacheComponent}
   ] }
 ];

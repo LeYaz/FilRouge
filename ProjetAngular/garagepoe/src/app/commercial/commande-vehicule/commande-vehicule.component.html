@@ -1,1 +1,35 @@
-<p>commande-vehicule works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des commandes de véhicule</h1>
+    </div>
+</div>
+
+    <table class="table table-striped">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Devis</th>
+                <th scope="col">Vehicule</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Date de création</th>
+                <th scope="col">Date de clôture</th>
+                <th scope="col">Desactiver</th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let commandevehicule of commandevehiculelist">
+            <th scope="row">{{commandevehicule.id}}</th>
+            <td>{{commandevehicule.devis.client.name}}</td>
+            <td>{{commandevehicule.devis.vehicule.modele}}</td>
+            <td>{{commandevehicule.etat}}</td>
+            <td>{{commandevehicule.datecreation}}</td>
+            <td>{{commandevehicule.datecloture}}</td>
+            <td>{{commandevehicule.Desactiver}}</td>
+            <td>
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2" (click)="editCommandeVehicule(commandevehicule.id)" >Modifier</button>
+                
+                <button type="button" class="btn btn-outline-danger" (click)="deleteCommandeVehicule(commandevehicule.id)">Desactiver</button>
+            </td>
+        </tr>
+</table>
