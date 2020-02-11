@@ -1,0 +1,23 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ piece.id == 0 ? "Ajout" : "Modification" }} d'une Piece</h1>
+        <p class="lead">Utiliser le formulaire suivant afin {{ piece.id == 0 ? "d'ajouter" : "de modifier" }} une piece
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <form #pieceForm="ngForm" (ngSubmit)="addPiece()">
+        <input type="hidden" name="idInput" id="idInput" [(ngModel)]="piece.id"> 
+        <div class="form-group">
+            <label for="labelInput">Label</label>
+            <input type="text" class="form-control" name="labelInput" id="labelInput"
+                placeholder="Entrer un label pour la tâche" required #label="ngModel" [(ngModel)]="piece.libelle"> 
+            <div *ngIf="libelle.dirty && libelle.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                <strong>Le libelle est obligatoire !</strong>
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-primary"
+            [disabled]="pieceForm.invalid">{{ piece.id == 0 ? "Ajouter" : "Modifier" }}</button>
+    </form>
+</div>

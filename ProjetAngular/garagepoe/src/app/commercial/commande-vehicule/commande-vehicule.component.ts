@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Devis } from 'src/app/model-util/devis-model';
+import { CommandeVehicule } from './commande-vehicule-model';
+import { CommandeVehiculeService } from './commande-vehicule.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'gar-commande-vehicule',
@@ -8,24 +11,38 @@ import { Devis } from 'src/app/model-util/devis-model';
 })
 export class CommandeVehiculeComponent implements OnInit {
 
-id: number;
-devis: Devis;
-etat: boolean;
-datecreation: Date;
-datecloture: Date;
-desactiver: boolean;
+  commandevehiculelist: CommandeVehicule[] = new Array();
 
-  constructor(id: number, devis: Devis, etat: boolean, datecreation: Date, datecloture: Date, desactiver: boolean) {
-this.id = id;
-this.devis = devis;
-this.etat = etat;
-this.datecreation = datecreation;
-this.datecloture = datecloture;
-this.desactiver = desactiver;
 
-   }
+  constructor(private commandeVehiculeService: CommandeVehiculeService, private route: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    let list;
+    this.commandeVehiculeService.getCommandeVehicule().subscribe(cv => {
+    list = cv;
+    list.forEach(element => {
+  const id = element.id;
+  const devis = element.devis;
+  const etat = element.etat;
+  const datecreation = element.datecreation;
+  const datecloture = element.datecloture;
+  const desactiver = element.desactiver;
+  const commandV = new CommandeVehicule(id, devis, etat, datecreation, datecloture, desactiver);
+  this.commandevehiculelist.push(commandV); });
+
+      });
+  }
+
+
+  editCommandeVehicule(id: number) {
+    this.route.navigate(['/edit/' + id]);
+  }
+
+  deleteCommandeVehicule(id: number) {
+    this.commandeVehiculeService.deleteCommandeVehiculeId(id).subscribe(d => {
+      this.commandevehiculelist = [];
+      this.ngOnInit();
+    });
   }
 
 }

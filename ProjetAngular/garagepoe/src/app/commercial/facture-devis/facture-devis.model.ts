@@ -1,22 +1,24 @@
 export class FactureDevis {
     id: number;
-    idDevis: number;
-    prixHt: number ;
-    tauxTva: number ;
-    dateCreation: Date ;
+    devis: number;
+    prixht: number ;
+    tauxtva: number ;
+    datecreation: Date ;
     desactiver: boolean ;
 
     constructor( id: number,
-                 idDevis: number,
-                 prixHt: number,
-                 tauxTva: number,
-                 dateCreation: Date,
+                 devis: number,
+                 prixht: number,
+                 tauxtva: number,
+                 datecreation: Date,
                  desactiver: boolean) {
-   this.idDevis = idDevis;
-   this.prixHt = prixHt;
-   this.tauxTva = tauxTva;
-   this.dateCreation = dateCreation;
-   this.desactiver = desactiver;
+                    this.id = id;
+
+                    this.devis = devis;
+                    this.prixht = prixht;
+                    this.tauxtva = tauxtva;
+                    this.datecreation = datecreation;
+                    this.desactiver = desactiver;
        }
    }
-export type factureDev =  Array<FactureDevis>;
+export type FactureDev =  Array<FactureDevis>;

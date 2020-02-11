@@ -10,6 +10,7 @@ import { HeaderCommercialComponent } from './header-commercial/header-commercial
 import { CommercialRoutingModule } from './commercial-routing.module';
 import { VehiculeeditComponent } from './vehicule/vehiculeedit/vehiculeedit.component'
 import { FormsModule } from '@angular/forms';
+import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande-vehicule/edit-commande-vehicule.component'
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     FactureDevisComponent,
     HeaderCommercialComponent,
     VehiculeeditComponent
+    EditCommandeVehiculeComponent
   ],
   imports: [
     CommercialRoutingModule,
