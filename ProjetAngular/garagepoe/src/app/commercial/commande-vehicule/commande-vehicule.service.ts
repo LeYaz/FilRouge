@@ -35,9 +35,9 @@ import { CommandeVehicule } from './commande-vehicule-model';
     return this.http.put<CommandeVehicule>(urlput, commandeVehicule);
   
             }
-
-  }
-  //  editCommandeVehiculeId(id: number) {
-  //    return this.http.put(this.url);
-  //  }
-  
+      }
+  // }
+  // //  editCommandeVehiculeId(id: number) {
+  // //    return this.http.put(this.url);
+  // //  }
+  // }
