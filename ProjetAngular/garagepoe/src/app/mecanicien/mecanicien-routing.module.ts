@@ -14,10 +14,9 @@ const routes: Routes = [
     {path:'commande-piece', component: CommandePieceComponent},
     {path:'fiches', component: FicheComponent},
     {path:'pieces', component: PiecesComponent},
-      
-        {path:'pieces/edit/:id', component:PiecesEditComponent},
-      
-  
+    {path:'pieces/edit', component:PiecesEditComponent},
+    {path:'pieces/edit/:id', component:PiecesEditComponent},
+    
     {path:'taches', component: TacheComponent}
   ] }
 ];
