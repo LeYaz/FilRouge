@@ -24,7 +24,10 @@ import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit
     CommandePieceComponent,
     HeaderMecanicienComponent,
     PiecesEditComponent,
-    CommandePieceEditComponent
+    CommandePieceEditComponent,
+    FicheEditComponent,
+    PiecesEditComponent,
+    CommandePieceEditComponent,
     FicheEditComponent,
     PiecesEditComponent
 
