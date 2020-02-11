@@ -24,7 +24,7 @@ export class FicheService {
 
    deleteFicheId(id: number) {
     console.log(this.url+ '/'+ id)
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete(this.url +'/'+ id);
   }
 
   editFicheId(id: number) {
