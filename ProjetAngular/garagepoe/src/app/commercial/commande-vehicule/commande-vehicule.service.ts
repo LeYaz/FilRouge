@@ -31,12 +31,13 @@ import { CommandeVehicule } from './commande-vehicule-model';
  
 
    editCommandeVehicule(commandeVehicule: CommandeVehicule) {
-    
+    let urlput : string = this.url + commandeVehicule.id;
+    return this.http.put<CommandeVehicule>(urlput, commandeVehicule);
   
             }
-      }
+
   }
   //  editCommandeVehiculeId(id: number) {
   //    return this.http.put(this.url);
   //  }
-  }
+  

@@ -16,14 +16,22 @@ commandeVehicule: CommandeVehicule;
 
   ngOnInit() {
 
-  this.commandeVehiculeService.getCommandeVehiculeId(parseInt(this.activatedRoute.snapshot.paramMap.get('id')));
-  }
+  this.commandeVehiculeService.getCommandeVehiculeId( parseInt (this.activatedRoute.snapshot.paramMap.get('id') ) );
 
-  editCommandeVehicule() {
+  if (this.activatedRoute.snapshot.paramMap.get('id') != null) {
+    this.commandeVehiculeService.getCommandeVehiculeId (parseInt(this.activatedRoute.snapshot.paramMap.get('id'))).subscribe(d => {
+      let cv = d[0];
+      this.commandeVehicule = new CommandeVehicule(cv.id, cv.devis, cv.etat, cv.datecreation, cv.datecloture, cv.desactiver);
+    });
+  } else {
+    this.commandeVehicule = new CommandeVehicule(0, null, false, new Date(), new Date(), false );
+  }
+}
+
+  editCommandeVehicule(id: number) {
  
-  this.commandeVehiculeService.editCommandeVehicule(this.commandeVehicule);
-}
-    //this.router.navigate(['/Edit']);
+    this.router.navigate(['edit/' + id], {relativeTo: this.activatedRoute});
+  }
   }
 
-}
+
