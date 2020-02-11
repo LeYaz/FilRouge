@@ -11,15 +11,15 @@ export class Vehicule {
                 marque: string,
                 modele: string,
                 quantite: number,
-                prixHT: number,
-                date_creation: Date,
+                prixht: number,
+                datecreation: Date,
                 desactiver: boolean) {
         this.id = id;
         this.marque = marque;
         this.modele = modele;
         this.quantite = quantite;
-        this.prixHT = prixHT;
-        this.date_creation = date_creation;
+        this.prixHT = prixht;
+        this.date_creation = datecreation;
         this.desactiver = desactiver;
     }
 }
