@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CommandePiece } from './commande-piece-model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,28 +10,30 @@ export class CommandePieceService {
   private url: string = 'http://localhost:8080/RestVehicule/Vehicules';
 
 
-  // constructor(private http: HttpClient) {
-  //  }
+  commandepiecelist: CommandePiece[] = new Array();
 
-  //  getCommandeVehicule() {
-  //    return this.http.get(this.url);
-  //  }
+  constructor(private http: HttpClient) {
+   }
 
-  //  deleteCommandeVehiculesId(id: number) {
-  //   return this.http.delete(this.url + '/' + id);
-  // }
+   getCommandePiece() {
+     return this.http.get(this.url);
+   }
 
-  // editCommandeVehiculeId(vehicule: Vehicule) {
-  //   const url1: string = this.url + vehicule.id;
-  //   return this.http.put<Vehicule>(url1, vehicule);
+   deleteCommandePieceId(id: number) {
+    return this.http.delete(this.url + '/' + id);
+  }
 
-  // }
+  editCommandePieceId(commandepiece: CommandePiece) {
+    const url1: string = this.url + commandepiece.id;
+    return this.http.put<CommandePiece>(url1, commandepiece);
 
-  // get(id:number){
-  //   return this.http.get<Vehicule>(this.url + '/' + id);
-  // }
+  }
 
-  // addCommandeVehicule(vehicule: Vehicule ){
-  //   return this.http.post<Vehicule>(this.url, vehicule);
-  // }
+  get(id:number){
+    return this.http.get<CommandePiece>(this.url + '/' + id);
+  }
+
+  addCommandePiece(commandepiece: CommandePiece ){
+    return this.http.post<CommandePiece>(this.url, commandepiece);
+  }
 }
