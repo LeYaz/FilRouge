@@ -20,7 +20,7 @@ import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande
     VehiculeComponent,
     FactureDevisComponent,
     HeaderCommercialComponent,
-    VehiculeeditComponent
+    VehiculeeditComponent,
     EditCommandeVehiculeComponent
   ],
   imports: [
