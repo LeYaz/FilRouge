@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class FactureDevisService {
 FactureDev: FactureDev;
 
-private url :string = '../../assets/data/fd.js';
-
+//private url :string = '../../assets/data/fd.json';
+private url: string = 'http://localhost:8080/RestFactureDevis/FactureDevis';
   constructor(private http:HttpClient) {
   }
   public getAll() {

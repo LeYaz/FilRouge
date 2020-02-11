@@ -1,36 +1,46 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Liste des tâches</h1>
-        <p class="lead">Consulter la liste des tâches à faire ici</p>
+        <h1 class="display-4">Liste des facture de devis</h1>
+        <p class="lead">Consulter la liste des factures de devis</p>
     </div>
 </div>
 
 <table class="table table-striped">
     <thead class="">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Libellé de la tâche</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Id</th>
+
+            <th scope="col">Id de Devis</th>
+            <th scope="col">Prix HT</th>
+            <th scope="col">Taux TVA</th>
+            <th scope="col">Date de Création</th>
+
         </tr>
     </thead>
-    <tbody *ngIf="FactureDev.length > 0; else elseBlock">
-        <tr><!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
-            <th scope="row"><!-- Afficher ici l'id de la tâche --></th>
+    <tr *ngFor="let facture of FactureDev">
+
+    <!-- <tbody *ngIf="FactureDev.length > 0; else elseBlock"> -->
+      <!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
+      <th scope="row">   {{facture.id}}<!-- Afficher ici l'id de la tâche --></th>
+            <th scope="row">   {{facture.devis.id}}<!-- Afficher ici l'id de la tâche --></th>
             <td>
-            {{FactureDev.id}}
+            {{facture.prixht}}
 
                 <!-- Afficher ici le label de la tâche --></td>
             <td>
-                {{FactureDev.prixHT}}
+                {{facture.tauxtva}}
 
                 <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
-                <button type="button" class="btn btn-outline-warning mr-2">Modifier</button>
                 <!-- Gérer l'événement clic sur ce bouton afin de supprimer la tâche -->
-                <button type="button" class="btn btn-outline-danger">Supprimer</button>
             </td>
-        </tr>
-    </tbody>
+            <td>
+                {{facture.datecreation}}
+    
+                    <!-- Afficher ici le label de la tâche --></td>
+       
+   <!--</tbody>-->
+    </tr>
     <ng-template #elseBlock>
         <tbody>
             <tr>
