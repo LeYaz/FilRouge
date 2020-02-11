@@ -7,6 +7,7 @@ import { CommandeVehiculeComponent } from './commande-vehicule/commande-vehicule
 import { VehiculeComponent } from './vehicule/vehicule.component';
 import { FactureDevisComponent } from './facture-devis/facture-devis.component';
 import { HeaderCommercialComponent } from './header-commercial/header-commercial.component';
+import { CommercialRoutingModule } from './commercial-routing.module'
 
 
 
@@ -19,18 +20,12 @@ import { HeaderCommercialComponent } from './header-commercial/header-commercial
     HeaderCommercialComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule
+    CommercialRoutingModule,
+    CommonModule
 
+    
   ],
-  exports: [
-    CommercialComponent,
-    CommandeVehiculeComponent,
-    VehiculeComponent,
-    FactureDevisComponent,
-    HeaderCommercialComponent
-  ],
-  bootstrap: [CommercialComponent]
+
+  bootstrap:[CommercialComponent]
 })
 export class CommercialModule { }

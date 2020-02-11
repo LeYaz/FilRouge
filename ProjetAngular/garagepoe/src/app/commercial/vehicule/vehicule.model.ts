@@ -4,7 +4,7 @@ export class Vehicule {
     modele: string;
     quantite: number;
     prixHT: number;
-    datecreation: Date;
+    date_creation: Date;
     desactiver: boolean;
 
     constructor(id: number,
@@ -12,14 +12,14 @@ export class Vehicule {
                 modele: string,
                 quantite: number,
                 prixHT: number,
-                datecreation: Date,
+                date_creation: Date,
                 desactiver: boolean) {
         this.id = id;
         this.marque = marque;
         this.modele = modele;
         this.quantite = quantite;
         this.prixHT = prixHT;
-        this.datecreation = datecreation;
+        this.date_creation = date_creation;
         this.desactiver = desactiver;
     }
 }
