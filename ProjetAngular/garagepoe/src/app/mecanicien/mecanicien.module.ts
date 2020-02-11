@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '.././app-routing.module';
 import { MecanicienComponent } from './mecanicien.component';
 import { TacheComponent } from './tache/tache.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { PiecesComponent } from './pieces/pieces.component';
 import { CommandePieceComponent } from './commande-piece/commande-piece.component';
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
+import { MecanicienRoutingModule } from './mecanicien-routing.module';
 
 
 
@@ -21,18 +20,8 @@ import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien
     HeaderMecanicienComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule
-    
-  ],
-  exports: [
-    MecanicienComponent,
-    TacheComponent,
-    FicheComponent,
-    PiecesComponent,
-    CommandePieceComponent,
-    HeaderMecanicienComponent
+    MecanicienRoutingModule,
+    CommonModule
   ],
   bootstrap: [MecanicienComponent]
 })

@@ -32,19 +32,23 @@ export class VehiculeComponent implements OnInit {
         let desactiver = element.desactiver;
         let vehicule = new Vehicule(id, marque, modele, quantite, prixHT, datecreation, desactiver);
         this.vehiculelist.push(vehicule);
-       //  this.pokemons.push(pokemon); 
-  
       });
 
     });
+    // this.vehiculelistservice.getVehiculesId();
   }
+
+
 
   editVehicule(id: number) {
     this.route.navigate(['/edit/' + id]);
   }
 
-  deactiveVehicule(id: number) {
-    // ici faire la desactivation aussi
+  deleteVehicule(id: number) {
+    this.vehiculelistservice.deleteVehiculesId(id).subscribe(d => {
+      this.vehiculelist = [];
+      this.ngOnInit();
+    });
   }
 
 }

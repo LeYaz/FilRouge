@@ -3,4 +3,14 @@
 }
 .alert-link:hover{
     color: blue;
+    
+}
+
+.nav{
+    border: 2px solid black;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
 }

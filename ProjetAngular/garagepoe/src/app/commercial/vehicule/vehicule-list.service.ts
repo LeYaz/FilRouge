@@ -8,21 +8,28 @@ import { HttpClient } from '@angular/common/http';
 export class VehiculeListService {
 
 
-  private url: string = '../../assets/data/vehicule.json';
+  private url: string = 'http://localhost:8080/RestVehicule/Vehicules';
 
-  //vehiculelist: Vehicules;
 
   constructor(private http: HttpClient) {
-    //this.vehiculelist = new Array();
    }
 
    getVehicules() {
      return this.http.get(this.url);
    }
 
-  // getAll() {
-  //   return this.vehiculelist;
-  // }
+
+   getVehiculesId(id: number) {
+    return this.http.get(this.url + '/' + id);
+  }
+
+   deleteVehiculesId(id: number) {
+    return this.http.delete(this.url + '/' + id);
+  }
+
+  editVehiculeId(id: number) {
+    return this.http.put(this.url);
+  }
 
   // get(id: number) {
   //   let veh1: Vehicule;
@@ -49,14 +56,14 @@ export class VehiculeListService {
   //   this.get(vehicule.id).modele = vehicule.modele;
   //   this.get(vehicule.id).quantite = vehicule.quantite;
   //   this.get(vehicule.id).prixHT = vehicule.prixHT;
-  //   this.get(vehicule.id).datecreation = vehicule.datecreation;
+  //   this.get(vehicule.id).datecreation = vehicule.date_creation;
   //   this.get(vehicule.id).desactiver = vehicule.desactiver;
   // }
 
   // deactive(id: number) {
   //   for ( let i = 0; i < this.vehiculelist.length; i++) {
   //     if (this.vehiculelist[i].id == id) {
-  //       // ici faire la desactivation du vehicule
+  //         this.vehiculelist.splice(i);
   //     }
   //   }
   // }
