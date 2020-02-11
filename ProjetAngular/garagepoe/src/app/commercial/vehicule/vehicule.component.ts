@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Vehicule } from './vehicule.model';
 import { VehiculeListService } from './vehicule-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { element } from 'protractor';
-import { relative } from 'path';
 
 @Component({
   selector: 'gar-vehicule',
@@ -28,14 +25,11 @@ export class VehiculeComponent implements OnInit {
         let marque = element.marque;
         let  modele = element.modele;
         let quantite = element.quantite;
-        let prixHT = element.prixHT;
+        let prixht = element.prixht;
         let datecreation = element.datecreation;
         let desactiver = element.desactiver;
-        let vehicule = new Vehicule(id, marque, modele, quantite, prixHT, datecreation, desactiver);
-        this.vehiculelist.push(vehicule);
 
-        let v:Vehicule = new Vehicule(id, marque, modele,quantite, prixHT, datecreation, desactiver);
-        
+        let v:Vehicule = new Vehicule(id, marque, modele, quantite, prixht, datecreation, desactiver);
         this.vehiculelist.push(v);
       });
 
@@ -53,6 +47,10 @@ export class VehiculeComponent implements OnInit {
       this.vehiculelist = [];
       this.ngOnInit();
     });
+  }
+
+  addVehicule(){
+    this.route.navigate(['/edit/'], {relativeTo: this.actroute});
   }
 
 }

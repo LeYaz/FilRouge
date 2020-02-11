@@ -17,7 +17,7 @@
         </thead>
 
 
-    <!-- <tbody *ngIf="vehiculelist.length > 0; else elseBlock"> -->
+    <tbody *ngIf="vehiculelist.length > 0; else elseBlock">
         <tr *ngFor="let vehicule of vehiculelist">
             <th scope="row">{{vehicule.id}}</th>
             <td>{{vehicule.marque}}</td>
@@ -33,12 +33,12 @@
                 <button type="button" class="btn btn-outline-danger" (click)="deleteVehicule(vehicule.id)">Desactiver</button>
             </td>
         </tr>
-    <!-- </tbody>
+    </tbody>
     <ng-template #elseBlock>
         <tbody>
             <tr>
                 <td colspan="3" class="text-center">Aucune tâche pour le moment...</td>
             </tr>
         </tbody>
-    </ng-template> -->
+    </ng-template>
 </table>
