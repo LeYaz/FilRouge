@@ -7,7 +7,8 @@ import { CommandeVehiculeComponent } from './commande-vehicule/commande-vehicule
 import { VehiculeComponent } from './vehicule/vehicule.component';
 import { FactureDevisComponent } from './facture-devis/facture-devis.component';
 import { HeaderCommercialComponent } from './header-commercial/header-commercial.component';
-import { CommercialRoutingModule } from './commercial-routing.module'
+import { CommercialRoutingModule } from './commercial-routing.module';
+import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande-vehicule/edit-commande-vehicule.component'
 
 
 
@@ -17,7 +18,8 @@ import { CommercialRoutingModule } from './commercial-routing.module'
     CommandeVehiculeComponent,
     VehiculeComponent,
     FactureDevisComponent,
-    HeaderCommercialComponent
+    HeaderCommercialComponent,
+    EditCommandeVehiculeComponent
   ],
   imports: [
     CommercialRoutingModule,
