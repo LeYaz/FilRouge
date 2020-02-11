@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component'
 
 
+
 @NgModule({
   declarations: [
     MecanicienComponent,
@@ -25,7 +26,11 @@ import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit
     PiecesEditComponent,
     CommandePieceEditComponent,
     FicheEditComponent,
+    PiecesEditComponent,
+    CommandePieceEditComponent,
+    FicheEditComponent,
     PiecesEditComponent
+
   ],
   imports: [
     MecanicienRoutingModule,
