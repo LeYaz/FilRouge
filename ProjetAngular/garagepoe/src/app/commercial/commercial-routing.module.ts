@@ -14,6 +14,8 @@ const routes: Routes = [
     {path:'commande-vehicule', component: CommandeVehiculeComponent},
     {path:'facture-devis', component: FactureDevisComponent},
     {path:'vehicule', component: VehiculeComponent},
+    {path:'vehicule/edit', component: VehiculeeditComponent},
+    {path:'vehicule/edit/:id', component: VehiculeeditComponent},
     {path:'commande-vehicule/edit/:id', component: EditCommandeVehiculeComponent}
   ] }
 ];

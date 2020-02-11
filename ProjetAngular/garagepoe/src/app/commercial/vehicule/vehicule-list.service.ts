@@ -31,4 +31,8 @@ export class VehiculeListService {
   get(id:number){
     return this.http.get<Vehicule>(this.url + '/' + id);
   }
+
+  addVehicule(vehicule: Vehicule ){
+    return this.http.post<Vehicule>(this.url, vehicule);
+  }
 }

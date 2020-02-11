@@ -27,12 +27,16 @@ export class VehiculeeditComponent implements OnInit {
     }
   }
 
-  addVehicule(id: number) {
-    if (this.vehicule.id === 0) {
-      // this.vehicule.id = this.vehiculelistserv.getVehiculesId();
-      // this.vehiculelistserv.editVehiculeId(this.vehicule);
+  addVehicule() {
+    if(this.vehicule.id==0){
+      this.vehicule.desactiver=false;
+      this.vehiculelistserv.addVehicule(this.vehicule).subscribe();
+    }else{
+      this.vehiculelistserv.editVehiculeId(this.vehicule).subscribe(d=>{
+        console.log(d);
+      })
     }
-    this.router.navigate(['/list']);
+    this.router.navigate(['commercial/vehicule']);
   }
 
 }
