@@ -34,6 +34,9 @@ export class VehiculeListService {
 
   }
 
+  get(id:number){
+    return this.http.get(this.url + '/' + id);
+  }
 
 
   // get(id: number) {

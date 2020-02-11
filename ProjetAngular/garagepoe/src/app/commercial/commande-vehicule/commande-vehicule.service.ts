@@ -35,8 +35,8 @@ import { CommandeVehicule } from './commande-vehicule-model';
   
             }
       }
-  }
-  //  editCommandeVehiculeId(id: number) {
-  //    return this.http.put(this.url);
-  //  }
-  }
+  // }
+  // //  editCommandeVehiculeId(id: number) {
+  // //    return this.http.put(this.url);
+  // //  }
+  // }

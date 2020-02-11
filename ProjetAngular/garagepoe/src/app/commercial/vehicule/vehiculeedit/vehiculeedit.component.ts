@@ -10,15 +10,21 @@ import { Vehicule } from '../vehicule.model';
 })
 export class VehiculeeditComponent implements OnInit {
 
-  vehicule: Vehicule;
+  // vehicule: Vehicule = new Vehicule(0, "","", 0,0, new Date(), false);
+
+  vehicule : Vehicule;
+
 
   constructor(private vehiculelistserv: VehiculeListService, private router: Router, private actrout: ActivatedRoute) { }
 
   ngOnInit() {
     if (this.actrout.snapshot.paramMap.get('id') == null) {
-      this.vehicule = new Vehicule(0,'','',0,0,new Date(),false);
-  } else {
-      // this.vehicule = this.vehiculelistserv.getVehiculesId(parseInt(this.actrout.snapshot.paramMap.get('id')));
+      this.vehiculelistserv.get(parseInt(this.actrout.snapshot.paramMap.get('id'))).subscribe(d=>{
+        let v = d[0];
+        this.vehicule = new Vehicule(v.id, v.marque, v.modele, v.quantite, v.prixHT, v.datecreation, v.desactiver);
+      });
+      } else {
+      this.vehicule = new Vehicule(0, "","", 0,0, new Date(), false);
     }
   }
 
