@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * @author Xavier
+ */
 @Component({
   selector: 'gar-fiche',
   templateUrl: './fiche.component.html',

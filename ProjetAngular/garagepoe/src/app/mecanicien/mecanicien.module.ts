@@ -7,7 +7,8 @@ import { PiecesComponent } from './pieces/pieces.component';
 import { CommandePieceComponent } from './commande-piece/commande-piece.component';
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
-
+import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -17,11 +18,13 @@ import { MecanicienRoutingModule } from './mecanicien-routing.module';
     FicheComponent,
     PiecesComponent,
     CommandePieceComponent,
-    HeaderMecanicienComponent
+    HeaderMecanicienComponent,
+    PiecesEditComponent
   ],
   imports: [
     MecanicienRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   bootstrap: [MecanicienComponent]
 })

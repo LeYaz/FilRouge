@@ -1,0 +1,7 @@
+[
+{"id":"1","id_devis":"1","prixHT":"1000","tauxTVA":"0.2","date_creation":"2020-01-08","desactiver":"0"},
+{"id":"2","id_devis":"2","prixHT":"50","tauxTVA":"0.2","date_creation":"2020-01-05","desactiver":"0"},
+{"id":"3","id_devis":"3","prixHT":"250","tauxTVA":"0.2","date_creation":"2020-01-04","desactiver":"0"},
+{"id":"4","id_devis":"4","prixHT":"680","tauxTVA":"0.2","date_creation":"2020-05-22","desactiver":"0"}
+]
+
