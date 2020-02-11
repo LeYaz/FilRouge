@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="dateInput">Date de Saisie</label>
             <input type="text" class="form-control" name="dateInput" id="dateInput"
-                placeholder="Entrer une date de saisie" required #label="ngModel" [(ngModel)]="piece.date_saisie | date:'shortdate'"> 
+                placeholder="Entrer une date de saisie" required #label="ngModel" [(ngModel)]="piece.date_saisie"> 
             <div *ngIf="piece.date_saisie.dirty && piece.date_saisie.hasError('required')" class="alert alert-danger mt-2" role="alert">
                 <strong>Le libelle est obligatoire !</strong>
             </div>

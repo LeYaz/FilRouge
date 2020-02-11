@@ -8,7 +8,8 @@ import { CommandePieceComponent } from './commande-piece/commande-piece.componen
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
 import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms'
     PiecesComponent,
     CommandePieceComponent,
     HeaderMecanicienComponent,
-    PiecesEditComponent
+    PiecesEditComponent,
+    CommandePieceEditComponent
   ],
   imports: [
     MecanicienRoutingModule,
