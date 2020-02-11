@@ -76,6 +76,7 @@ public class ServiceVehicule implements IServiceVehicule {
 	@Transactional
 	@Override
 	public void desactiverVehicule(Vehicule vehicule) {
+		vehicule.setDesactiver(true);
 		daoVehicule.save(vehicule);
 		
 	}
