@@ -28,11 +28,14 @@ export class PiecesEditComponent implements OnInit {
   }
 
   addPiece(){
-    this.piece.desactiver=false;
-    
-    this.servicepiece.editPiece(this.piece).subscribe(d=>{
-      console.log(d);
-    })
+    if(this.piece.id==0){
+      this.piece.desactiver=false;
+      this.servicepiece.addPiece(this.piece).subscribe();
+    }else{
+      this.servicepiece.editPiece(this.piece).subscribe(d=>{
+        console.log(d);
+      })
+    }
     this.router.navigate(['mecanicien/pieces']);
   }
 }

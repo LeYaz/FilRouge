@@ -30,5 +30,9 @@ export class PiecesService {
     return this.http.get<Piece>(this.url+id);
   }
 
+  addPiece(piece:Piece){
+    return this.http.post<Piece>(this.url, piece);
+  }
+
   
 }
