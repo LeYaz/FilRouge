@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Vehicule } from './vehicule.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
