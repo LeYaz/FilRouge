@@ -11,10 +11,10 @@ import { EditCommandeVehiculeComponent } from './commande-vehicule/edit-commande
 const routes: Routes = [
   { path: 'commercial', component: CommercialComponent,
   children: [
-    {path:'commande-vehicule', component: CommandeVehiculeComponent},
-    {path:'facture-devis', component: FactureDevisComponent},
-    {path:'vehicule', component: VehiculeComponent},
-    {path:'commande-vehicule/edit/:id', component: EditCommandeVehiculeComponent}
+    {path: 'commande-vehicule', component: CommandeVehiculeComponent},
+    {path: 'facture-devis', component: FactureDevisComponent},
+    {path: 'vehicule', component: VehiculeComponent},
+    {path: 'commande-vehicule/edit/:id', component: EditCommandeVehiculeComponent}
   ] }
 ];
 
