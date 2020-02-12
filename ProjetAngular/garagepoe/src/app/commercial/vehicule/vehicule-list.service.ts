@@ -26,10 +26,13 @@ export class VehiculeListService {
   editVehiculeId(vehicule: Vehicule) {
     const url1: string = this.url + vehicule.id;
     return this.http.put<Vehicule>(url1, vehicule);
-
   }
 
   get(id:number){
     return this.http.get<Vehicule>(this.url + '/' + id);
+  }
+
+  addVehicule(vehicule: Vehicule ){
+    return this.http.post<Vehicule>(this.url, vehicule);
   }
 }

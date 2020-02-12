@@ -23,8 +23,8 @@
             <td>{{vehicule.marque}}</td>
             <td>{{vehicule.modele}}</td>
             <td>{{vehicule.quantite}}</td>
-            <td>{{vehicule.prixHT}}</td>
-            <td>{{vehicule.date_creation}}</td>
+            <td>{{vehicule.prixht}}</td>
+            <td>{{vehicule.datecreation}}</td>
             <td>{{vehicule.desactivation}}</td>
             <td>
                 <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
@@ -42,3 +42,7 @@
         </tbody>
     </ng-template>
 </table>
+
+<div>
+    <button type="button" class="btn btn-outline-warning mr-2" (click)="addVehicule()">Ajouter un véhicule</button>
+</div>

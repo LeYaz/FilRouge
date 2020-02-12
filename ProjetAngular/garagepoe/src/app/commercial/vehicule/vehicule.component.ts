@@ -50,7 +50,7 @@ export class VehiculeComponent implements OnInit {
   }
 
   addVehicule(){
-    this.route.navigate(['/edit/'], {relativeTo: this.actroute});
+    this.route.navigate(['edit/'], {relativeTo: this.actroute});
   }
 
 }
