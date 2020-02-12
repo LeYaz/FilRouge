@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PiecesEditComponent implements OnInit {
 
-  piece : Piece = new Piece(0,"",0,new Date(),false );
+  piece : Piece = new Piece(0,"",0,null,false );
 
   constructor(private servicepiece:PiecesService, private router:Router, private route: ActivatedRoute) { }
 
@@ -19,10 +19,12 @@ export class PiecesEditComponent implements OnInit {
       this.servicepiece.get(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(d=>{
         console.log(d)
         let p =d;
+       
+        
         this.piece = new Piece(p.id, p.libelle, p.quantite, p.date_saisie, p.desactiver);
       });
     }else{
-      this.piece = new Piece(0,"",0,new Date(),false );
+      this.piece = new Piece(0,"",0,null,false );
     }
     
   }

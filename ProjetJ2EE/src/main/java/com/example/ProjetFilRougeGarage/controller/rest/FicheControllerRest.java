@@ -58,6 +58,7 @@ public class FicheControllerRest {
 	@DeleteMapping("/Fiches/{id}")
 	public Fiche deleteFiche(@PathVariable("id") int id){
 		Fiche f = servicefiche.rechercherFicheId(id);
+		f.setDesactiver(true);
 		servicefiche.desactiverFiche(f);;
 		return f;
 	}
