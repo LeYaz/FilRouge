@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FicheService } from './fiche.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Fiche } from './fiche.model';
 
 
@@ -14,7 +14,7 @@ export class FicheComponent implements OnInit {
 
   fichelist: Fiche[] = new Array();
   
-  constructor(private fichelistservice: FicheService, private route: Router) { }
+  constructor(private fichelistservice: FicheService, private route: Router, private acroute : ActivatedRoute) { }
 
   ngOnInit() {
     let list;
@@ -40,21 +40,21 @@ export class FicheComponent implements OnInit {
       });
 
     });
-    // this.vehiculelistservice.getVehiculesId();
   }
 
 
 
-  editFiche(id: number) {
-    this.route.navigate(['/edit/' + id]);
+  editFiche(id:number){
+    this.route.navigate(['edit/' + id], {relativeTo: this.acroute});
   }
 
   deleteFiche(id: number) {
     this.fichelistservice.deleteFicheId(id).subscribe(d => {
-      
       this.fichelist = [];
       this.ngOnInit();
     });
   }
-
+  addFiche() {
+    this.route.navigate(['edit/'], {relativeTo: this.acroute});
+  }
 }
