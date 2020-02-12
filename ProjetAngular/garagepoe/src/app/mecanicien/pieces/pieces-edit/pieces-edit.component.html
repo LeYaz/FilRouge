@@ -11,19 +11,16 @@
         <input type="hidden" name="idInput" id="idInput" [(ngModel)]="piece.id"> 
         <div class="form-group">
             <label for="labelInput">Libelle</label>
-            <input type="text" class="form-control" name="labelInput" id="labelInput"
-                placeholder="Entrer un label pour la tâche" required #label="ngModel" [(ngModel)]="piece.libelle"> 
-            <div *ngIf="piece.libelle.dirty && piece.libelle.hasError('required')" class="alert alert-danger mt-2" role="alert">
-                <strong>Le libelle est obligatoire !</strong>
-            </div>
+            <input type="text" class="form-control" name="labelInput" id="labelInput" [class.is-invalid]="libelleInput.invalid && libelleInput.touched" [class.is-valid]="libelleInput.valid"
+                placeholder="Entrer un label pour la tâche" required #libelleInput="ngModel" [(ngModel)]="piece.libelle"> 
+                <div *ngIf="!libelleInput.valid && libelleInput.touched && libelleInput.errors.required" class="alert alert-danger">Le champs libelle est obligatoire </div>
         </div>
         <div class="form-group">
             <label for="quantiteInput">Quantité</label>
-            <input type="text" class="form-control" name="quantiteInput" id="quantiteInput"
-                placeholder="Entrer une quantité de piece" required #label="ngModel" [(ngModel)]="piece.quantite"> 
-            <div *ngIf="piece.quantite.dirty && piece.quaantite.hasError('required')" class="alert alert-danger mt-2" role="alert">
-                <strong>La quantite est obligatoire !</strong>
-            </div>
+            <input type="text" class="form-control" name="quantiteInput" id="quantiteInput" [class.is-invalid]="quantiteInput.invalid && quantiteInput.touched" [class.is-valid]="quantiteInput.valid"
+                placeholder="Entrer une quantité de piece" required #quantiteInput="ngModel" [(ngModel)]="piece.quantite" pattern="^[0-9]+$"> 
+                <div *ngIf="!quantiteInput.valid && quantiteInput.touched && quantiteInput.errors.required" class="alert alert-danger">Le champs quantité est obligatoire </div>
+                <div *ngIf="!quantiteInput.valid && quantiteInput.touched && quantiteInput.errors.pattern" class="alert alert-danger">Le champs quantité doit être un nombre</div>
         </div>
         <div class="form-group">
             <label for="dateInput">Date de Saisie</label>

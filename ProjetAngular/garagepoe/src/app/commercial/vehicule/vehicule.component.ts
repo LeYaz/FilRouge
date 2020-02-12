@@ -25,7 +25,7 @@ export class VehiculeComponent implements OnInit {
         let marque = element.marque;
         let  modele = element.modele;
         let quantite = element.quantite;
-        let prixht = element.prixht;
+        let prixht = element.prixHT;
         let datecreation = element.datecreation;
         let desactiver = element.desactiver;
 
@@ -50,7 +50,7 @@ export class VehiculeComponent implements OnInit {
   }
 
   addVehicule(){
-    this.route.navigate(['/edit/'], {relativeTo: this.actroute});
+    this.route.navigate(['edit/'], {relativeTo: this.actroute});
   }
 
 }
