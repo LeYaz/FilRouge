@@ -10,8 +10,8 @@
     <thead class="">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Client associé</th>
             <th scope="col">Créateur</th>
+            <th scope="col">Client associé</th>
             <th scope="col">Etat de la fiche</th>
             <th scope="col">Priorité</th>
             <th scope="col">Date de Création</th>
@@ -29,9 +29,9 @@
     <!-- <tbody *ngIf="FactureDev.length > 0; else elseBlock"> -->
       <!-- Faire en sorte qu'il y ait autant de ligne que de tâche -->
       <th scope="row">   {{fiche.id}}<!-- Afficher ici l'id de la tâche --></th>
-            <th scope="row">   {{fiche.client.id}}<!-- Afficher ici l'id de la tâche --></th>
+            <th scope="row">   {{fiche.client.nom}}<!-- Afficher ici l'id de la tâche --></th>
             <td>
-            {{fiche.user.id}}
+            {{fiche.user.name}}
 
                 <!-- Afficher ici le label de la tâche --></td>
             <td>
@@ -77,3 +77,6 @@
         </tbody>
     </ng-template>
 </table>
+<div>
+    <button type="button" class="btn btn-outline-warning mr-2" (click)="addFiche()">Ajouter une pièce</button>
+</div>

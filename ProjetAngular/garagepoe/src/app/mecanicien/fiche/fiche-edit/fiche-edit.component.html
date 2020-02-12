@@ -1,1 +1,73 @@
 <p>fiche-edit works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ fiche.id == 0 ? "Ajout" : "Modification" }} d'une fiche </h1>
+        <p class="lead">Utiliser le formulaire suivant afin {{ fiche.id == 0 ? "d'ajouter" : "de modifier" }} une fiche
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <form #ficheForm="ngForm" (ngSubmit)="addFiche()"> 
+        <input type="hidden" name="idInput" id="idInput" [(ngModel)]="fiche.id"> 
+        <div class="form-group">
+
+            <div class="form-group">
+                <label for="labelInputClient">Client</label>
+                <input type="text" class="form-control" name="labelInputClient" id="labelInputClient"
+                    placeholder="Entrer un client" required #label="ngModel" [(ngModel)]="fiche.client.name"> 
+                <div *ngIf="fiche.client.name.dirty && fiche.client.name.hasError('')" class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>required
+                </div> </div>
+
+            <div class="form-group">
+                <label for="labelInputUser">Créateur</label>
+                <input type="text" class="form-control" name="labelInputUser" id="labelInputUser"
+                    placeholder="Entrer un créateur" required #label="ngModel" [(ngModel)]="fiche.user.nom"> 
+                <div *ngIf="fiche.user.nom.dirty && fiche.user.nom.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div> </div>
+
+                <div class="form-group">
+                    <label for="labelInputEtat">Etat de la fiche</label>
+                    <input type="text" class="form-control" name="labelInputEtat" id="labelInputEtat"
+                        placeholder="Entrer un etat de fiche" required #label="ngModel" [(ngModel)]="fiche.etatfiche"> 
+                    <div *ngIf="fiche.etatfiche.dirty && fiche.etatfiche.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                        <strong>Le label est obligatoire !</strong>
+                    </div> </div>
+
+                    <div class="form-group">
+                        <label for="labelInputPriorite">Priorité</label>
+                        <input type="text" class="form-control" name="labelInputPriorite" id="labelInputPriorite"
+                            placeholder="Entrer un créateur" required #label="ngModel" [(ngModel)]="fiche.priorite"> 
+                        <div *ngIf="fiche.priorite.dirty && fiche.priorite.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                            <strong>Le label est obligatoire !</strong>
+                        </div> </div>
+
+                        <div class="form-group">
+                            <label for="labelInputDateCreation">Date de création</label>
+                            <input type="date" class="form-control" name="labelInputDateCreation" id="labelInputDateCreation"
+                                placeholder="Entrer une date de création" required #label="ngModel" [(ngModel)]="fiche.datecreation"> 
+                            <div *ngIf="fiche.datecreation.dirty && fiche.datecreation.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                                <strong>Le label est obligatoire !</strong>
+                            </div> </div>
+        
+                            
+                            <div class="form-group">
+                                <label for="labelInputDateCloture">Date de cloture</label>
+                                <input type="date" class="form-control" name="labelInputDateCloture" id="labelInputDateCloture"
+                                    placeholder="Entrer une date de cloture"  #label="ngModel" [(ngModel)]="fiche.datecloture"> 
+                              </div>
+                
+                     
+                                    <div class="form-group">
+                                        <label for="labelInputDescription">Description</label>
+                                        <input type="text" class="form-control" name="labelInputDescription" id="labelInputDescription"
+                                            placeholder="Entrer une description"  #label="ngModel" [(ngModel)]="fiche.description"> 
+                                     </div>
+                        
+            </div>
+        <button type="submit" class="btn btn-primary"
+            [disabled]="ficheForm.invalid">{{ fiche.id == 0 ? "Ajouter" : "Modifier" }}</button>
+    </form>
+</div>
