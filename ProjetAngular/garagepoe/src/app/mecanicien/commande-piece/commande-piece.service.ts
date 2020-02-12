@@ -7,7 +7,7 @@ import { CommandePiece } from './commande-piece-model';
 })
 export class CommandePieceService {
 
-  private url: string = 'http://localhost:8080/RestVehicule/Vehicules';
+  private url: string = 'http://localhost:8080/RestCommandePiece/CommandePieces';
 
 
   commandepiecelist: CommandePiece[] = new Array();

@@ -1,1 +1,83 @@
-<p>commande-piece-edit works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ commandepiece.id == 0 ? "Ajout" : "Modification" }} d'une commande de piece</h1>
+        <p class="lead">Utiliser le formulaire suivant afin {{ commandepiece.id == 0 ? "d'ajouter" : "de modifier" }}
+            une commande de piece
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <form #commandepieceForm="ngForm" (ngSubmit)="addCommandePiece()">
+        <input type="hidden" name="idInput" id="idInput" [(ngModel)]="commandepiece.id">
+        <div class="form-group">
+
+<!-- 
+            <div class="form-group">
+                <label for="labelInput">User</label>
+                <input type="text" class="form-control" name="labelInput" id="labelInput"
+                    placeholder="Entrer un utilisateur" required #label="ngModel" [(ngModel)]="commandepiece.user.nom">
+                <div *ngIf="commandepiece.user.dirty && commandepiece.user.hasError('required')"
+                    class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="pieceInput">Piece</label>
+                <input type="text" class="form-control" name="pieceInput" id="pieceInput"
+                    placeholder="Entrer un ID de piece" required #label="ngModel" [(ngModel)]="commandepiece.piece.id">
+                <div *ngIf="commandepiece.piece.dirty && commandepiece.piece.hasError('required')"
+                    class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div>
+            </div> -->
+
+
+            <div class="form-group">
+                <label for="quantiteInput">Quantite</label>
+                <input type="text" class="form-control" name="quantiteInput" id="quantiteInput"
+                    placeholder="Entrer une quantite" required #label="ngModel" [(ngModel)]="commandepiece.quantite">
+                <div *ngIf="commandepiece.quantite.dirty && commandepiece.quantite.hasError('required')"
+                    class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="datecreationInput">Date de creation</label>
+                <input type="text" class="form-control" name="datecreationInput" id="datecreationInput"
+                    placeholder="Selectionner une date de creation" required #label="ngModel"
+                    [ngModel]="commandepiece.date_creation | date:'yyyy-MM-dd'" (ngModelChange)="commandepiece.date_creation = $event">
+                <div *ngIf="commandepiece.date_creation.dirty && commandepiece.date_creation.hasError('required')"
+                    class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dateclotureInput">Date de cloture</label>
+                <input type="text" class="form-control" name="dateclotureInput" id="dateclotureInput"
+                    placeholder="Selectionner une date de cloture" required #label="ngModel" [(ngModel)]="commandepiece.date_cloture"> 
+                    <!-- [ngModel]="commandepiece.date_cloture | date:'yyyy-MM-dd'" (ngModelChange)="commandepiece.date_cloture = $event"> -->
+                <!-- <div *ngIf="commandepiece.date_cloture.dirty && commandepiece.date_cloture.hasError('required')"
+                    class="alert alert-danger mt-2" role="alert">
+                    <strong>Le label est obligatoire !</strong>
+                </div> -->
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="dateclotureInput">Date de cloture</label>
+            <input type="text" class="form-control" name="dateclotureInput" id="dateclotureInput"
+                placeholder="Selectionner une date de cloture" required #label="ngModel" [(ngModel)]="vehicule.datecloture"> 
+            <div *ngIf="vehicule.datecloture.dirty && vehicule.datecloture.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                <strong>Le label est obligatoire !</strong>
+            </div></div> -->
+
+
+        </div>
+        <button type="submit" class="btn btn-primary"
+            [disabled]="commandepieceForm.invalid">{{ commandepiece.id == 0 ? "Ajouter" : "Modifier" }}</button>
+    </form>
+</div>

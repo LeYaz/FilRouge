@@ -11,7 +11,7 @@ import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
 
 import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
 import { FormsModule } from '@angular/forms';
-import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component'
+import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component';
 
 
 
