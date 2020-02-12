@@ -14,31 +14,36 @@ tacheslist: Tache[] = new Array();
 constructor(private tacheService: TacheService, private route: Router, private activateroute: ActivatedRoute) { }
 
 
-ngOnInit(): void {
+ngOnInit() {
   let list;
   this.tacheService.getTache().subscribe(t => {
   list = t;
+  console.log(t);
   list.forEach(element => {
-const id = element.id;
-const devis = element.devis;
-const etat = element.etat;
-const datecreation = element.datecreation;
-const datecloture = element.datecloture;
-const desactiver = element.desactiver;
-const commandV = new CommandeVehicule(id, devis, etat, datecreation, datecloture, desactiver);
-this.tacheslist.push(commandV); });
+let id = element.id;
+let commentaire = element.commentaire;
+let user = element.user;
+let fiche = element.fiche;
+let priorite = element.priorite;
+let piece = element.piece;
+let qte = element.qte;
+let etattache = element.etattache;
+let desactiver = element.desactiver;
+let tache = new Tache(id, commentaire, user, fiche, priorite, piece, qte, etattache, desactiver);
+this.tacheslist.push(tache); });
 
     });
 }
 
 
-editCommandeVehicule(id: number) {
+editTache(id: number) {
   this.route.navigate(['edit/' + id], {relativeTo: this.activateroute});
 }
 
-deleteCommandeVehicule(id: number) {
-  this.commandeVehiculeService.deleteCommandeVehiculeId(id).subscribe(d => {
-    this.commandevehiculelist = [];
+deleteTache(id: number) {
+  this.tacheService.deleteTacheId(id).subscribe(d => {
+    this.tacheslist = [];
     this.ngOnInit();
   });
+}
 }
