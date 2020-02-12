@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="dateInput">Date de Saisie</label>
             <input type="text" class="form-control" name="dateInput" id="dateInput" [class.is-invalid]="dateInput.invalid && dateInput.touched" [class.is-valid]="dateInput.valid"
-            placeholder="Entrer une date de saisie au format YYYY-MM-DD" required #dateInput="ngModel" [(ngModel)]="piece.date_saisie" pattern="\d{4}-\d{2}-\d{2}"> 
+            placeholder="Entrer une date de saisie au format YYYY-MM-DD" required #dateInput="ngModel" [ngModel]="piece.date_saisie | date:'yyyy-MM-dd'" (ngModelChange)="piece.date_saisie = $event" pattern="\d{4}-\d{2}-\d{2}"> 
             <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.required" class="alert alert-danger">Le champs date de saisie est obligatoire </div>
             <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.pattern" class="alert alert-danger">Le champs date de saisie doit être au format YYYY-MM-DD</div>
         </div>
