@@ -36,8 +36,11 @@ this.tacheslist.push(tache); });
 }
 
 
-editTache(id: number) {
-  this.route.navigate(['edit/' + id], {relativeTo: this.activateroute});
+editTache(tache: Tache) {
+  tache.etattache = true;
+  this.tacheService.editTache(tache).subscribe( p => {
+      this.ngOnInit();
+    });
 }
 
 deleteTache(id: number) {
