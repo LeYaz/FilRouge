@@ -26,12 +26,12 @@ export class EditeTacheComponent implements OnInit {
     }
   }
 
-  addTache(){
-    if(this.tache.id == 0) {
+  addTache() {
+    if (this.tache.id == 0) {
       this.tache.desactiver = false;
       this.tacheservice.addTache(this.tache).subscribe();
     } else {
-      this.tacheservice.editTache(this.tache).subscribe(d=>{
+      this.tacheservice.editTache(this.tache).subscribe(d => {
         console.log(d);
       })
     }

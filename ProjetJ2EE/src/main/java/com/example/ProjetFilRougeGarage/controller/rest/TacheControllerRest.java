@@ -36,6 +36,7 @@ public class TacheControllerRest {
 	@DeleteMapping("/Taches/{id}")
 	public Tache deleteTache(@PathVariable("id") int id){
 		Tache t = servicetache.rechercherTacheId(id);
+		t.setDesactiver(true);
 		servicetache.desactiverTache(t);;
 		return t;
 	}
