@@ -24,7 +24,7 @@ export class VehiculeListService {
   }
 
   editVehiculeId(vehicule: Vehicule) {
-    const url1: string = this.url + vehicule.id;
+    const url1: string = this.url  + '/' + vehicule.id;
     return this.http.put<Vehicule>(url1, vehicule);
   }
 
