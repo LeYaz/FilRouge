@@ -1,1 +1,39 @@
-<p>tache works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des tâches</h1>
+    </div>
+</div>
+
+    <table class="table table-striped">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Commentaire</th>
+                <th scope="col">User</th>
+                <th scope="col">Fiche</th>
+                <th scope="col">Priorité</th>
+                <th scope="col">Pièce</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Etat tâche</th>
+                <th scope="col">Desactiver</th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let tache of tacheslist">
+            <th scope="row">{{tache.id}}</th>
+            <td>{{tache.commentaire}}</td>
+            <td>{{tache.user.nom}}</td>
+            <td>{{tache.fiche.id}}</td>
+            <td>{{tache.priorite.libelle}}</td>
+            <td>{{tache.piece.libelle}}</td>
+            <td>{{tache.qte}}</td>
+            <td>{{tache.etattache}}</td>
+            <td>{{tache.desactiver}}</td>
+            <td>
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2" (click)="editTache(tache.id)" >Modifier</button>
+                
+                <button type="button" class="btn btn-outline-danger" (click)="deleteTache(tache.id)">Desactiver</button>
+            </td>
+        </tr>
+</table>

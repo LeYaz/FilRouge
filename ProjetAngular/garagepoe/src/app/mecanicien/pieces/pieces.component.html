@@ -2,6 +2,9 @@
     <div class="container">
         <h1 class="display-4">Liste des pieces</h1>
     </div>
+    <div>
+        <input [(ngModel)]="searchText" placeholder="rechercher une pieces">
+    </div>
 </div>
 
     <table class="table table-striped">
@@ -17,7 +20,7 @@
 
 
     <!-- <tbody *ngIf="vehiculelist.length > 0; else elseBlock"> -->
-        <tr *ngFor="let piece of piecelist">
+        <tr *ngFor="let piece of piecelist | recherche:searchText">
             <th scope="row">{{piece.id}}</th>
             <td>{{piece.libelle}}</td>
             <td>{{piece.quantite}}</td>

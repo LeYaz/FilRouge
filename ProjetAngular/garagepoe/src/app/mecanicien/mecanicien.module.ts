@@ -8,10 +8,11 @@ import { CommandePieceComponent } from './commande-piece/commande-piece.componen
 import { HeaderMecanicienComponent } from './header-mecanicien/header-mecanicien.component';
 import { MecanicienRoutingModule } from './mecanicien-routing.module';
 import { FicheEditComponent } from './fiche/fiche-edit/fiche-edit.component';
-
+import { RecherchePipe } from '../recherche.pipe';
 import { PiecesEditComponent } from './pieces/pieces-edit/pieces-edit.component';
 import { FormsModule } from '@angular/forms';
-import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component'
+import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit/commande-piece-edit.component';
+import { EditeTacheComponent } from './tache/edite-tache/edite-tache.component';
 
 
 
@@ -25,7 +26,9 @@ import { CommandePieceEditComponent } from './commande-piece/commande-piece-edit
     HeaderMecanicienComponent,
     PiecesEditComponent,
     CommandePieceEditComponent,
-    FicheEditComponent
+    FicheEditComponent,
+    RecherchePipe,
+    EditeTacheComponent
 
   ],
   imports: [
