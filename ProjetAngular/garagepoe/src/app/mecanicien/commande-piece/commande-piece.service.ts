@@ -24,9 +24,8 @@ export class CommandePieceService {
   }
 
   editCommandePieceId(commandepiece: CommandePiece) {
-    const url1: string = this.url + commandepiece.id;
+    const url1: string = this.url + '/' + commandepiece.id;
     return this.http.put<CommandePiece>(url1, commandepiece);
-
   }
 
   get(id:number){
@@ -34,6 +33,6 @@ export class CommandePieceService {
   }
 
   addCommandePiece(commandepiece: CommandePiece ){
-    return this.http.post<CommandePiece>(this.url, commandepiece);
+    return this.http.post<CommandePiece>(this.url + '/', commandepiece);
   }
 }
