@@ -18,16 +18,19 @@ export class CommandePieceComponent implements OnInit {
     let list;
     this.commandePieceService.getCommandePiece().subscribe(cp => {
       list = cp;
-      list.array.forEach(element => {
+      list.forEach(element => {
         const id = element.id;
         const user = element.user;
         const piece = element.piece;
         const quantite = element.quantite;
-        const datecreation = element.datecreation;
-        const datecloture = element.datecloture;
+        const datecreation = element.date_creation;
+        const datecloture = element.date_cloture;
         const desactiver = element.desactiver;
         const commandePiece = new CommandePiece(id, user, piece, quantite, datecreation, datecloture, desactiver);
         this.commandepiecelist.push(commandePiece);
+        // console.log(cp);
+        console.log(commandePiece);
+        console.log(this.commandepiecelist);
       });
     });
   }
@@ -40,7 +43,11 @@ export class CommandePieceComponent implements OnInit {
     this.commandePieceService.deleteCommandePieceId(id).subscribe(d => {
       this.commandepiecelist = [];
       this.ngOnInit();
-    })
+    });
+  }
+
+  addCommandePiece() {
+    this.router.navigate(['edit/'], {relativeTo: this.route});
   }
 
 }

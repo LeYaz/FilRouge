@@ -1,1 +1,47 @@
-<p>commande-piece works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Liste des Commmandes de pieces</h1>
+    </div>
+</div>
+
+    <table class="table table-striped">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">user</th>
+                <th scope="col">piece</th>
+                <th scope="col">quantite</th>
+                <th scope="col">date de creation</th>
+                <th scope="col">date de cloture</th>
+            </tr>
+        </thead>
+
+
+    <tbody *ngIf="commandepiecelist.length > 0; else elseBlock">
+        <tr *ngFor="let commandepiece of commandepiecelist">
+            <th scope="row">{{commandepiece.id}}</th>
+            <td>{{commandepiece.user.nom}}</td>
+            <td>{{commandepiece.piece.libelle}}</td>
+            <td>{{commandepiece.quantite}}</td>
+            <td>{{commandepiece.date_creation}}</td>
+            <td>{{commandepiece.date_cloture}}</td>
+            <td>
+                <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
+                <button type="button" class="btn btn-outline-warning mr-2" (click)="editCommandePiece(commandepiece.id)" >Modifier</button>
+                
+                <button type="button" class="btn btn-outline-danger" (click)="deleteCommandePiece(commandepiece.id)">Desactiver</button>
+            </td>
+        </tr>
+    </tbody>
+    <ng-template #elseBlock>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Aucune tâche pour le moment...</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+<div>
+    <!-- <button type="button" class="btn btn-outline-warning mr-2" (click)="addCommandePiece()">Ajouter une commande de piece </button> -->
+</div>

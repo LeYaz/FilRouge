@@ -1,7 +1,10 @@
+import { User } from 'src/app/model-util/user-model';
+import { Client } from 'src/app/model-util/client-model';
+
 export class Fiche{
     id: number;
-    user: string;
-    client: string ;
+    user: User;
+    client: Client ;
     etatfiche: boolean ;
     priorite: string ;
     datecreation : Date;
@@ -11,8 +14,8 @@ export class Fiche{
     desactiver: boolean ;
 
     constructor(id: number,
-                user: string,
-                client: string,
+                user: User,
+                client: Client,
                 etatfiche: boolean,
                 priorite: string,
                 datecreation : Date,
