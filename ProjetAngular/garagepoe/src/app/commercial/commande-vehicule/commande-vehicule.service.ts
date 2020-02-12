@@ -13,7 +13,7 @@ import { CommandeVehicule } from './commande-vehicule-model';
     constructor(private http: HttpClient) {
 
      }
-     
+
      getCommandeVehicule() {
       return this.http.get(this.url);
     }
@@ -21,16 +21,16 @@ import { CommandeVehicule } from './commande-vehicule-model';
      getCommandeVehiculeId(id: number) {
      return this.http.get<CommandeVehicule>(this.url + '/' + id);
    }
- 
+
     deleteCommandeVehiculeId(id: number) {
      return this.http.delete(this.url + '/' + id);
    }
- 
+
 
    editCommandeVehicule(commandeVehicule: CommandeVehicule) {
     let urlput : string = this.url + '/' + commandeVehicule.id;
     return this.http.put<CommandeVehicule>(urlput, commandeVehicule);
-  
+
             }
       }
   // }

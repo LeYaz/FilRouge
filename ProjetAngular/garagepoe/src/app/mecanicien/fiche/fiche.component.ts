@@ -51,6 +51,7 @@ export class FicheComponent implements OnInit {
 
   deleteFiche(id: number) {
     this.fichelistservice.deleteFicheId(id).subscribe(d => {
+      
       this.fichelist = [];
       this.ngOnInit();
     });

@@ -13,7 +13,7 @@
         <div class="form-group">
             <label for="labelInput">DateCloture</label>
             <input type="text" class="form-control" name="labelInput" id="labelInput"
-                placeholder="Entrer une date de clôture" required #label="ngModel" [(ngModel)]="commandeVehicule.datecloture"> 
+                placeholder="yyyy-MM-dd" required #label="ngModel" [(ngModel)]="commandeVehicule.datecloture"> 
         </div>
         <button  type="submit" class="btn btn-primary"
              [disabled]="commandeVehiculeForm.invalid">Modifier</button> 

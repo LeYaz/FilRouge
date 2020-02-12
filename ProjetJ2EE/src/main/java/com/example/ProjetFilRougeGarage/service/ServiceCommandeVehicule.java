@@ -64,7 +64,10 @@ public class ServiceCommandeVehicule implements IServiceCommandeVehicule {
 				daoFacture.save(facture);
 			}
 		}
-		pcommandevehicule.setDatecloture(new Date());
+		if(pcommandevehicule.getDatecloture()==null) {
+			pcommandevehicule.setDatecloture(new Date());
+		}
+		
 		dao.save(pcommandevehicule);
 	}
 
