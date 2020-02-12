@@ -10,7 +10,7 @@ import { CommercialModule } from './commercial/commercial.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RecherchePipe } from './recherche.pipe';
+
 
 
 @NgModule({
@@ -19,9 +19,7 @@ import { RecherchePipe } from './recherche.pipe';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    HomeComponent,
-    
-    
+    HomeComponent
     
   ],
   imports: [
