@@ -47,19 +47,17 @@
 
             <div class="form-group">
                 <label for="datecreationInput">Date de creation</label>
-                <input type="text" class="form-control" name="datecreationInput" id="datecreationInput"
-                    placeholder="Selectionner une date de creation" required #label="ngModel"
+                <input type="date" class="form-control" name="datecreationInput" id="datecreationInput"
+                    placeholder="Selectionner une date de creation" required #datecreationInput="ngModel"
                     [ngModel]="commandepiece.date_creation | date:'yyyy-MM-dd'" (ngModelChange)="commandepiece.date_creation = $event">
-                <div *ngIf="commandepiece.date_creation.dirty && commandepiece.date_creation.hasError('required')"
-                    class="alert alert-danger mt-2" role="alert">
-                    <strong>Le label est obligatoire !</strong>
-                </div>
+                    <div *ngIf="!datecreationInput.valid && datecreationInput.touched && datecreationInput.errors.required" class="alert alert-danger">Le champs date de saisie est obligatoire </div>
+                    <div *ngIf="!datecreationInput.valid && datecreationInput.touched && datecreationInput.errors.pattern" class="alert alert-danger">Le champs date de saisie doit être au format YYYY-MM-DD</div>
             </div>
 
             <div class="form-group">
                 <label for="dateclotureInput">Date de cloture</label>
-                <input type="text" class="form-control" name="dateclotureInput" id="dateclotureInput"
-                    placeholder="Selectionner une date de cloture" required #label="ngModel" [(ngModel)]="commandepiece.date_cloture"> 
+                <input type="date" class="form-control" name="dateclotureInput" id="dateclotureInput"
+                    placeholder="Selectionner une date de cloture"  #label="ngModel" [(ngModel)]="commandepiece.date_cloture"> 
                     <!-- [ngModel]="commandepiece.date_cloture | date:'yyyy-MM-dd'" (ngModelChange)="commandepiece.date_cloture = $event"> -->
                 <!-- <div *ngIf="commandepiece.date_cloture.dirty && commandepiece.date_cloture.hasError('required')"
                     class="alert alert-danger mt-2" role="alert">
