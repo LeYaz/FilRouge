@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 <label for="datecreationInput">Date</label>
-            <input type="text" class="form-control" name="datecreationInput" id="datecreationInput" [class.is-invalid]="dateInput.invalid && dateInput.touched" [class.is-valid]="dateInput.valid"
+            <input type="date" class="form-control" name="datecreationInput" id="datecreationInput" [class.is-invalid]="dateInput.invalid && dateInput.touched" [class.is-valid]="dateInput.valid"
                 placeholder="Selectionner une date" required #dateInput="ngModel" [ngModel]="vehicule.datecreation | date:'yyyy-MM-dd'" (ngModelChange)="vehicule.datecreation = $event" pattern="\d{4}-\d{2}-\d{2}"> 
                 <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.required" class="alert alert-danger">Le champs date de création est obligatoire </div>
                 <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.pattern" class="alert alert-danger">Le champs date de création doit être au format YYYY-MM-DD</div>
