@@ -2,6 +2,12 @@
     <div class="container">
         <h1 class="display-4">Liste des vehicules</h1>
     </div>
+
+    <div class="form-inline col-4 ">
+        <input class="form-control col-12"  [(ngModel)]="searchText" placeholder="rechercher un vehicule" type="search" >
+    </div>
+    
+
 </div>
 
     <table class="table table-striped">
@@ -18,7 +24,7 @@
 
 
     <tbody *ngIf="vehiculelist.length > 0; else elseBlock">
-        <tr *ngFor="let vehicule of vehiculelist">
+        <tr *ngFor="let vehicule of vehiculelist | rechercheV:searchText">
             <th scope="row">{{vehicule.id}}</th>
             <td>{{vehicule.marque}}</td>
             <td>{{vehicule.modele}}</td>

@@ -1,12 +1,13 @@
 import { User } from 'src/app/model-util/user-model';
 import { Client } from 'src/app/model-util/client-model';
+import { Priorite } from 'src/app/model-util/priorite-model';
 
 export class Fiche{
     id: number;
     user: User;
     client: Client ;
     etatfiche: boolean ;
-    priorite: string ;
+    priorite: Priorite ;
     datecreation : Date;
     datecloture : Date;
     prixht : number;
@@ -17,7 +18,7 @@ export class Fiche{
                 user: User,
                 client: Client,
                 etatfiche: boolean,
-                priorite: string,
+                priorite: Priorite,
                 datecreation : Date,
                 datecloture : Date,
                 prixht : number,
