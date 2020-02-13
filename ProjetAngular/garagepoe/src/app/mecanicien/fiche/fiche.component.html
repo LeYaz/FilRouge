@@ -1,8 +1,8 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Liste des facture de devis</h1>
-        <p class="lead">Consulter la liste des factures de devis</p>
+        <h1 class="display-4">Liste des fiches</h1>
+        <p class="lead">Consulter la liste des fiches</p>
     </div>
 </div>
 
@@ -45,11 +45,11 @@
     
                     <!-- Afficher ici le label de la tâche --></td>
                     <td>
-                        {{fiche.datecreation}}
+                        {{fiche.datecreation | date:'dd/MM/yyyy'}}
             
                             <!-- Afficher ici le label de la tâche --></td>
                             <td>
-                                {{fiche.datecloture}}
+                                {{fiche.datecloture | date:'dd/MM/yyyy'}}
                     
                                     <!-- Afficher ici le label de la tâche --></td>
                                     <td>
