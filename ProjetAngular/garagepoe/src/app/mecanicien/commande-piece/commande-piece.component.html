@@ -23,8 +23,8 @@
             <td>{{commandepiece.user.nom}}</td>
             <td>{{commandepiece.piece.libelle}}</td>
             <td>{{commandepiece.quantite}}</td>
-            <td>{{commandepiece.date_creation}}</td>
-            <td>{{commandepiece.date_cloture}}</td>
+            <td>{{commandepiece.date_creation | date:'dd/MM/yyyy'}}</td>
+            <td>{{commandepiece.date_cloture | date:'dd/MM/yyyy'}}</td>
             <td>
                 <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
                 <button type="button" class="btn btn-outline-warning mr-2" (click)="editCommandePiece(commandepiece.id)" >Modifier</button>
