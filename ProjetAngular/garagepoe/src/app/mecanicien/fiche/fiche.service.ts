@@ -34,7 +34,9 @@ export class FicheService {
   }
 
   addFiche(fiche: Fiche) {
+    console.log("salut service");
     return this.http.post<Fiche>(this.url, fiche);
+
 
   }
 }
