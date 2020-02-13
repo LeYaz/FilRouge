@@ -23,7 +23,6 @@ const routes: Routes = [
     {path:'pieces', component: PiecesComponent},
     {path:'pieces/edit', component:PiecesEditComponent},
     {path:'pieces/edit/:id', component:PiecesEditComponent},
-    {path:'taches', component: TacheComponent}
 
     {path:'taches', component: TacheComponent},
     {path:'taches/edit/:id', component: EditeTacheComponent},

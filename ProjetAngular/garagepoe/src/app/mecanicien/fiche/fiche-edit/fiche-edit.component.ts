@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FicheService } from '../fiche.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Fiche } from '../fiche.model';
+import { User } from 'src/app/model-util/user-model';
+import { Client } from 'src/app/model-util/client-model';
+import { Priorite } from 'src/app/model-util/priorite-model';
 
 @Component({
   selector: 'gar-fiche-edit',
@@ -9,7 +12,7 @@ import { Fiche } from '../fiche.model';
   styleUrls: ['./fiche-edit.component.css']
 })
 export class FicheEditComponent implements OnInit {
-  fiche : Fiche = new Fiche(0, null,null ,false, "", new Date(),new Date(),0,"",false);
+  fiche : Fiche = new Fiche(0, null,null ,false, null, new Date(),new Date(),0,"",false);
 
   constructor(private fichelistserv: FicheService, private router: Router, private actrout: ActivatedRoute) { }
 
@@ -20,6 +23,10 @@ export class FicheEditComponent implements OnInit {
           d.priorite, d.datecreation, d.datecloture, d.prixht, d.description, d.desactiver);
         console.log(d);
       });
+      }
+      else{
+        this.fiche =new Fiche(0, new User(1,"","","",""),
+        new Client(1,"","","","","","","",false) ,false, new Priorite(1,"", false), new Date(),new Date(),0,"",false);
       }
   }
 
