@@ -22,8 +22,8 @@
             <td>{{commandevehicule.devis.client.name}}</td>
             <td>{{commandevehicule.devis.vehicule.modele}}</td>
             <td>{{commandevehicule.etat}}</td>
-            <td>{{commandevehicule.datecreation}}</td>
-            <td>{{commandevehicule.datecloture}}</td>
+            <td>{{commandevehicule.datecreation | date:'dd/MM/yyyy'}}</td>
+            <td>{{commandevehicule.datecloture | date:'dd/MM/yyyy'}}</td>
             <td>{{commandevehicule.Desactiver}}</td>
             <td>
                 <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->

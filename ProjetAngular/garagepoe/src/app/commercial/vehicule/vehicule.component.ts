@@ -11,25 +11,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class VehiculeComponent implements OnInit {
 
   vehiculelist: Vehicule[] = new Array();
-  
+
   constructor(private vehiculelistservice: VehiculeListService, private route: Router, private actroute: ActivatedRoute) { }
 
   ngOnInit() {
     let list;
     this.vehiculelistservice.getVehicules().subscribe(d => {
-      console.log("Contenu de l'api :");
       console.log(d);
-       list = d;
+      list = d;
       list.forEach(element => {
-        let id = element.id;
-        let marque = element.marque;
-        let  modele = element.modele;
-        let quantite = element.quantite;
-        let prixht = element.prixht;
-        let datecreation = element.datecreation;
-        let desactiver = element.desactiver;
+        const id = element.id;
+        const marque = element.marque;
+        const  modele = element.modele;
+        const quantite = element.quantite;
+        const prixht = element.prixht;
+        const datecreation = element.datecreation;
+        const desactiver = element.desactiver;
 
-        let v:Vehicule = new Vehicule(id, marque, modele, quantite, prixht, datecreation, desactiver);
+        const v: Vehicule = new Vehicule(id, marque, modele, quantite, prixht, datecreation, desactiver);
         this.vehiculelist.push(v);
       });
 

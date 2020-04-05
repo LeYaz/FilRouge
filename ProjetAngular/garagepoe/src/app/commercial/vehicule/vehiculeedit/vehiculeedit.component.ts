@@ -10,7 +10,7 @@ import { Vehicule } from '../vehicule.model';
 })
 export class VehiculeeditComponent implements OnInit {
 
-  vehicule: Vehicule = new Vehicule(0, "", "", 0, 0, new Date(), false);
+  vehicule: Vehicule = new Vehicule(0, "", "", 0, 0, null, false);
 
   constructor(private vehiculelistserv: VehiculeListService, private router: Router, private actrout: ActivatedRoute) { }
 
@@ -23,7 +23,7 @@ export class VehiculeeditComponent implements OnInit {
         console.log(this.vehicule);
       });
       } else {
-      this.vehicule = new Vehicule(0, "","", 0,0, new Date(), false);
+      this.vehicule = new Vehicule(0, "","", 0,0, null, false);
     }
   }
 
@@ -38,5 +38,6 @@ export class VehiculeeditComponent implements OnInit {
     }
     this.router.navigate(['commercial/vehicule']);
   }
+
 
 }

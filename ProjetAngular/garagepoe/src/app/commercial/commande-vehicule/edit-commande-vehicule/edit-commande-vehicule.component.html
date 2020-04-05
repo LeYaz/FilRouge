@@ -10,9 +10,11 @@
         
         <div class="form-group">
             <label for="labelInput">DateCloture</label>
-            <input type="text" class="form-control" name="labelInput" id="labelInput"
-                placeholder="yyyy-MM-dd" required #label="ngModel" [(ngModel)]="commandeVehicule.datecloture"> 
+            <input type="date" class="form-control" name="labelInput" id="labelInput"
+                placeholder="yyyy-MM-dd" required #dateInput="ngModel" [ngModel]="commandeVehicule.datecloture | date:'yyyy-MM-dd'" (ngModelChange)="commandeVehicule.datecloture = $event"> 
         </div>
+        <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.required" class="alert alert-danger">Le champs date de saisie est obligatoire </div>
+        <div *ngIf="!dateInput.valid && dateInput.touched && dateInput.errors.pattern" class="alert alert-danger">Le champs date de saisie doit être au format YYYY-MM-DD</div>
         <button  type="submit" class="btn btn-primary"
              [disabled]="commandeVehiculeForm.invalid">Modifier</button> 
     </form>

@@ -1,7 +1,8 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Liste des factures de devis</h1>
+        <h1 class="display-4">Liste des fiches</h1>
+        <p class="lead">Consulter la liste des fiches</p>
     </div>
 </div>
 
@@ -9,8 +10,8 @@
     <thead class="">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Créateur</th>
             <th scope="col">Client associé</th>
+            <th scope="col">Créateur</th>
             <th scope="col">Etat de la fiche</th>
             <th scope="col">Priorité</th>
             <th scope="col">Date de Création</th>
@@ -40,31 +41,29 @@
                 <!-- Gérer l'événement clic sur ce bouton afin de supprimer la tâche -->
             </td>
             <td>
-                {{fiche.priorite}}
-    
+                {{fiche.priorite.libelle}}
+
                     <!-- Afficher ici le label de la tâche --></td>
                     <td>
-                        {{fiche.datecreation}}
-            
+                        {{fiche.datecreation | date:'dd/MM/yyyy'}}
+
                             <!-- Afficher ici le label de la tâche --></td>
                             <td>
-                                {{fiche.datecloture}}
-                    
+                                {{fiche.datecloture | date:'dd/MM/yyyy'}}
+
                                     <!-- Afficher ici le label de la tâche --></td>
                                     <td>
                                         {{fiche.prixht}}
-                            
+
                                             <!-- Afficher ici le label de la tâche --></td>
                                             <td>
                                                 {{fiche.description}}
-                                    
+
                                                     <!-- Afficher ici le label de la tâche --></td>
-                                            
+
                     <td>
                         <!-- Gérer l'événement clic sur ce bouton afin de rediriger vers l'édition -->
-                        <button type="button" class="btn btn-outline-warning mr-2" (click)="editFiche(fiche.id)" >Modifier</button>
-                        
-                        <button type="button" class="btn btn-outline-danger" (click)="deleteFiche(fiche.id)">Desactiver</button>
+
                     </td>
    <!--</tbody>-->
     </tr>
@@ -76,6 +75,3 @@
         </tbody>
     </ng-template>
 </table>
-<div>
-    <button type="button" class="btn btn-outline-warning mr-2" (click)="addFiche()">Ajouter une pièce</button>
-</div>
